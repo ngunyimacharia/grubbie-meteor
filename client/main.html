@@ -1,25 +1,23 @@
 <head>
-  <title>grubbie</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Grubbie</title>
+  <link rel="icon"
+  type="image/png"
+  href="/images/logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 
-<body>
-  <h1>Welcome to Meteor!</h1>
+<template name="App_body">
 
-  {{> hello}}
-  {{> info}}
-</body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+  <div id="body-overlay"></div>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+  {{> Template.dynamic template=main}}
+
+  <footer>
+  </footer>
+
+  <div class="clearfix"><br/></div>
+
 </template>
