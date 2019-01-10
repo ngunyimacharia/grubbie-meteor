@@ -1,0 +1,29 @@
+<template name="Signin_page">
+
+  <div id="grubbie-gradient"></div>
+
+  <div class="paper">
+    <div class = "logo-white" >
+      <a href = "/"><img src="/images/logo.png" alt = "logo" /></a>
+    </div>
+
+    <form action="/user/manage.php" method = "post">
+      <p>
+        <input type = "text" name = "Email" placeholder = "Email"/>
+      </p>
+      <p>
+        <input type = "password" name = "Password" placeholder = "Password"/>
+      </p>
+      <p style='text-align: right'>
+        <a href = "forgotpassword.php"> Forgot Password</a>
+      </p>
+      <p>
+        <input type = "submit" name = "Sign Up" value = "Sign In">
+      </p>
+    </form>
+
+    <p style = 'text-align: center'><a href = "/user/signup"> Don't have an account? Sign Up</a> </p>
+  </div>
+
+
+</template>

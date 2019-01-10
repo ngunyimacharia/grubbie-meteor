@@ -1,5 +1,4 @@
-//Homepage
-
+//User routes
 
 FlowRouter.route('/',{
   action: function(){
@@ -10,11 +9,21 @@ FlowRouter.route('/',{
   }
 });
 
-FlowRouter.route('/not_found',{
+FlowRouter.route('/user/signin',{
   action: function(){
     BlazeLayout.render(
       'App_body',
-      {main: 'Not_found_page'}
+      {main: 'Signin_page'}
+    );
+  }
+});
+
+
+FlowRouter.route('/user/signup',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {main: 'Signup_page'}
     );
   }
 });

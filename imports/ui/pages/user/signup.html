@@ -1,0 +1,25 @@
+<template name="Signup_page">
+  <div id="grubbie-gradient"></div>
+
+  <div class="paper">
+    <div class = "logo-white" >
+      <a href = "/"><img src="/images/logo.png" alt = "logo" /></a>
+    </div>
+
+    <form action = "/menu/view" method="POST">
+      <p><input type = "text" name = "firstname" placeholder = "First Name"/></p>
+      <p><input type = "text" name = "lastname" placeholder = "Last Name"/></p>
+      <p><input type = "text" name = "Email" placeholder = "Email"/></p>
+      <p><select name = "type">
+        <option value = "EIT"> EIT</option>
+        <option value = "MINC"> MINC</option>
+        <option value = "Fellow"> Teaching Fellow </option>
+        <option value = "Staff"> Incubator Fellow </option>
+      </select></p>
+      <p><input type = "password" name = "Password" placeholder = "Password"/></p>
+      <br/>
+      <p><input type = "submit" name = "Sign Up" value = "Create Account"></p>
+    </form>
+    <p style = 'text-align: center'> <a href = "/user/signin">Have an account? Sign in</a> </p>
+  </div>
+</template>
