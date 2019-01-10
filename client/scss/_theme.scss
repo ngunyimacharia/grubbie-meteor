@@ -1,0 +1,540 @@
+//Colors
+
+$black: #000;
+$white: #fff;
+$school_bus_yellow:#FFDA00;
+$outrageous_orange:#FF5733;
+$gradient_yellow:#CAAD08;
+$grubbie_gradient: linear-gradient($gradient_yellow,#B85A3F);
+$success:#5CB85C;
+$warning:#F0AD4E;
+$danger:#D9534F;
+
+// Dimensions
+$gradient : linear(60deg, $school_bus_yellow, $outrageous_orange);
+// min-width
+$tablet: 650px;
+$desktop: 900px;
+
+html{
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  html{
+    background-image: url('http://localhost/grubbie/assets/images/background_lg.jpg');
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  html{
+    background-image: url('http://localhost/grubbie/assets/images/background_sm.jpg');
+  }
+}
+
+body{
+  color: white;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8em;
+  margin: 0;
+  border:0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  top:0;
+  clear: both;
+
+  #content-container{
+    width: auto;
+    margin: 5vh 2vw;
+    padding: 5vh 5vw;
+    background: rgba(0,0,0,0.5);
+    min-height: 80vh;
+    border-radius: 15px;
+  }
+
+  @media only screen and (max-width: 767px) {
+
+    #content-container{
+      margin: 0 !important;
+      border-radius: 0 !important;
+    }
+
+  }
+
+  .no-bg{
+    background: transparent !important;
+  }
+
+  %overlay-props{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: -100; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+  #body-overlay {
+    @extend %overlay-props;
+    background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+    z-index: -10000; /* Specify a stack order in case you're using a different order for other elements */
+  }
+
+  #grubbie-gradient{
+    @extend %overlay-props;
+    background-image: $grubbie_gradient;
+    z-index: -9000; /* Specify a stack order in case you're using a different order for other elements */
+  }
+
+}
+
+h1{
+  text-align: center;
+}
+
+hr{
+  border: 1px solid $white;
+}
+
+/* Start of small elements */
+
+%clearfix{
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.clearfix:after, footer:after {
+  @extend %clearfix;
+}
+
+%btn{
+  padding: 5px 10px;
+  margin: 0 5px;
+  border:0px;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration:none;
+  text-align: center;
+  color: #fff;
+  height: auto !important;
+  border-radius: 25px;
+  width: 300px !important;
+}
+
+.btn-success{
+  @extend %btn;
+  background-color: $success;
+}
+
+.btn-warning{
+  @extend %btn;
+  background-color: $warning;
+}
+
+.btn-danger{
+  @extend %btn;
+  background-color: $danger;
+}
+
+.round-btn-danger{
+  @extend %btn;
+  background-color: $danger;
+  border-radius: 25px;
+  font-size: 0.8em;
+  font-weight: normal;
+  padding: 12px 30px;
+}
+
+.btn-circ{
+  border: 1px solid $white;
+  border-radius: 25px;
+  padding: 5px 20px;
+  height: auto;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 600;
+  margin: 2px;
+  background: transparent;
+  color:$white;
+  text-decoration: none;
+}
+
+.btn-circ.active{
+  background-image: $grubbie_gradient;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid $gradient_yellow;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+
+  border-top: 20px solid $gradient_yellow;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+
+  border-left: 60px solid $gradient_yellow;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid;
+  border-right-color: $gradient_yellow;
+  left:-45px;
+  position: absolute;
+}
+
+%circ{
+  border: 0;
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  padding-top: 3px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  color:$white;
+}
+
+.circ-success{
+  @extend %circ;
+  background-color: $success;
+}
+
+.circ-danger{
+  @extend %circ;
+  background-color: $danger;
+}
+
+.circ-warning{
+  @extend %circ;
+  background-color: $warning;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.pull-right{
+  float:right;
+}
+
+/* End of small elements */
+
+/* Start of major components */
+
+.header-container{
+  width: 100%;
+
+  h1{
+  text-align: left;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #content-container div.notifications-container{
+    display: none;
+  }
+  header nav{
+    div.notifications-container{
+      display: none;
+      width: 350px;
+      margin: 5px 0 0 15px;
+      position: absolute;
+      background-image: $grubbie_gradient;
+      right: -10px;
+      z-index: 1000;
+
+      .notification{
+        margin:20px 0;
+        display: block;
+        clear: both;
+        img{
+          float: left;
+          width: 20px;
+          margin: 0 20px;
+          vertical-align: middle;
+          display: inline-block;
+        }
+        div{
+          text-align: left;
+          margin-left: 70px;
+          a{
+            font-size: 1em;
+            color:$white;
+            text-decoration: none;
+          }
+
+          .timestamp{
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+  }
+
+}
+@media only screen and (max-width: 767px) {
+
+  footer nav div.notifications-container{
+    display: none;
+  }
+
+  div.notifications-container{
+    width: 92%;
+    max-width: 600px;
+    margin-left: 15px;
+
+    .notification{
+      background-image: $grubbie_gradient;
+      margin:20px 0;
+      padding: 3px 20px 7px;
+      vertical-align: middle;
+      position: relative;
+
+      img{
+        float: left;
+        width: 20px;
+        margin: 15px 7px 0 2px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+      div{
+        margin-left: 35px;
+        a{
+          color:$white;
+          text-decoration: none;
+        }
+
+        .timestamp{
+          font-size: 0.7em;
+        }
+      }
+    }
+  }
+}
+
+.gmail-container{
+  width: 100%;
+  margin:50px auto;
+
+
+  label{
+    font-weight: 900;
+  }
+
+
+  select{
+    background: transparent;
+    border:none;
+    padding: 5px;
+    margin: 7px 0 5px;
+  }
+
+
+  @media only screen and (min-width: 577px) {
+
+    .left-menu{
+      padding-top: 50px;
+    }
+  }
+
+  .left-menu{
+    height: 100%;
+    overflow: hidden;
+
+
+    @media only screen and (min-width: 577px) {
+      .xs{
+        display: none;
+      }
+      .lg{
+        display: block;
+      }
+
+    }
+
+    @media only screen and (max-width: 576px) {
+      .xs{
+        display: block;
+      }
+      .lg{
+        display: none;
+      }
+
+      .description{
+        margin-top:5px;
+      }
+
+      .dark{
+        background: rgba(0,0,0,0.5);
+      }
+
+      select{
+        margin: 0;
+        text-align: center;
+      }
+    }
+
+    ul{
+      list-style-type: none;
+      padding: 0;
+
+      a.active{
+        color: $school_bus_yellow;
+      }
+
+      a{
+        color:$white;
+        text-decoration: none;
+        li{
+          padding: 10px 20px 10px 5% ;
+          font-weight: 900;
+        }
+      }
+
+      a.btn li{
+        background-image: $grubbie_gradient;
+      }
+    }
+  }
+
+  .right-main{
+    float: right;
+
+    .top-options{
+      text-align: center;
+    }
+
+    .top-actions{
+
+
+      .select{
+        color:rgba(255,255,255,0.9);
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+
+      input[type="checkbox"]{
+        background: transparent;
+      }
+
+
+    }
+
+    .main-section{
+      background: rgba(0,0,0,0.5);
+      overflow-x: scroll;
+      border-radius: 15px;
+
+
+      @media only screen and (max-width: 576px) {
+        .cont{
+            min-width: auto !important;
+        }
+      }
+      .cont{
+        min-width: 600px;
+
+        .headers{
+          padding: 10px 25px;
+          font-weight: 700;
+        }
+
+        .body .row.xs{
+          display: none;
+        }
+
+        @media only screen and (max-width: 576px) {
+
+          .headers{
+            display: none;
+          }
+
+          .body .row.lg{
+            display: none;
+          }
+
+          .body .row.xs{
+            display: flex;
+
+            .data{
+              div{
+                margin: 0 0 5px;
+              }
+              .actions{
+                margin-top:10px;
+              }
+            }
+
+          }
+
+        }
+        .body{
+          padding:10px;
+
+          .row{
+            padding:10px 0;
+            cursor: pointer;
+
+            .hv{
+              opacity: 0;
+              transition: opacity 0.4s;
+            }
+          }
+
+          .row:hover{
+            background-color: rgba(255,255,255,0.1);
+            .hv{
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float:right;
+}

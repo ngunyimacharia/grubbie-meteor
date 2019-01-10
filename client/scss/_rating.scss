@@ -1,0 +1,72 @@
+.admin-rate{
+
+  .top-options{
+  // margin: 20px;
+  }
+
+  .right-main .main-section{
+    overflow: auto;
+  }
+
+  .btn-grp{
+    button{
+      border:1px solid $white;
+      background: transparent;
+      padding: 5px 7px 7px;
+      font-size: 0.9em;
+      height: auto !important;
+      margin: 0 !important;
+      width:49%;
+      overflow: hidden;
+    }
+
+    .left{
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      float: left;
+    }
+
+    .right{
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+      float:left;
+    }
+
+    .active{
+      background-image: $grubbie_gradient;
+    }
+  }
+
+  #ratings-canvas-cont{
+    margin: auto;
+    max-width: 100%;
+    width: 400px;
+  }
+
+  .xs{
+    display: none;
+
+    label{
+      margin-top: 5px;
+      display: block;
+    }
+  }
+
+  @media screen and (max-width:768px){
+     .right-main{
+       padding: 0;
+     }
+
+     .lg{
+       display: none;
+     }
+     .xs{
+       display: flex;
+     }
+
+     .top-options .xs label{
+       margin-top: 12px;
+     }
+  }
+
+}

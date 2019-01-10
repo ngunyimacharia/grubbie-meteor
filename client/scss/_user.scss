@@ -1,0 +1,73 @@
+.logo-white{
+  text-align: center;
+  width: 100%;
+
+  img{
+    width: 100px;
+  }
+}
+
+
+.round-block{
+  height: 35px;
+  border: 1px solid white;
+  border-radius: 50px;
+  margin: 10px auto;
+  background: transparent;
+}
+
+@media screen and (max-width: 990px){
+
+  .profile-view{
+    max-width: 500px;
+    margin-top: 0 !important;
+    width: 100% !important;
+
+    .lg{
+      display: none;
+    }
+    .xs{
+      display: flex !important;
+    }
+  }
+
+}
+
+.profile-view{
+  width: 70%;
+  margin: 70px auto 0;
+
+  .xs{
+    display: none;
+  }
+
+  .lg{
+    margin-top: 30px;
+  }
+
+  .icon{
+    text-align: center;
+    margin-top: 10px;
+    i{
+
+    }
+  }
+
+  .data .row{
+    margin: 10px 0;
+  }
+
+  .data-form .row{
+    margin: 10px 0 20px;
+  }
+
+  form{
+    margin: 0;
+    width:100%;
+
+  }
+
+  .label{
+    font-weight: 900;
+  }
+}

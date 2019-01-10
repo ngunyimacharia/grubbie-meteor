@@ -1,0 +1,74 @@
+.inventory{
+
+.xs{
+  display: none;
+
+  label{
+    font-weight: 900;
+  }
+
+
+  .data > div{
+    margin: 0 0 10px;
+  }
+
+  .hv{
+    margin: 20px 0 0;
+  }
+
+  form{
+    margin: 0px 0 20px;
+
+    input{
+      margin: 5px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .lg{
+    display: none;
+  }
+  .xs{
+    display: initial;
+  }
+}
+
+  form{
+    width: auto;
+    margin: 20px auto 0;
+  }
+
+  .top-actions{
+    margin: 20px 0;
+  }
+
+  .money{
+    border: 1px solid $white;
+    padding: 10px;
+  }
+
+  .header{
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+
+  .body{
+    .row{
+      padding: 10px 0;
+    }
+
+    .hv{
+      visibility: hidden;
+    }
+    .row:hover{
+    background: rgba(255,255,255,0.1);
+      .hv{
+        visibility: visible;
+      }
+    }
+
+  }
+
+}

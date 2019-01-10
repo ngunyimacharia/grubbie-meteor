@@ -1,0 +1,166 @@
+.create-menu{
+
+  .xs{
+    display: none;
+  }
+
+  @media only screen and (max-width: 767px) {
+
+    .rounded-wrapper{
+      width:100% !important;
+
+      .rounded-text{
+        margin-left: 80px;
+        vertical-align: top;
+
+        a{
+          display: none;
+        }
+      }
+    }
+    h2{
+      font-size: 1em;
+      margin-top: 20px;
+    }
+
+    .lg{
+      display: none;
+    }
+
+    .xs{
+      display: initial;
+    }
+
+    .table {
+
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+
+      .day{
+        margin: 10px 0;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .bls{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+
+    button{
+      width: 80px;
+    }
+  }
+
+  select{
+    background: transparent;
+    border:0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 5px;
+    width:150px;
+  }
+
+  button{
+    color: white;
+    width: 80%;
+    height: 30px;
+    margin: -2px;
+    background: transparent;
+    border: none;
+    border: 1px solid white;
+    border-radius: 15px;
+  }
+  button:hover{
+    background: $grubbie_gradient;
+  }
+
+  .btn-success{
+    @extend %btn;
+    background-color: $success;
+  }
+
+  .breakfast{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+  .dinner{
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+  .lunch{
+    background-image: $grubbie_gradient;
+    border-radius: 0;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .order-options {
+      max-height: 250px !important;
+    }
+  }
+  .order-options {
+    width: 100%;
+    margin: auto;
+    max-height: 600px;
+    overflow-y: scroll;
+    padding: 0 40px 0 0;
+
+    .adds{
+      display: none;
+    }
+
+    h4{
+      margin: 0;
+    }
+
+    i{
+      // margin-left: 28px;
+    }
+  }
+
+  .order-options > .row{
+    margin-bottom: 5px;
+  }
+
+  .date-selection{
+    padding:0 10px 10px 0;
+
+  }
+
+  @media screen and (max-width:990px){
+    .preview{
+      margin-top:30px;
+      padding: 0 15px !important;
+    }
+  }
+
+  .preview{
+    height: 100%;
+    background: rgba(255,255,255,0.07);
+    padding:15px;
+    min-height: 70vh;
+    border-radius: 15px;
+
+    table{
+      .day{
+        height:50px;
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+    }
+
+    .edit{
+      width: auto;
+      height: auto;
+      float:right;
+      padding: 8px 15px 5px;
+      border-radius: 15px;
+      border:0;
+    }
+  }
+
+  .submit{
+    // padding-right: 20px;
+  }
+
+}

@@ -1,0 +1,244 @@
+.days{
+  width: 95%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px auto;
+
+  .day{
+    color: white;
+    background: none;
+    border: 1px solid white;
+    border-radius: 50px;
+    width: 40px;
+    text-align: center;
+  }
+
+  .active, .day:hover {
+    background: $grubbie_gradient !important;
+  }
+}
+
+.rounded-container.active{
+  background: transparent;
+  .rounded-wrapper{
+    background-image: $grubbie_gradient;
+
+  }
+
+}
+.rounded-container{
+    padding-left: 10px;
+    margin-bottom: 10px;
+    .rounded-wrapper{
+      width: 80%;
+      height: 80px;
+      margin: auto;
+      padding-right: 20px;
+      border: 1px solid white;
+      border-radius: 120px;
+
+    }
+    .rounded-image{
+      width: 70px;
+      height: 70px;
+      margin: 5px;
+      border: 1px solid white;
+      border-radius: 120px;
+      display: inline-block;
+      line-height: 80px;
+    }
+    .rounded-text{
+      margin-top: -80px;
+      margin-left: 5px;
+      vertical-align: middle;
+      display: inline-block;
+      line-height: 80px;
+      width: 70%;
+
+      a{
+        color: $white;
+        text-decoration: none;
+      }
+    }
+    .rate-wrapper{
+      width: 80%;
+    //   height: 80px;
+      margin: auto;
+      padding-right: 20px;
+      border-radius: 120px;
+    }
+    .rate-text{
+      margin-top: -90px;
+    //   margin-left: 80px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    @media screen and (max-width: 767px){
+      .rate-text{
+        margin-left: 80px;
+      }
+
+      .rounded-container .rate-wrapper {
+          width: 100%;
+      }
+    }
+
+    input{
+      background: transparent;
+      color: white;
+      border: none;
+      border-bottom: 1px solid white;
+      font-style: italic;
+    }
+  }
+
+
+@media only screen and (max-width: 767px) {
+  .days {
+    width: 95%;
+  }
+}
+
+.star {
+  border: none;
+  outline: none;
+  padding: 3px 3px;
+  background-color: transparent;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .star:hover {
+  background-color: white;
+}
+
+form{
+  margin: 50px auto;
+  width: 80%;
+  select,input{
+    height: 25px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid $white;
+    color: $white;
+  }
+  input::placeholder{
+    color: $white;
+    padding-left: 5px;
+  }
+  input[type=submit]{
+    height: 35px;
+    border: 1px solid $outrageous_orange;
+    border-radius: 50px;
+    margin: 10px auto;
+  }
+}
+.paper{
+  background: white;
+  width: 80%;
+  margin: 30px auto;
+  color: $outrageous_orange;
+  max-width: 400px;
+  border-radius: 15px;
+
+  a{
+    text-decoration: none;
+    color: $outrageous_orange;
+  }
+
+  .logo-white{
+    padding-top: 50px;
+  }
+
+  .cont{
+    padding-top: 50px;
+  }
+  .profile{
+    text-align: center;
+  }
+  table select{
+    width: 100%;
+  }
+
+  form{
+    color: $outrageous_orange;
+    margin: 50px auto;
+    width: 80%;
+
+    select:active,select:focus,input:active,input:focus{
+      background-color: $white;
+      border: 1px solid $outrageous_orange;
+    }
+
+    select,input{
+      background-color: #e8eaed;
+      border-radius: 15px;
+      padding: 10px ;
+      height: auto;
+      color:#3c4043;
+      width: 100%;
+    }
+    input::placeholder{
+      color: #3c4043 !important;
+      padding-left: 5px;
+    }
+
+  }
+  input[type=submit],button{
+    border: 0;
+    box-shadow: 0 1px 3px 1px rgba(60,64,67,0.15),0 1px 2px 0 rgba(60,64,67,0.3);
+    color: $outrageous_orange;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-weight: 500;
+    font-size: 1.1em;
+    background: $white;
+  }
+  p{
+    color: #3c4043;
+    text-align: center;
+  }
+  padding-bottom: 50px;
+}
+button{
+    border: 0;
+    box-shadow: 0 1px 3px 1px rgba(60,64,67,0.15),0 1px 2px 0 rgba(60,64,67,0.3);
+    color: $outrageous_orange;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    font-weight: 500;
+    font-size: 1.1em;
+    background: $white;
+  }
+@media(min-width: $tablet){
+  .days{
+    .day{
+      border: 1px solid white;
+      border-radius: 50px;
+      width: 70px;
+      text-align: center;
+    }
+  }
+  .paper{
+    width: 60%;
+  }
+}
+@media(min-width: $desktop){
+  .paper{
+    width: 40%;
+  }
+  .days{
+    .day{
+      border: 1px solid white;
+      border-radius: 50px;
+      width: 80px;
+      height: 25px;
+      text-align: center;
+    }
+  }
+}
