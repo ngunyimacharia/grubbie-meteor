@@ -4,7 +4,7 @@ FlowRouter.route('/',{
   action: function(){
     BlazeLayout.render(
       'App_body',
-      {main: 'Splash_page'}
+      {main: 'User_splash_page'}
     );
   }
 });
@@ -13,7 +13,7 @@ FlowRouter.route('/user/signin',{
   action: function(){
     BlazeLayout.render(
       'App_body',
-      {main: 'Signin_page'}
+      {main: 'User_signin_page'}
     );
   }
 });
@@ -23,7 +23,20 @@ FlowRouter.route('/user/signup',{
   action: function(){
     BlazeLayout.render(
       'App_body',
-      {main: 'Signup_page'}
+      {main: 'User_signup_page'}
+    );
+  }
+});
+
+
+FlowRouter.route('/menu/view',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_user',
+        main: 'Menu_view_page'
+      }
     );
   }
 });

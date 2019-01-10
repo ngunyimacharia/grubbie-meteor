@@ -12,12 +12,14 @@
 
 
   <div id="body-overlay"></div>
-
+  {{> Template.dynamic template=header}}
   {{> Template.dynamic template=main}}
+  {{> Template.dynamic template=footer}}
 
   <footer>
   </footer>
 
   <div class="clearfix"><br/></div>
 
+  <script src="/js/main.js" type="text/javascript"></script>
 </template>

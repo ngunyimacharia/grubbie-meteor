@@ -2234,12 +2234,12 @@ html {
 
 @media only screen and (min-width: 768px) {
   html {
-    background-image: url("http://localhost/grubbie/assets/images/background_lg.jpg");
+    background-image: url("/images/background_lg.jpg");
   }
 }
 @media only screen and (max-width: 767px) {
   html {
-    background-image: url("http://localhost/grubbie/assets/images/background_sm.jpg");
+    background-image: url("/images/background_sm.jpg");
   }
 }
 body {

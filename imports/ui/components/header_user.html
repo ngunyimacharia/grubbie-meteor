@@ -1,0 +1,86 @@
+<template name="Header_user">
+
+<header>
+  <a href = "/">
+    <div id="logo">
+      <img src="/images/logo.png" alt="logo" title="logo"/>
+      <div id="logo-caption">Gru<span>bb</span>ie</div>
+    </div>
+  </a>
+
+  <nav class="user">
+    <ul>
+      <li>
+        <a href="/user/view">
+          <i class="fa fa-user-o"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li>
+        <a href="/menu/view">
+          <i class="fa fa-cutlery"></i>
+          <span>Meals</span>
+        </a>
+      </li>
+      <li>
+        <a id="notifications" href="/user/notifications">
+          <div>
+            <i class="fa fa-envelope-o" title="Messages"></i>
+          </div>
+          <span>Messages</span>
+        </a>
+        <div class="notifications-container">
+          <div class="arrow-up"></div>
+          <div class="notification">
+
+            <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+            <div>
+              <a href="/orders/view"><p>The menu for this week has been sent</p></a>
+              <span class="timestamp">1 hour ago</span>
+            </div>
+          </div>
+          <div class="notification">
+
+            <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+            <div>
+              <a href="/orders/view">
+                <p>
+                  The menu for this week has been sent
+                </p>
+              </a>
+              <span class="timestamp">1 day ago</span>
+            </div>
+          </div>
+          <div class="notification">
+
+            <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+            <div>
+              <a href="/orders/view"><p>The menu for this week has been sent</p></a>
+              <span class="timestamp">7 days ago</span>
+            </div>
+          </div>
+          <div class="notification">
+
+            <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+            <div>
+              <a href="/orders/view"><p>The menu for this week has been sent</p></a>
+              <span class="timestamp">14 days ago</span>
+            </div>
+          </div>
+          <div class="notification">
+
+            <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+            <div>
+              <a href="/orders/view"><p>The menu for this week has been sent</p></a>
+              <span class="timestamp">21 days ago</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+
+</header>
+
+</template>
