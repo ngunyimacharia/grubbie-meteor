@@ -7,6 +7,10 @@ import './user/view_edit.js';
 import './user/manage.js';
 import './user/user_notifications.js';
 import './user/admin_notifications.js';
+import './user/forgot_password.js';
+
+//Meal pages
+import './meal/view.js';
 
 //Menu pages
 import './menu/view.js';

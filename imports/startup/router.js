@@ -93,6 +93,33 @@ FlowRouter.route('/user/admin-notifications',{
     );
   }
 });
+
+
+FlowRouter.route('/user/forgot-password',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        main: 'User_forgot_password_page',
+      }
+    );
+  }
+});
+//Meal routes
+
+FlowRouter.route('/meal/view',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_user',
+        main: 'Meal_view_page',
+        footer: 'Footer_user'
+      }
+    );
+  }
+});
+
 //Menu routes
 
 FlowRouter.route('/menu/view',{
