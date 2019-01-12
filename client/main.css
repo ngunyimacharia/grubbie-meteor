@@ -1,3 +1,11 @@
 .fa-8x{
   font-size: 8em;
 }
+
+.fa-sm {
+	font-size: .875em;
+}
+
+.fa-xs {
+	font-size: .75em;
+}

@@ -1,9 +1,9 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
-import './header_user.html';
+import './header_admin.html';
 
-Template.Header_user.rendered = function(){
+Template.Header_admin.rendered = function(){
 
     var notificationsLnk = document.getElementById("notifications");
     var notifications =  document.querySelector("header .notifications-container");

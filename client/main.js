@@ -7,3 +7,8 @@ import '../imports/ui/components/components.js';
 import '../imports/ui/pages/pages.js';
 
 import './main.html';
+
+Template.App_body.rendered = function(){
+  //Notifications code
+
+}

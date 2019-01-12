@@ -55,6 +55,19 @@ FlowRouter.route('/user/view_edit',{
   }
 });
 
+FlowRouter.route('/user/manage',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'User_manage_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
 FlowRouter.route('/user/user-notifications',{
   action: function(){
     BlazeLayout.render(
@@ -68,6 +81,18 @@ FlowRouter.route('/user/user-notifications',{
   }
 });
 
+FlowRouter.route('/user/admin-notifications',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'User_admin_notifications_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
 //Menu routes
 
 FlowRouter.route('/menu/view',{
@@ -96,6 +121,19 @@ FlowRouter.route('/menu/mobile',{
   }
 });
 
+FlowRouter.route('/menu/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'Menu_create_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
 //Rating routes
 
 FlowRouter.route('/rating/rate',{
@@ -106,6 +144,32 @@ FlowRouter.route('/rating/rate',{
         header: 'Header_user',
         main: 'Rating_rate_page',
         footer: 'Footer_user'
+      }
+    );
+  }
+});
+
+FlowRouter.route('/rating/admin',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'Rating_admin_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+//Inventory routes
+FlowRouter.route('/inventory/view',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'Inventory_view_page',
+        footer: 'Footer_admin'
       }
     );
   }

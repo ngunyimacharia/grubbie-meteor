@@ -1,0 +1,100 @@
+<template name="Header_admin">
+
+    <header>
+      <a href = "/">
+        <div id="logo">
+          <img src="/images/logo.png" alt="logo" title="logo"/>
+          <div id="logo-caption">Gru<span>bb</span>ie</div>
+        </div>
+      </a>
+
+      <nav class="admin">
+        <ul>
+          <li>
+            <a href="/user/manage">
+              <i class="fa fa-user-o" title="Users"></i>
+              <span>Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="/menu/create">
+              <i class="fa fa-cutlery" title="Meals"></i>
+              <span>Meals</span>
+            </a>
+          </li>
+          <li>
+            <a href="/inventory/view">
+              <i class="fa fa-clipboard"></i>
+              <span>Inventory</span>
+            </a>
+          </li>
+          <li>
+            <a href="/rating/admin">
+              <i class="fa fa-thumbs-o-up" title="Ratings"></i>
+              <span>Feedback</span>
+            </a>
+          </li>
+          <li>
+            <a  id="notifications" href="/user/admin-notifications">
+              <div>
+                <i class="fa fa-envelope-o" title="Messages"></i>
+                <div class="notifications-notice">&nbsp;</div>
+              </div>
+              <span>Messages</span>
+            </a>
+            <div class="notifications-container">
+              <div class="arrow-up"></div>
+              <div class="notification">
+
+                <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+                <div>
+                  <a href="/orders/view"><p>The menu for this week has been published</p></a>
+                  <span class="timestamp">1 hour ago</span>
+                </div>
+              </div>
+              <div class="notification">
+
+                <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+                <div>
+                  <a href="/orders/view">
+                    <p>
+                      A comment has been added a submitted menu
+                    </p>
+                  </a>
+                  <span class="timestamp">1 day ago</span>
+                </div>
+              </div>
+              <div class="notification">
+
+                <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+                <div>
+                  <a href="/orders/view"><p>A new user needs activation.</p></a>
+                  <span class="timestamp">7 days ago</span>
+                </div>
+              </div>
+              <div class="notification">
+
+                <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+                <div>
+                  <a href="/orders/view"><p>A new feedback message has been sent.</p></a>
+                  <span class="timestamp">14 days ago</span>
+                </div>
+              </div>
+              <div class="notification">
+
+                <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+                <div>
+                  <a href="/orders/view"><p>New message from the superadmin.</p></a>
+                  <span class="timestamp">21 days ago</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+
+    </header>
+
+
+</template>
