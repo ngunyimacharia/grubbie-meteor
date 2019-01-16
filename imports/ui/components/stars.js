@@ -1,9 +1,17 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
+// import { Ratings } from '../../api/rating.js';
 
 import './stars.html';
 
+// Template.body.helpers({
+//   ratings() {
+//     return Ratings.find({}).fetch();
+//   },
+// });
+
+// console.log(ratings.find({}).fetch());
 
 let clearStars = function(){
   document.getElementById(1).classList.remove('yellow')
@@ -19,20 +27,18 @@ if (Meteor.isClient) {
     'click .star' : function() {
       clearStars();
       let star_id = event.target.id;
-      Meteor.call('rating.insert', star_id);
-
       for(i=1; i<=star_id; i++) {
         document.getElementById(i).classList.add('yellow')
       }
-      // Ratings.insert({
-      //   text : 'hello'
-      // })
+
+
+        document.getElementById('star_id').value = star_id;
     },
 
     'click .ratesubmit' : function(event) {
       let user_id = Meteor.userId
       let comments = document.getElementById('comment').value
-      // let rating = star_id
+      let rating = document.getElementById('star_id').value
       // let menuoption_id = this.menuoption_id
       // createdAt: new Date(),
       // event.preventDefault();
@@ -48,7 +54,9 @@ if (Meteor.isClient) {
       // })
       // console.log(Ratings.find({}))
 
-      Meteor.call('ratings.insert')
+      Meteor.call('rating.insert', rating, comments)
+      document.querySelector(".ratesubmit").setAttribute('disabled', 'disabled');
+      document.querySelector("#comment").setAttribute('disabled', 'disabled');
     }
   });
 }
