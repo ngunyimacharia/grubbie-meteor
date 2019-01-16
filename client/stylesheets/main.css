@@ -3042,6 +3042,9 @@ blockquote {
 .logo-white img {
   width: 100px;
 }
+.yellow {
+  color: yellow;
+}
 
 .round-block {
   height: 35px;
