@@ -24,7 +24,7 @@ let clearStars = function(){
 if (Meteor.isClient) {
 
   Template.stars.events({
-    'click .star' : function() {
+    'click .star' : function(event) {
       clearStars();
       let star_id = event.target.id;
       for(i=1; i<=star_id; i++) {
