@@ -1,9 +1,15 @@
 <template name="stars">
-  <div id="stars">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
+  <div id="stars"><br/>
+    <i class="fa fa-star star" id = '1'></i>
+    <i class="fa fa-star star" id = '2'></i>
+    <i class="fa fa-star star" id = '3'></i>
+    <i class="fa fa-star star" id = '4'></i>
+    <i class="fa fa-star star" id = '5'></i>
   </div>
+  <div>
+    <input type="hidden" value="0" id="star_id">
+    <input type="text" name="comment" id="comment" value="" /><br/><br/>
+    <button class='ratesubmit'>Submit</button>
+  </div>
+
 </template>
