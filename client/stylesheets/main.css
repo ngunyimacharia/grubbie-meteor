@@ -3046,6 +3046,11 @@ blockquote {
   color: yellow;
 }
 
+.ratesubmit {
+  border-radius: 1px;
+  max-width: 55px;
+}
+
 .round-block {
   height: 35px;
   border: 1px solid white;
@@ -3206,7 +3211,7 @@ blockquote {
 .rounded-container .rounded-wrapper {
   width: 80%;
   height: 80px;
-  margin: auto;
+  margin-top: auto;
   padding-right: 20px;
   border: 1px solid white;
   border-radius: 120px;
@@ -3239,9 +3244,15 @@ blockquote {
   border-radius: 120px;
 }
 .rounded-container .rate-text {
-  margin-top: -90px;
+  margin-top: 15px;
   vertical-align: middle;
   display: inline-block;
+}
+
+.rounded-container .rate-text input {
+  padding: 5px;
+  width: 110%;
+  margin-top: 3px;
 }
 @media screen and (max-width: 767px) {
   .rounded-container .rate-text {
@@ -3273,9 +3284,17 @@ blockquote {
   cursor: pointer;
 }
 
+.stars {
+  margin-top: 5px;
+}
+
 /* Style the active class, and buttons on mouse-over */
 .active, .star:hover {
   background-color: white;
+}
+.sta:hover {
+  color: yellow;
+
 }
 
 form {

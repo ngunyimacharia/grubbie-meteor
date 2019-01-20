@@ -2,61 +2,82 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 // import { Ratings } from '../../api/rating.js';
-
 import './stars.html';
 
-// Template.body.helpers({
-//   ratings() {
-//     return Ratings.find({}).fetch();
-//   },
-// });
 
-// console.log(ratings.find({}).fetch());
+// remove button and display feedback
+function removeButton() {
+ let elem = document.querySelector('.ratesubmit');
+ let paragraph = document.createElement('p');
+ elem.parentNode.append(paragraph);
+ paragraph.innerHTML = 'Feedback Sent!';
+ elem.parentNode.removeChild(elem);
 
-let clearStars = function(){
-  document.getElementById(1).classList.remove('yellow')
-  document.getElementById(2).classList.remove('yellow')
-  document.getElementById(3).classList.remove('yellow')
-  document.getElementById(4).classList.remove('yellow')
-  document.getElementById(5).classList.remove('yellow')
 }
 
-if (Meteor.isClient) {
+//Global variable to store the current rating
+let chosenRating = 0;
 
-  Template.stars.events({
-    'click .star' : function(event) {
-      clearStars();
-      let star_id = event.target.id;
-      for(i=1; i<=star_id; i++) {
-        document.getElementById(i).classList.add('yellow')
-      }
+//remove yellow colours from stars
+let clearStars = function(menuoption_id){
+  for(i=1; i<=5; i++) {
+    document.getElementById("star-"+menuoption_id+"-"+i).classList.remove('yellow');
+  }
+}
+
+Template.stars.rendered = function(){
+  //Create stars container
+  let menuoption_id = Template.currentData().menuoption_id
+  let container = document.createElement("div");
+  container.id = "stars-" + menuoption_id;
+  container.classList.add("stars");
+  //Add stars
+  for(let i=1;i<=5;i++){
+    let star = document.createElement("i");
+    star.classList.add("fa");
+    star.classList.add("fa-star");
+    star.classList.add("sta");
+    star.id = "star-"+menuoption_id+"-"+i;
+
+    container.append(star);
+  }
+  //Add stars container to html
+  this.firstNode.append(container);
+
+}
 
 
-        document.getElementById('star_id').value = star_id;
-    },
-
-    'click .ratesubmit' : function(event) {
-      let user_id = Meteor.userId
-      let comments = document.getElementById('comment').value
-      let rating = document.getElementById('star_id').value
-      // let menuoption_id = this.menuoption_id
-      // createdAt: new Date(),
-      // event.preventDefault();
-      // const target = event.target;
-      // const text = target.text.value;
-      // Ratings.insert({
-      //   // text,
-      //   user_id,
-      //   comments,
-      //   // rating : star_id,
-      //   // menuoption_id,
-      //   createdAt: new Date(),
-      // })
-      // console.log(Ratings.find({}))
-
-      Meteor.call('rating.insert', rating, comments)
-      document.querySelector(".ratesubmit").setAttribute('disabled', 'disabled');
-      document.querySelector("#comment").setAttribute('disabled', 'disabled');
+Template.stars.events({
+  'click .sta' : function str(Meals) {
+    event.preventDefault();
+    let menuoption_id = Template.currentData().menuoption_id;
+    clearStars(menuoption_id);
+    let star = event.target;
+    //Get star position
+    let ids = star.id.split("-");
+    let position = ids[ids.length-1];
+    chosenRating = position;
+    //Loop through stars adding yellow
+    for(i=1; i<=position; i++) {
+      document.getElementById("star-"+menuoption_id+"-"+i).classList.add('yellow')
     }
-  });
-}
+
+    document.getElementById('star_id').value = star_id;
+  },
+
+  'click .ratesubmit' : function(event) {
+    event.preventDefault();
+    let container = event.target.parentElement.parentElement.parentElement;
+    // let user_id = Meteor.userId
+    let comments = container.querySelector('input[name=comment]').value;
+    let rating = chosenRating;
+    let menuoption_id = this.menuoption_id;
+
+    Meteor.call('rating.insert', rating, comments, menuoption_id)
+    // document.querySelector(".ratesubmit").setAttribute('disabled', 'disabled');
+    // document.querySelector("#comment").setAttribute('disabled', 'disabled');
+    removeButton();
+    container.querySelector('input[name=comment]').disabled = true;
+    container.querySelector('input[name=comment]').style.border = 'none';
+  }
+});
