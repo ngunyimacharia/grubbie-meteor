@@ -1,15 +1,16 @@
 <template name="stars">
-  <div id="stars"><br/>
-    <i class="fa fa-star star" id = '1'></i>
-    <i class="fa fa-star star" id = '2'></i>
-    <i class="fa fa-star star" id = '3'></i>
-    <i class="fa fa-star star" id = '4'></i>
-    <i class="fa fa-star star" id = '5'></i>
+  <div class="stars-below">
+
   </div>
   <div>
-    <input type="hidden" value="0" id="star_id">
-    <input type="text" name="comment" id="comment" value="" /><br/><br/>
-    <button class='ratesubmit'>Submit</button>
+    <div class = 'rate-input'>
+      <input type="hidden" value="0" id="star_id">
+      <input type="text" name="comment" value="" placeholder="comment about this meal..." /><br/><br/>
+    </div>
+    <div class = 'rate-btn'>
+      <button class='ratesubmit'>Send</button>
+    </div>
   </div>
+  <br/><br/><br/>
 
 </template>
