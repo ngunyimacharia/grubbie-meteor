@@ -1,0 +1,30 @@
+<template name="User_create_page">
+  <div>
+    <form action = "/menu/view" method="POST">
+      <p><input type = "text" name = "firstName" placeholder = "First Name"/></p>
+      <p><input type = "text" name = "lastName" placeholder = "Last Name"/></p>
+      <p><input type = "text" name = "email" placeholder = "Enter your Meltwater e-mail address"/></p>
+      <p><select name = "gender">
+        <option value = "Male"> Male</option>
+        <option value = "Female"> Female</option>
+      </select></p>
+      <p><select name = "country">
+          {{#each countries}}
+            {{> country}}
+          {{/each}} 
+      </select></p>
+      <p><select name = "userType">
+          {{#each types}}
+            {{> type}}
+          {{/each}}      
+          </select></p>
+      <p><select name="userRole">
+          {{>role }}    
+          </select></p>
+      <p><input type = "password" name = "password" placeholder = "Enter your password"/></p>
+      <p><input type = "password" name = "confirmPassword" placeholder = "Confirm your password"/></p>
+      <br/>
+      <button class="btn btn-primary" type="submit">Create Account</button>
+    </form>
+  </div>
+</template>
