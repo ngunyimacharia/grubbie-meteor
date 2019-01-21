@@ -1,7 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 
-import '../imports/api/rating.js';
+// importing user stuff
+import "../imports/api/users.js";
+import "./account-creation.js";
 
+import '../imports/api/rating.js';
 
 Meteor.startup(() => {
   // code to run on server at startup

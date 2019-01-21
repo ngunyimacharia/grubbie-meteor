@@ -68,6 +68,19 @@ FlowRouter.route('/user/manage',{
   }
 });
 
+FlowRouter.route('/user/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'User_create_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
 FlowRouter.route('/user/user-notifications',{
   action: function(){
     BlazeLayout.render(
