@@ -2668,6 +2668,10 @@ hr {
   float: right;
 }
 
+form.no-margin {
+  margin: 0 !important;
+}
+
 @media only screen and (min-width: 768px) {
   header {
     max-height: 12vh;
@@ -3042,14 +3046,6 @@ blockquote {
 .logo-white img {
   width: 100px;
 }
-.yellow {
-  color: yellow;
-}
-
-.ratesubmit {
-  border-radius: 1px;
-  max-width: 55px;
-}
 
 .round-block {
   height: 35px;
@@ -3211,7 +3207,7 @@ blockquote {
 .rounded-container .rounded-wrapper {
   width: 80%;
   height: 80px;
-  margin-top: auto;
+  margin: auto;
   padding-right: 20px;
   border: 1px solid white;
   border-radius: 120px;
@@ -3244,15 +3240,9 @@ blockquote {
   border-radius: 120px;
 }
 .rounded-container .rate-text {
-  margin-top: 15px;
+  margin-top: -90px;
   vertical-align: middle;
   display: inline-block;
-}
-
-.rounded-container .rate-text input {
-  padding: 5px;
-  width: 110%;
-  margin-top: 3px;
 }
 @media screen and (max-width: 767px) {
   .rounded-container .rate-text {
@@ -3284,17 +3274,9 @@ blockquote {
   cursor: pointer;
 }
 
-.stars {
-  margin-top: 5px;
-}
-
 /* Style the active class, and buttons on mouse-over */
 .active, .star:hover {
   background-color: white;
-}
-.sta:hover {
-  color: yellow;
-
 }
 
 form {
@@ -3309,6 +3291,9 @@ form select, form input {
   border-bottom: 1px solid #fff;
   color: #fff;
 }
+form select option {
+  color: #000;
+}
 form input::placeholder {
   color: #fff;
   padding-left: 5px;
@@ -3318,6 +3303,13 @@ form input[type=submit] {
   border: 1px solid #FF5733;
   border-radius: 50px;
   margin: 10px auto;
+}
+form button {
+  height: 35px;
+  border: 1px solid #FF5733;
+  border-radius: 50px;
+  margin: 10px auto;
+  cursor: pointer;
 }
 
 .paper {
@@ -3353,6 +3345,9 @@ form input[type=submit] {
 .paper form select:active, .paper form select:focus, .paper form input:active, .paper form input:focus {
   background-color: #fff;
   border: 1px solid #FF5733;
+}
+.paper form select option {
+  color: #000;
 }
 .paper form select, .paper form input {
   background-color: #e8eaed;
@@ -3392,6 +3387,7 @@ button {
   font-weight: 500;
   font-size: 1.1em;
   background: #fff;
+  cursor: pointer;
 }
 
 @media (min-width: 650px) {

@@ -11,6 +11,7 @@ var userFilter = 'User';
 Template.User_manage_page.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('users');
+  Meteor.subscribe('roles');
 });
 
 Template.User_manage_page.helpers({
@@ -40,6 +41,9 @@ Template.User_manage_page.events({
     toggleActive();
     console.log("admin clicked");
   },
+  'click #create-user': function (event, template) {
+    
+  }
 }); 
 
 // toggle user nav active

@@ -126,6 +126,10 @@ form{
     border-bottom: 1px solid $white;
     color: $white;
   }
+      select option {
+      color: $black;
+    }
+
   input::placeholder{
     color: $white;
     padding-left: 5px;
@@ -135,6 +139,13 @@ form{
     border: 1px solid $outrageous_orange;
     border-radius: 50px;
     margin: 10px auto;
+  }
+  button{
+    height: 35px;
+    border: 1px solid #FF5733;
+    border-radius: 50px;
+    margin: 10px auto;
+    cursor: pointer;
   }
 }
 .paper{
@@ -172,6 +183,9 @@ form{
     select:active,select:focus,input:active,input:focus{
       background-color: $white;
       border: 1px solid $outrageous_orange;
+    }
+    select option {
+      color: #000;
     }
 
     select,input{
@@ -215,6 +229,7 @@ button{
     font-weight: 500;
     font-size: 1.1em;
     background: $white;
+    cursor: pointer;
   }
 @media(min-width: $tablet){
   .days{
