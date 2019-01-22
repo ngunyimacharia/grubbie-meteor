@@ -7,38 +7,39 @@ import { Types } from '../api/types.js';
 
 export const createUsers = (num) => {
 
+  //prepare data
+  const images = [
+    "http://lorempixel.com/output/people-q-c-640-480-6.jpg",
+    "http://lorempixel.com/output/people-q-c-640-480-7.jpg",
+    "http://lorempixel.com/output/people-q-c-640-480-8.jpg",
+    "http://lorempixel.com/output/people-q-c-640-480-3.jpg",
+    "http://lorempixel.com/output/people-q-c-640-480-1.jpg",
+  ];
+  const countries = Countries.find({}).fetch();
+  const types = Types.find({}).fetch();
+
   Meteor.users.remove({});
   for(let i=0 ; i < num ; i++){
 
-    //Get image
-    fetch('http://lorempixel.com/index.php?generator=1&x=640&y=480&cat=people')
-    .then(res => res.text())
-    .then(image => {
-      image = image.replace('<img src="','');
-      image = image.replace('" />','');
-      const imageUrl = `http://lorempixel.com/${image}`;
-
-      //Create user
-      const user = {
-        email: casual.email,
-        username: casual.username,
-        firstName: casual.first_name,
-        lastName: casual.last_name,
-        gender: randFromArr(['Male','Female']),
-        country: randFromArr(Countries.find({}).fetch()).country,
-        userType:randFromArr(Types.find({}).fetch()).type,
-        userRole: randFromArr(["User","Staff","Admin"]),
-        profPicture: imageUrl,
-        password: casual.password,
-        status: casual.boolean
-      }
-      Accounts.createUser(user);
-
-    })
-    .catch((err) => console.log(err) );
+    //Create user
+    const user = {
+      email: casual.email,
+      username: casual.username,
+      firstName: casual.first_name,
+      lastName: casual.last_name,
+      gender: randFromArr(['Male','Female']),
+      country: randFromArr(countries).country,
+      userType:randFromArr(types).type,
+      userRole: randFromArr(["User","Staff","Admin"]),
+      profPicture: randFromArr(images),
+      password: casual.password,
+      status: casual.boolean
+    }
+    Accounts.createUser(user);
 
 
   }
+
 
 
   //Create admin user
@@ -48,12 +49,13 @@ export const createUsers = (num) => {
     firstName: casual.first_name,
     lastName: casual.last_name,
     gender: randFromArr(['Male','Female']),
-    country: randFromArr(Countries.find({}).fetch()).country,
-    userType:randFromArr(Types.find({}).fetch()).type,
+    country: randFromArr(countries).country,
+    userType:randFromArr(types).type,
     userRole: "Admin",
     password: 'password',
     status: "Deactivated",
   });
 }
+
 
 const randFromArr = (arr) => arr[Math.floor(Math.random() * arr.length)];

@@ -5,6 +5,7 @@ import "./account-creation.js";
 
 //Import apis
 import "../imports/api/users.js";
+import "../imports/api/ratings.js";
 
 import './seeder.js';
 

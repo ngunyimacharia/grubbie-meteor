@@ -6,6 +6,10 @@ import { MealTimes } from '../api/mealtimes.js';
 import { MealCategories } from '../api/mealcategories.js';
 
 export const createMenus = () => {
+
+  //prepare data
+  const mealCategories = MealCategories.find({}).fetch();
+  
   // remove Types
   Menus.remove({});
   //
@@ -34,7 +38,7 @@ export const createMenus = () => {
             date: `${menuday.year()}-${menuday.month()}-${menuday.date()}`,
             mealtimeId: time,
             chosen: i ? true : false,
-            mealCategoryId: randFromArr(MealCategories.find({}).fetch()).name,
+            mealCategoryId: randFromArr(mealCategories).name,
             menuId,
             createdAt: new Date(),
             updatedAt: new Date()
