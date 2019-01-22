@@ -22,18 +22,18 @@ Template.User_manage_page.helpers({
   },
 });
 
-Template.User_manage_page.events({ 
+Template.User_manage_page.events({
   'click #users'(event, instance) {
     userFilter = "User";
     dep.changed();
     toggleActive();
     console.log("users button clicked");
   },
-  'click #kitchen': function (event, template) {
-    userFilter = "Kitchen-Staff";
+  'click #staff': function (event, template) {
+    userFilter = "Staff";
     dep.changed();
     toggleActive();
-    console.log("kitchenn clicked");
+    console.log("kitchen clicked");
   },
   'click #admin': function (event, template) {
     userFilter = "Admin";
@@ -42,9 +42,9 @@ Template.User_manage_page.events({
     console.log("admin clicked");
   },
   'click #create-user': function (event, template) {
-    
+
   }
-}); 
+});
 
 // toggle user nav active
 function toggleActive() {

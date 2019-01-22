@@ -4,7 +4,7 @@
     <div class = "col-lg-2 col-md-2 col-sm-3 col-12 left-menu">
       <ul class="lg" id="left-menu">
         <a href="#" class="user-nav active" id="users"><li>Users</li></a>
-        <a href="#" class="user-nav" id="kitchen"><li>Kitchen Staff</li></a>
+        <a href="#" class="user-nav" id="staff"><li>Kitchen Staff</li></a>
         <a href="#" class="user-nav" id="admin"><li>Admin</li></a>
         <a href="/user/create" class="btn" id="create-user"><li>Create User</li></a>
       </ul>
@@ -68,13 +68,17 @@
                  {{ profile.firstName }} {{ profile.lastName }} {{ roles }}
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                    {{ profile.status }}
+                  {{#if profile.status }}
+                    Activated
+                  {{else}}
+                    Deactivated
+                  {{/if}}
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2 hv">
                   Country :  {{ profile.country }}
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-12 hv">
-                {{#if Active }}
+                {{#if profile.status }}
                     <a class="circ-warning" href="#">
                       <i class="fa fa-pause fa-xs"></i>
                     </a>
