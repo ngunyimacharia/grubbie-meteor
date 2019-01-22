@@ -3,32 +3,32 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './templates/type.js';
 import './templates/country.js';
-import './signup.html';
+import './templates/role.js';
+import './create.html';
 
 
-import { Countries } from "../../../api/countries.js";
-import { Types } from "../../../api/types.js";
-
-const userRole = "User";
+import { Countries, Types } from "../../../api/users.js";
 
 
-Template.User_signup_page.onCreated(function bodyOnCreated() {
+Template.User_create_page.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
     Meteor.subscribe('countries');
     Meteor.subscribe('types');
 });
 
-Template.User_signup_page.helpers({
+Template.User_create_page.helpers({
     countries() {
         // Show countries
+        console.log(Meteor.roles.find({}));
         return Countries.find({});
     },
     types() {
         return Types.find({});
-    }
-});
+    },
+ });
 
-Template.User_signup_page.events({
+
+Template.User_create_page.events({
     'submit form': function (event, t) {
         event.preventDefault();
 
@@ -39,8 +39,13 @@ Template.User_signup_page.events({
             gender = event.target.gender.value,
             country = event.target.country.value,
             userType = event.target.userType.value,
+            userRole = event.target.userRole.value,
             password = event.target.password.value,
             confirmPassword = event.target.confirmPassword.value;
+        
+        // form validation
+        let fields = { firstName, lastName, email, gender, country, userType, userRole, password, confirmPassword };
+
 
         // Trim Helper
         var trimInput = function (val) {
@@ -85,7 +90,7 @@ Template.User_signup_page.events({
                 if (error) {
                     console.log("Error: " + error.reason);
                 } else {
-                    FlowRouter.go('/');
+                    FlowRouter.go('/user/manage');
                 }
             });
         }
