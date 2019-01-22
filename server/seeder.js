@@ -12,6 +12,7 @@ import { createMealTimes } from '../imports/seeds/mealtimes.js';
 import { createUsers } from '../imports/seeds/users.js';
 import { createIngredients } from '../imports/seeds/ingredients.js';
 import { createMeals } from '../imports/seeds/meals.js';
+import { createMenus } from '../imports/seeds/menus.js';
 import { Ratings } from '../imports/api/rating.js';
 
 Meteor.startup(() => {
@@ -41,4 +42,6 @@ const optionalSeeds = () => {
   createIngredients(50);
   //Seed meals
   createMeals(50);
+  //Seed menus
+  createMenus();
 }
