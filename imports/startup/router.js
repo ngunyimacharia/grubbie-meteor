@@ -145,19 +145,6 @@ adminRoutes.route('/user/create',{
   }
 });
 
-adminRoutes.route('/user/settings',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_admin',
-        main: 'User_settings_page',
-        footer: 'Footer_admin'
-      }
-    );
-  }
-});
-
 FlowRouter.route('/user/admin-notifications',{
   action: function(){
     BlazeLayout.render(
