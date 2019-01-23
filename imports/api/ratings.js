@@ -4,8 +4,6 @@ import {Mongo} from 'meteor/mongo';
 
 export const Ratings = new Mongo.Collection("ratings");
 
-console.log(Ratings.find().fetch())
-
   Meteor.startup(function () {
     // code to run on server at startup
   });

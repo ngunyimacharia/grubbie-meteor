@@ -6,7 +6,8 @@ import './templates/country.js';
 import './signup.html';
 
 
-import { Countries, Types } from "../../../api/users.js";
+import { Countries } from "../../../api/countries.js";
+import { Types } from "../../../api/types.js";
 
 const userRole = ["User"];
 
@@ -40,7 +41,7 @@ Template.User_signup_page.events({
             userType = event.target.userType.value,
             password = event.target.password.value,
             confirmPassword = event.target.confirmPassword.value;
-        
+
         // Trim Helper
         var trimInput = function (val) {
             return val.replace(/^\s*|\s*$/g, "");
@@ -51,7 +52,7 @@ Template.User_signup_page.events({
         var username = email.match(/^([^@]*)@/)[1];
 
         console.log("Username", username);
-        
+
         // Check password is at least 6 chars long
         var isValidPassword = function (pwd, pwd2) {
             if (pwd === pwd2) {
@@ -65,7 +66,7 @@ Template.User_signup_page.events({
                 });
             }
         }
-        
+
         // If validation passes, supply the appropriate fields to the
         // Accounts.createUser function.
         if (isValidPassword(password, confirmPassword)) {
@@ -89,8 +90,7 @@ Template.User_signup_page.events({
             });
         }
         console.log("Form submitted");
-        
+
         return false;
     }
 });
-

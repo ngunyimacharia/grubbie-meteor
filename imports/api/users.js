@@ -2,17 +2,8 @@ import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
-export const Countries = new Mongo.Collection('countries');
-export const Types = new Mongo.Collection('types');
-
 // check if this executions are serverside
 if (Meteor.isServer) {
-    Meteor.publish('types', function () {
-        return Types.find({});
-    });
-    Meteor.publish('countries', function () {
-        return Countries.find({});
-    });
     Meteor.publish('users', function (type) {
         return Meteor.users.find({});
     });
@@ -46,7 +37,7 @@ Meteor.methods({
             usertype,
             password,
             image: '',
-            approved: 'no',
+            approved: false,
             createdAt: new Date(),
             updatedAt: ''
         });

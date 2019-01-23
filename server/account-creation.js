@@ -14,7 +14,7 @@ Accounts.onCreateUser(function (options, user) {
     user.profile.status = options.status;
 
     // User profile picture
-    user.profile.profPicture = Meteor.absoluteUrl() + "public/images/users/user.jpg";
+    user.profile.profPicture = options.profPicture ? options.profPicture : (Meteor.absoluteUrl() + "public/images/users/user.jpg");
 
     // User roles
     user.roles = options.userRole;
