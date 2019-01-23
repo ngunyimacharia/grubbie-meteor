@@ -1,4 +1,5 @@
 <template name="User_view_page">
+{{#with currentUser}}
   <div id="content-container">
     <div class="profile-view">
       <form action = "/user/view_edit">
@@ -7,7 +8,7 @@
             <div class="icon">
               <i class="fa fa-user-circle fa-8x"></i>
             </div>
-            <h3 class="text-center">Daniel Kayode</h3>
+            <h3 class="text-center">{{ profile.firstName }} {{ profile.lastName }}</h3>
             <div class="row lg">
               <div class="col-2"></div>
               <a class="btn-warning col-3" href="/user/view_edit"> Edit </a>
@@ -18,20 +19,20 @@
           <div class="col-lg-7 col-12">
             <div class="data">
               <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-5 col-5">First name:</div>
-                <div class="col-7">Daniel</div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-5">First Name:</div>
+                <div class="col-7">{{ profile.firstName }}</div>
               </div>
               <div class="row">
-                <div class="col-5">Last name:</div>
-                <div class="col-7">Kayode</div>
+                <div class="col-5">Last Name:</div>
+                <div class="col-7">{{ profile.lastName }}</div>
               </div>
               <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-5">Email:</div>
-                <div class="col-lg-7 col-md-7 col-sm-7 col-12">daniel.kayode@meltwater.org</div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-12">{{ userEmail currentUser }}</div>
               </div>
               <div class="row">
                 <div class="col-5">Country:</div>
-                <div class="col-7">Nigeria</div>
+                <div class="col-7">{{ profile.country }}</div>
               </div>
               <div class="row">
                 <div class="col-5">Allergies:</div>
@@ -43,7 +44,7 @@
               </div>
               <div class="row">
                 <div class="col-5">Category:</div>
-                <div class="col-7">EIT</div>
+                <div class="col-7">{{ profile.userType }}</div>
               </div>
               <div class="row">
                 <div class="col-5">Password:</div>
@@ -54,7 +55,7 @@
             <div class="row xs text-center">
               <div class="col-2"></div>
               <a class="btn-warning col-4" href="/user/view_edit"> Edit </a>
-              <a class="btn-danger col-4"  href="/"> Logout </a>
+              <a class="btn-danger col-4" href="/logout"> Logout </a>
             </div>
           </div>
           <div class="clearfix"><br/></div>
@@ -63,4 +64,5 @@
       </form>
     </div>
   </div>
+  {{/with}}
 </template>

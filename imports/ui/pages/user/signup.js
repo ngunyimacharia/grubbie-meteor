@@ -8,7 +8,7 @@ import './signup.html';
 
 import { Countries, Types } from "../../../api/users.js";
 
-const userRole = "User";
+const userRole = ["User"];
 
 
 Template.User_signup_page.onCreated(function bodyOnCreated() {

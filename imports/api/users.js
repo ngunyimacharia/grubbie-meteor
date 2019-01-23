@@ -14,13 +14,7 @@ if (Meteor.isServer) {
         return Countries.find({});
     });
     Meteor.publish('users', function (type) {
-        if (Roles.userIsInRole(this.userId, ['Super-Admin'])) {
-            return Meteor.users.find({});
-        } else {
-            // user not authorized. do not publish secrets
-            this.stop();
-            return;
-        }
+        return Meteor.users.find({});
     });
     Meteor.publish(null, function() {
         Meteor.roles.find({});

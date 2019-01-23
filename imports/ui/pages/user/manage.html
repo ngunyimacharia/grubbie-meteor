@@ -1,5 +1,5 @@
 <template name="User_manage_page">
-
+{{#if isAdmin}}
   <div class = "row gmail-container">
     <div class = "col-lg-2 col-md-2 col-sm-3 col-12 left-menu">
       <ul class="lg" id="left-menu">
@@ -53,7 +53,13 @@
               <div class="col-lg-3 col-md-3 col-sm-3 col-3">
                 Name
               </div>
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-">
+                Status
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-">
+                Country
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-">
                 Status
               </div>
             </div>
@@ -65,13 +71,13 @@
                   <input type="checkbox" />
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                 {{ profile.firstName }} {{ profile.lastName }} {{ roles }}
+                  {{ profile.firstName }} {{ profile.lastName }}
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                    {{ profile.status }}
+                  {{ profile.status }}
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-2 hv">
-                  Country :  {{ profile.country }}
+                  {{ profile.country }}
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-12 hv">
                 {{#if Active }}
@@ -129,5 +135,5 @@
 
     </div>
   </div>
-
+{{/if}}
 </template>
