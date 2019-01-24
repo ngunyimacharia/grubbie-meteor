@@ -23,3 +23,6 @@ import './rating/admin.js'
 
 //inventory
 import './inventory/view';
+
+//dev pages
+import './dev/seeder.js';

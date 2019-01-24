@@ -251,6 +251,19 @@ adminRoutes.route('/inventory/view',{
     );
   }
 });
+
+
+// Developer routes
+FlowRouter.route('/dev/seeder', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      { main: 'Seeder_page' }
+    );
+  }
+});
+
+
 // Not found
 FlowRouter.notFound = {
   // Subscriptions registered here don't have Fast Render support.
