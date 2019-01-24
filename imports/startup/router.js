@@ -100,7 +100,7 @@ let adminRoutes = FlowRouter.group({
   prefix: '/admin',
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-    if (!Roles.userIsInRole(Meteor.userId(), ['Super-Admin'])) {
+    if (!Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
       FlowRouter.go('/');
     }
   }],
@@ -119,16 +119,13 @@ adminRoutes.route('/user/view_edit',{
   }
 });
 
-adminRoutes.route('/user/manage',{
-  action: function () {
-      BlazeLayout.render(
-        'App_body',
-        {
-          header: 'Header_admin',
-          main: 'User_manage_page',
-          footer: 'Footer_admin'
-        }
-      );
+adminRoutes.route("/user/manage/:page?", {
+    action: function() {
+        BlazeLayout.render("App_body", {
+            header: "Header_admin",
+            main: "User_manage_page",
+            footer: "Footer_admin"
+        });
     }
 });
 
@@ -145,7 +142,7 @@ adminRoutes.route('/user/create',{
   }
 });
 
-FlowRouter.route('/user/admin-notifications',{
+adminRoutes.route('/user/admin-notifications',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -157,6 +154,20 @@ FlowRouter.route('/user/admin-notifications',{
     );
   }
 });
+
+adminRoutes.route('/menu/create', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'Menu_create_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
 
 //Meal routes
 FlowRouter.route('/meal/view',{
@@ -200,18 +211,6 @@ FlowRouter.route('/menu/mobile',{
   }
 });
 
-FlowRouter.route('/menu/create',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_admin',
-        main: 'Menu_create_page',
-        footer: 'Footer_admin'
-      }
-    );
-  }
-});
 
 //Rating routes
 
@@ -228,7 +227,7 @@ FlowRouter.route('/rating/rate',{
   }
 });
 
-FlowRouter.route('/rating/admin',{
+adminRoutes.route('/rating/admin',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -242,7 +241,7 @@ FlowRouter.route('/rating/admin',{
 });
 
 // Inventory routes
-FlowRouter.route('/inventory/view',{
+adminRoutes.route('/inventory/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -258,14 +257,7 @@ FlowRouter.route('/inventory/view',{
 
 // Not found
 FlowRouter.notFound = {
-  // Subscriptions registered here don't have Fast Render support.
-  subscriptions: function () {
-
-  },
-  action: function () {
-    BlazeLayout.render(
-      'App_body',
-      { main: 'Error_404' }
-    );
+  action() {
+    BlazeLayout.render('App_body', { main: 'Error_404' });
   }
 };

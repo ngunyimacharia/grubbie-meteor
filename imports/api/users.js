@@ -1,11 +1,22 @@
 import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
-import { check } from "meteor/check";
+import { check, Match } from "meteor/check";
+
+const MAX_USERS = 15;
 
 // check if this executions are serverside
 if (Meteor.isServer) {
-    Meteor.publish('users', function (type) {
-        return Meteor.users.find({});
+    Meteor.publish('users', function (skipCount) {
+        var positiveIntegerCheck = Match.Where(function (x) {
+            check(x, Match.Integer);
+            return x >= 0;
+        });
+        check(skipCount, positiveIntegerCheck);
+
+        return Meteor.users.find({}, {
+            limit: MAX_USERS,
+            skip: skipCount
+        });
     });
     Meteor.publish(null, function() {
         Meteor.roles.find({});

@@ -24,3 +24,6 @@ import './rating/admin.js'
 
 //inventory
 import './inventory/view';
+
+// not found
+import './application/404';

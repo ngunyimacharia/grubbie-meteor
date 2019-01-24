@@ -7,7 +7,8 @@ import './templates/role.js';
 import './create.html';
 
 
-import { Countries, Types } from "../../../api/users.js";
+import { Countries } from "../../../api/countries.js";
+import { Types } from "../../../api/types.js";
 
 
 Template.User_create_page.onCreated(function bodyOnCreated() {
@@ -43,10 +44,6 @@ Template.User_create_page.events({
             password = event.target.password.value,
             confirmPassword = event.target.confirmPassword.value;
         
-        // form validation
-        let fields = { firstName, lastName, email, gender, country, userType, userRole, password, confirmPassword };
-
-
         // Trim Helper
         var trimInput = function (val) {
             return val.replace(/^\s*|\s*$/g, "");
@@ -85,12 +82,17 @@ Template.User_create_page.events({
                 userType: userType,
                 userRole: userRole,
                 password: password,
-                status: "Deactivated",
+                status: "false",
             }, function (error) {
                 if (error) {
                     console.log("Error: " + error.reason);
                 } else {
-                    FlowRouter.go('/user/manage');
+                    return swal({
+                        title: "Success",
+                        text: "Account created successfully",
+                        showConfirmButton: true,
+                        type: "success"
+                    })
                 }
             });
         }

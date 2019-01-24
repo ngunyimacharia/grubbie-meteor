@@ -53,7 +53,7 @@ export const createUsers = (num) => {
     userType:randFromArr(types).type,
     userRole: "Admin",
     password: 'password',
-    status: "Deactivated",
+    status: "true",
   });
 }
 
