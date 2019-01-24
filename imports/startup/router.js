@@ -99,9 +99,9 @@ userRoutes.route('/view',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'User_view_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -112,9 +112,9 @@ userRoutes.route('/notifications', {
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'Notifications_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -125,9 +125,9 @@ userRoutes.route('/meal/view', {
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'Meal_view_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -142,9 +142,9 @@ userRoutes.route('/menu/view',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'Menu_view_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -155,9 +155,9 @@ userRoutes.route('/menu/mobile',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'Menu_mobile_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -168,9 +168,9 @@ userRoutes.route('/rating/rate',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'Rating_rate_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -189,9 +189,9 @@ adminRoutes.route('/user/view_edit',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_user',
+        header: 'Header',
         main: 'User_view_edit_page',
-        footer: 'Footer_user'
+        footer: 'Footer'
       }
     );
   }
@@ -200,9 +200,9 @@ adminRoutes.route('/user/view_edit',{
 adminRoutes.route("/user/manage/:page?", {
   action: function () {
     BlazeLayout.render("App_body", {
-      header: "Header_admin",
+      header: "Header",
       main: "User_manage_page",
-      footer: "Footer_admin"
+      footer: "Footer"
     });
   }
 });
@@ -212,9 +212,9 @@ adminRoutes.route('/user/create',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_admin',
+        header: 'Header',
         main: 'User_create_page',
-        footer: 'Footer_admin'
+        footer: 'Footer'
       }
     );
   }
@@ -225,9 +225,9 @@ adminRoutes.route('/user/notifications',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_admin',
+        header: 'Header',
         main: 'Notifications_page',
-        footer: 'Footer_admin'
+        footer: 'Footer'
       }
     );
   }
@@ -238,9 +238,9 @@ adminRoutes.route('/menu/create',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_admin',
+        header: 'Header',
         main: 'Menu_create_page',
-        footer: 'Footer_admin'
+        footer: 'Footer'
       }
     );
   }
@@ -251,9 +251,9 @@ adminRoutes.route('/rating/admin',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_admin',
-        main: 'Rating_admin_page',
-        footer: 'Footer_admin'
+        header: 'Header',
+        main: 'Rating_page',
+        footer: 'Footer'
       }
     );
   }
@@ -264,9 +264,9 @@ adminRoutes.route('/inventory/view',{
     BlazeLayout.render(
       'App_body',
       {
-        header: 'Header_admin',
+        header: 'Header',
         main: 'Inventory_view_page',
-        footer: 'Footer_admin'
+        footer: 'Footer'
       }
     );
   }
