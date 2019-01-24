@@ -2451,80 +2451,6 @@ hr {
   text-align: left;
 }
 
-@media only screen and (min-width: 768px) {
-  #content-container div.notifications-container {
-    display: none;
-  }
-
-  header nav div.notifications-container {
-    display: none;
-    width: 350px;
-    margin: 5px 0 0 15px;
-    position: absolute;
-    background-image: linear-gradient(#CAAD08, #B85A3F);
-    right: -10px;
-    z-index: 1000;
-  }
-  header nav div.notifications-container .notification {
-    margin: 20px 0;
-    display: block;
-    clear: both;
-  }
-  header nav div.notifications-container .notification img {
-    float: left;
-    width: 20px;
-    margin: 0 20px;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  header nav div.notifications-container .notification div {
-    text-align: left;
-    margin-left: 70px;
-  }
-  header nav div.notifications-container .notification div a {
-    font-size: 1em;
-    color: #fff;
-    text-decoration: none;
-  }
-  header nav div.notifications-container .notification div .timestamp {
-    font-size: 0.7em;
-  }
-}
-@media only screen and (max-width: 767px) {
-  footer nav div.notifications-container {
-    display: none;
-  }
-
-  div.notifications-container {
-    width: 92%;
-    max-width: 600px;
-    margin-left: 15px;
-  }
-  div.notifications-container .notification {
-    background-image: linear-gradient(#CAAD08, #B85A3F);
-    margin: 20px 0;
-    padding: 3px 20px 7px;
-    vertical-align: middle;
-    position: relative;
-  }
-  div.notifications-container .notification img {
-    float: left;
-    width: 20px;
-    margin: 15px 7px 0 2px;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  div.notifications-container .notification div {
-    margin-left: 35px;
-  }
-  div.notifications-container .notification div a {
-    color: #fff;
-    text-decoration: none;
-  }
-  div.notifications-container .notification div .timestamp {
-    font-size: 0.7em;
-  }
-}
 .gmail-container {
   width: 100%;
   margin: 50px auto;
@@ -2672,6 +2598,27 @@ hr {
 
 form.no-margin {
   margin: 0 !important;
+}
+
+ul.navy-pagination li {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background: #fff;
+}
+ul.navy-pagination li a {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 800;
+  color: #000;
+  display: block;
+  margin-top: 4px;
+}
+ul.navy-pagination li.active {
+  background: linear-gradient(#CAAD08, #B85A3F);
+}
+ul.navy-pagination li.active a {
+  color: #fff;
 }
 
 .notfound {
