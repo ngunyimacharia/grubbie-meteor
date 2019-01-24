@@ -5,13 +5,7 @@ import { check } from "meteor/check";
 // check if this executions are serverside
 if (Meteor.isServer) {
     Meteor.publish('users', function (type) {
-        if (Roles.userIsInRole(this.userId, ['Admin'])) {
-            return Meteor.users.find({});
-        } else {
-            // user not authorized. do not publish secrets
-            this.stop();
-            return;
-        }
+        return Meteor.users.find({});
     });
     Meteor.publish(null, function() {
         Meteor.roles.find({});

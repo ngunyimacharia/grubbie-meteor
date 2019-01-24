@@ -9,7 +9,7 @@ import './signup.html';
 import { Countries } from "../../../api/countries.js";
 import { Types } from "../../../api/types.js";
 
-const userRole = "User";
+const userRole = ["User"];
 
 
 Template.User_signup_page.onCreated(function bodyOnCreated() {

@@ -4,41 +4,48 @@ import { Ingredients } from '../api/ingredients.js';
 import { MealCategories } from '../api/mealcategories.js';
 import { Countries } from '../api/countries.js';
 import { Meals, MealIngredients } from '../api/meals.js';
+
 export const createMeals = (num) => {
+
+  //preload content
+  const images = [
+    "http://lorempixel.com/output/food-q-c-640-480-7.jpg",
+    "http://lorempixel.com/output/food-q-c-640-480-5.jpg",
+    "http://lorempixel.com/output/food-q-c-640-480-4.jpg",
+    "http://lorempixel.com/output/food-q-c-640-480-10.jpg",
+    "http://lorempixel.com/output/food-q-c-640-480-1.jpg",
+    "http://lorempixel.com/output/food-q-c-640-480-8.jpg",
+    "http://lorempixel.com/output/food-q-c-640-480-6.jpg"
+  ];
+  const mealCategories = MealCategories.find({}).fetch();
+  const countries = Countries.find({}).fetch();
+  const ingredients = Ingredients.find({}).fetch();
+
   //Clear meals and their ingredients
   Meals.remove({});
   MealIngredients.remove({});
 
 
   for(let i=0 ; i<num ; i++){
-    //Get image
-    fetch('http://lorempixel.com/index.php?generator=1&x=640&y=480&cat=food')
-    .then(res => res.text())
-    .then(image => {
-      image = image.replace('<img src="','');
-      image = image.replace('" />','');
-      const imageUrl = `http://lorempixel.com/${image}`;
 
-      //Add meals
-      const mealId = Meals.insert({
-        name: casual.word,
-        description: casual.description,
-        image: imageUrl,
-        mealcategoryId: randFromArr(MealCategories.find({}).fetch())._id,
-        countryId: randFromArr(Countries.find({}).fetch())._id,
+    //Add meals
+    const mealId = Meals.insert({
+      name: casual.word,
+      description: casual.description,
+      image: randFromArr(images),
+      mealcategoryId: randFromArr(mealCategories)._id,
+      countryId: randFromArr(countries)._id,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
+    //Add meal ingredients
+    for(let i=0 ; i <= casual.integer(1,5) ; i++ ){
+      MealIngredients.insert({
+        mealId,
+        ingredientId: randFromArr(ingredients)._id,
         createdAt: new Date(),
-        updatedAt: new Date()
-      });
-      //Add meal ingredients
-      for(let i=0 ; i <= casual.integer(1,5) ; i++ ){
-        MealIngredients.insert({
-          mealId,
-          ingredientId: randFromArr(Ingredients.find({}).fetch())._id,
-          createdAt: new Date(),
-        })
-      }
-    })
-    .catch((err) => console.log(err) );
+      })
+    }
 
   }
 

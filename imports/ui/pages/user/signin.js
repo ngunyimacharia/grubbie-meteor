@@ -24,7 +24,12 @@ Template.User_signin_page.events({
                     type: "error",
                 });
             } else {
-                FlowRouter.go('/user/manage');
+                // checking if user is admin
+                if (Roles.userIsInRole(Meteor.user(), ["User"])) {
+                    FlowRouter.go('/user/view');
+                } else {
+                    FlowRouter.go('/admin/user/manage');
+                }
          }
         });
         console.log("Form submitted.");

@@ -1,35 +1,74 @@
-//User routes
+// Waiting for roles to be initialized
+FlowRouter.wait();
 
-FlowRouter.route('/',{
-  action: function(){
+Tracker.autorun(() => {
+  // wait on roles to intialise so we can check is use is in proper role
+  if (Roles.subscription.ready() && !FlowRouter._initialized) {
+    FlowRouter.initialize()
+  }
+});
+
+// System routes
+FlowRouter.route('/', {
+  action: function () {
     BlazeLayout.render(
       'App_body',
-      {main: 'User_splash_page'}
+      { main: 'User_splash_page' }
     );
   }
 });
 
-FlowRouter.route('/user/signin',{
-  action: function(){
+FlowRouter.route('/logout', {
+  name: 'logout',
+  action() {
+    Accounts.logout();
+    FlowRouter.go('/');
+  }
+});
+
+FlowRouter.route('/signin', {
+  action: function () {
     BlazeLayout.render(
       'App_body',
-      {main: 'User_signin_page'}
+      { main: 'User_signin_page' }
     );
   }
 });
 
 
-FlowRouter.route('/user/signup',{
-  action: function(){
+FlowRouter.route('/signup', {
+  action: function () {
     BlazeLayout.render(
       'App_body',
-      {main: 'User_signup_page'}
+      { main: 'User_signup_page' }
     );
   }
 });
 
+FlowRouter.route('/forgot-password', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      {
+        main: 'User_forgot_password_page',
+      }
+    );
+  }
+});
 
-FlowRouter.route('/user/view',{
+// User routes
+let userRoutes = FlowRouter.group({
+  prefix: '/user',
+  name: 'user',
+  triggersEnter: [(context, redirect) => {
+    if (!Meteor.user()) {
+      FlowRouter.go('/');
+    }
+  }],
+});
+
+
+userRoutes.route('/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -42,85 +81,21 @@ FlowRouter.route('/user/view',{
   }
 });
 
-FlowRouter.route('/user/view_edit',{
-  action: function(){
+userRoutes.route('/notifications', {
+  action: function () {
     BlazeLayout.render(
       'App_body',
       {
         header: 'Header_user',
-        main: 'User_view_edit_page',
+        main: 'Notifications_page',
         footer: 'Footer_user'
       }
     );
   }
 });
 
-FlowRouter.route('/user/manage',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_admin',
-        main: 'User_manage_page',
-        footer: 'Footer_admin'
-      }
-    );
-  }
-});
-
-FlowRouter.route('/user/create',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_admin',
-        main: 'User_create_page',
-        footer: 'Footer_admin'
-      }
-    );
-  }
-});
-
-FlowRouter.route('/user/user-notifications',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_user',
-        main: 'User_user_notifications_page',
-        footer: 'Footer_user'
-      }
-    );
-  }
-});
-
-FlowRouter.route('/user/admin-notifications',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_admin',
-        main: 'User_admin_notifications_page',
-        footer: 'Footer_admin'
-      }
-    );
-  }
-});
-
-
-FlowRouter.route('/user/forgot-password',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        main: 'User_forgot_password_page',
-      }
-    );
-  }
-});
 //Meal routes
-
-FlowRouter.route('/meal/view',{
+userRoutes.route('/meal/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -135,7 +110,7 @@ FlowRouter.route('/meal/view',{
 
 //Menu routes
 
-FlowRouter.route('/menu/view',{
+userRoutes.route('/menu/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -148,7 +123,7 @@ FlowRouter.route('/menu/view',{
   }
 });
 
-FlowRouter.route('/menu/mobile',{
+userRoutes.route('/menu/mobile',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -161,22 +136,7 @@ FlowRouter.route('/menu/mobile',{
   }
 });
 
-FlowRouter.route('/menu/create',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header_admin',
-        main: 'Menu_create_page',
-        footer: 'Footer_admin'
-      }
-    );
-  }
-});
-
-//Rating routes
-
-FlowRouter.route('/rating/rate',{
+userRoutes.route('/rating/rate',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -189,7 +149,84 @@ FlowRouter.route('/rating/rate',{
   }
 });
 
-FlowRouter.route('/rating/admin',{
+
+// Admin route group
+const adminRoutes = FlowRouter.group({
+  prefix: '/admin',
+  name: 'admin',
+  triggersEnter: [(context, redirect) => {
+    if (!Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
+      FlowRouter.go('/');
+    }
+  }],
+});
+
+adminRoutes.route('/user/view_edit',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_user',
+        main: 'User_view_edit_page',
+        footer: 'Footer_user'
+      }
+    );
+  }
+});
+
+adminRoutes.route('/user/manage',{
+  action: function () {
+      BlazeLayout.render(
+        'App_body',
+        {
+          header: 'Header_admin',
+          main: 'User_manage_page',
+          footer: 'Footer_admin'
+        }
+      );
+    }
+});
+
+adminRoutes.route('/user/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'User_create_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
+adminRoutes.route('/user/notifications',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'Notifications_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
+adminRoutes.route('/menu/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'Menu_create_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
+});
+
+adminRoutes.route('/rating/admin',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -201,8 +238,8 @@ FlowRouter.route('/rating/admin',{
     );
   }
 });
-//Inventory routes
-FlowRouter.route('/inventory/view',{
+
+adminRoutes.route('/inventory/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -214,3 +251,29 @@ FlowRouter.route('/inventory/view',{
     );
   }
 });
+
+
+// Developer routes
+FlowRouter.route('/app/seeder', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      { main: 'Seeder_page' }
+    );
+  }
+});
+
+
+// Not found
+FlowRouter.notFound = {
+  // Subscriptions registered here don't have Fast Render support.
+  subscriptions: function () {
+
+  },
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      { main: 'Error_404' }
+    );
+  }
+};
