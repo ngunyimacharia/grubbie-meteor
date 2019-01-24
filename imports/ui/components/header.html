@@ -1,0 +1,33 @@
+<template name="Header">
+
+    <header>
+      <a href = "/">
+        <div id="logo">
+          <img src="/images/logo.png" alt="logo" title="logo"/>
+          <div id="logo-caption">Gru<span>bb</span>ie</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          {{#each links}}
+          <li>
+            <a href="{{ href }}">
+              <i class="{{ icon }}" title="{{ title }}"></i>
+              <span>{{ title }}</span>
+              {{#if notifications}}
+                {{#if hasNotifications}}
+                  <div class="notifications-notice"></div>
+                {{/if}}
+              {{/if}}
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </nav>
+
+
+    </header>
+
+
+</template>

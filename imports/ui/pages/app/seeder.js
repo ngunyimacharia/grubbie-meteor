@@ -42,7 +42,6 @@ Template.Seeder_page.events({
           type: "error",
         });
       }else{
-        FlowRouter.go('/');
         return swal({
           title: "Seeding successful",
           text: "Your database is now seeded",

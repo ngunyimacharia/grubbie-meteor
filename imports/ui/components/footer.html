@@ -1,0 +1,26 @@
+<template name="Footer">
+
+  <footer>
+
+    <nav>
+      <ul>
+      {{#each links}}
+      <li>
+        <a href="{{ href }}">
+          <i class="{{ icon }}" title="{{ title }}"></i>
+          <span>{{ title }}</span>
+          {{#if notifications}}
+            {{#if hasNotifications}}
+              <div class="notifications-notice"></div>
+            {{/if}}
+          {{/if}}
+        </a>
+      </li>
+      {{/each}}
+      </ul>
+    </nav>
+
+
+  </footer>
+
+</template>
