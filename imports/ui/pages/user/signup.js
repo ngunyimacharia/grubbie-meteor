@@ -80,7 +80,7 @@ Template.User_signup_page.events({
                 userType: userType,
                 userRole: userRole,
                 password: password,
-                status: "Deactivated",
+                status: "false",
             }, function (error) {
                 if (error) {
                     console.log("Error: " + error.reason);

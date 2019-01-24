@@ -2451,6 +2451,80 @@ hr {
   text-align: left;
 }
 
+@media only screen and (min-width: 768px) {
+  #content-container div.notifications-container {
+    display: none;
+  }
+
+  header nav div.notifications-container {
+    display: none;
+    width: 350px;
+    margin: 5px 0 0 15px;
+    position: absolute;
+    background-image: linear-gradient(#CAAD08, #B85A3F);
+    right: -10px;
+    z-index: 1000;
+  }
+  header nav div.notifications-container .notification {
+    margin: 20px 0;
+    display: block;
+    clear: both;
+  }
+  header nav div.notifications-container .notification img {
+    float: left;
+    width: 20px;
+    margin: 0 20px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  header nav div.notifications-container .notification div {
+    text-align: left;
+    margin-left: 70px;
+  }
+  header nav div.notifications-container .notification div a {
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+  }
+  header nav div.notifications-container .notification div .timestamp {
+    font-size: 0.7em;
+  }
+}
+@media only screen and (max-width: 767px) {
+  footer nav div.notifications-container {
+    display: none;
+  }
+
+  div.notifications-container {
+    width: 92%;
+    max-width: 600px;
+    margin-left: 15px;
+  }
+  div.notifications-container .notification {
+    background-image: linear-gradient(#CAAD08, #B85A3F);
+    margin: 20px 0;
+    padding: 3px 20px 7px;
+    vertical-align: middle;
+    position: relative;
+  }
+  div.notifications-container .notification img {
+    float: left;
+    width: 20px;
+    margin: 15px 7px 0 2px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  div.notifications-container .notification div {
+    margin-left: 35px;
+  }
+  div.notifications-container .notification div a {
+    color: #fff;
+    text-decoration: none;
+  }
+  div.notifications-container .notification div .timestamp {
+    font-size: 0.7em;
+  }
+}
 .gmail-container {
   width: 100%;
   margin: 50px auto;
@@ -2533,7 +2607,6 @@ hr {
 }
 .gmail-container .right-main .main-section {
   background: rgba(0, 0, 0, 0.5);
-  overflow-x: scroll;
   border-radius: 15px;
 }
 @media only screen and (max-width: 576px) {
@@ -2571,18 +2644,21 @@ hr {
 .gmail-container .right-main .main-section .cont .body {
   padding: 10px;
 }
-.gmail-container .right-main .main-section .cont .body .row {
+.gmail-container .right-main .main-section .cont .body .list {
   padding: 10px 0;
   cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
-.gmail-container .right-main .main-section .cont .body .row .hv {
+.gmail-container .right-main .main-section .cont .body .list .hv {
   opacity: 0;
   transition: opacity 0.4s;
 }
-.gmail-container .right-main .main-section .cont .body .row:hover {
+.gmail-container .right-main .main-section .cont .body .list:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.gmail-container .right-main .main-section .cont .body .row:hover .hv {
+.gmail-container .right-main .main-section .cont .body .list:hover .hv {
   opacity: 1;
 }
 
@@ -2598,25 +2674,168 @@ form.no-margin {
   margin: 0 !important;
 }
 
-ul.navy-pagination li {
-  width: 25px;
-  height: 25px;
-  border-radius: 25px;
-  background: #fff;
+.notfound {
+  margin: 20px;
+  text-align: center;
 }
-ul.navy-pagination li a {
+
+/* pagination */
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+  float: right;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
   text-decoration: none;
-  font-size: 1em;
-  font-weight: 800;
-  color: #000;
-  display: block;
-  margin-top: 4px;
+  color: #337ab7;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-left: -1px;
 }
-ul.navy-pagination li.active {
-  background: linear-gradient(#CAAD08, #B85A3F);
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
 }
-ul.navy-pagination li.active a {
+
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  z-index: 2;
+  color: #23527c;
+  background-color: #eeeeee;
+  border-color: #dddddd;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #ffffff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+  cursor: default;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #777777;
+  background-color: #ffffff;
+  border-color: #dddddd;
+  cursor: not-allowed;
+}
+
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+}
+
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  list-style: none;
+  text-align: center;
+}
+
+.pager li {
+  display: inline;
+}
+
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  cursor: pointer;
   color: #fff;
+  text-decoration: none;
+}
+
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  border: 1px solid #B85A3F;
+  color: #B85A3F;
+}
+
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #777777;
+  cursor: not-allowed;
 }
 
 @media only screen and (min-width: 768px) {

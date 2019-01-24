@@ -5,11 +5,11 @@
         <a href="#" class="user-nav active" id="users"><li>Users</li></a>
         <a href="#" class="user-nav" id="staff"><li>Kitchen Staff</li></a>
         <a href="#" class="user-nav" id="admin"><li>Admin</li></a>
-        <a href="/user/create" class="btn" id="create-user"><li>Create User</li></a>
+        <a href="/admin/user/create" class="btn" id="create-user"><li>Create User</li></a>
       </ul>
       <div class="xs">
         <div>
-          <a href="/user/create" class="btn-success col-5 pull-right">
+          <a href="/admin/user/create" class="btn-success col-5 pull-right">
             <i class="fa fa-user-o fa-sm"></i>&nbsp;Add User</a>
           </div>
           <div class="clearfix"><br/></div>
@@ -35,7 +35,6 @@
           <div class="col-lg-5 col-md-6 col-sm-8 col-12">
             <div class="row">
               <button class="btn-success col-lg-3 col-md-3 col-sm-3 col-3">Activate</button>
-              <button class="btn-warning col-lg-3 col-md-3 col-sm-3  col-3">Suspend</button>
               <button class="btn-danger col-lg-3 col-md-4 col-sm-4  col-4">Deactivate</button>
             </div>
           </div>
@@ -65,7 +64,7 @@
             </div>
             <div class="body">
               {{#each users}}
-              <div class="row lg">
+              <div class="list lg">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                   <input type="checkbox" />
                 </div>
@@ -135,7 +134,20 @@
             </div>
           </div>
         </div>
-
+        <nav class="pagination">
+        <ul class="pager">
+          <li class="{{prevPageClass}}">
+            <a id="prevPage" href="{{prevPage}}">
+              <span aria-hidden="true">&larr;</span> Previous
+            </a>
+          </li>
+          <li class="{{nextPageClass}}">
+            <a id="nextPage" href="{{nextPage}}">
+              Next <span aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       </div>
     </div>
   </template>
