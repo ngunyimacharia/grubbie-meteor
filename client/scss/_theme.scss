@@ -263,92 +263,11 @@ hr{
   width: 100%;
 
   h1{
-  text-align: left;
+    text-align: left;
   }
 }
 
-@media only screen and (min-width: 768px) {
-  #content-container div.notifications-container{
-    display: none;
-  }
-  header nav{
-    div.notifications-container{
-      display: none;
-      width: 350px;
-      margin: 5px 0 0 15px;
-      position: absolute;
-      background-image: $grubbie_gradient;
-      right: -10px;
-      z-index: 1000;
 
-      .notification{
-        margin:20px 0;
-        display: block;
-        clear: both;
-        img{
-          float: left;
-          width: 20px;
-          margin: 0 20px;
-          vertical-align: middle;
-          display: inline-block;
-        }
-        div{
-          text-align: left;
-          margin-left: 70px;
-          a{
-            font-size: 1em;
-            color:$white;
-            text-decoration: none;
-          }
-
-          .timestamp{
-            font-size: 0.7em;
-          }
-        }
-      }
-    }
-  }
-
-}
-@media only screen and (max-width: 767px) {
-
-  footer nav div.notifications-container{
-    display: none;
-  }
-
-  div.notifications-container{
-    width: 92%;
-    max-width: 600px;
-    margin-left: 15px;
-
-    .notification{
-      background-image: $grubbie_gradient;
-      margin:20px 0;
-      padding: 3px 20px 7px;
-      vertical-align: middle;
-      position: relative;
-
-      img{
-        float: left;
-        width: 20px;
-        margin: 15px 7px 0 2px;
-        vertical-align: middle;
-        display: inline-block;
-      }
-      div{
-        margin-left: 35px;
-        a{
-          color:$white;
-          text-decoration: none;
-        }
-
-        .timestamp{
-          font-size: 0.7em;
-        }
-      }
-    }
-  }
-}
 
 .gmail-container{
   width: 100%;
@@ -465,7 +384,7 @@ hr{
 
       @media only screen and (max-width: 576px) {
         .cont{
-            min-width: auto !important;
+          min-width: auto !important;
         }
       }
       .cont{
@@ -544,6 +463,30 @@ hr{
 
 form.no-margin{
   margin:0 !important;
+}
+
+//pagination
+ul.navy-pagination{
+  li{
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background: $white;
+    a{
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: 800;
+      color: $black;
+      display: block;
+      margin-top: 4px;
+    }
+  }
+  li.active{
+    background: $grubbie_gradient;
+    a{
+      color:$white;
+    }
+  }
 }
 
 .notfound {
@@ -689,4 +632,3 @@ form.no-margin{
   color: #777777;
   cursor: not-allowed;
 }
-
