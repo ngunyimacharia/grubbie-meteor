@@ -100,7 +100,7 @@ let adminRoutes = FlowRouter.group({
   prefix: '/admin',
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-    if (!Roles.userIsInRole(Meteor.userId(), ['Super-Admin'])) {
+    if (!Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
       FlowRouter.go('/');
     }
   }],
