@@ -252,7 +252,7 @@ adminRoutes.route('/rating/admin',{
       'App_body',
       {
         header: 'Header',
-        main: 'Rating_page',
+        main: 'Rating_admin_page',
         footer: 'Footer'
       }
     );
