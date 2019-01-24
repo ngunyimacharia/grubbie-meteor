@@ -8,8 +8,37 @@ Tracker.autorun(() => {
   }
 });
 
+let notLoggedIn = (context, redirect) => {
+  if (Meteor.user()) {
+    // checking if user is admin
+    if (Roles.userIsInRole(Meteor.user(), ["User"])) {
+      FlowRouter.go('/user/view');
+    } else {
+      FlowRouter.go('/admin/user/manage');
+    }
+  }else{
+    FlowRouter.current();
+  }
+}
+
+// Triggers
+let isUserLoggedIn = (context, redirect) => {
+  if (!Meteor.user()) {
+    FlowRouter.go('/');
+  }else{
+    FlowRouter.current();
+  }
+}
+
+let isAdminLoggedIn = (context, redirect) => {
+  if (!Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
+    FlowRouter.go('/');
+  }
+}
+
 // System routes
 FlowRouter.route('/', {
+  triggersEnter: [notLoggedIn],
   action: function () {
     BlazeLayout.render(
       'App_body',
@@ -22,11 +51,11 @@ FlowRouter.route('/logout', {
   name: 'logout',
   action() {
     Accounts.logout();
-    FlowRouter.go('/');
   }
 });
 
 FlowRouter.route('/signin', {
+  triggersEnter: [notLoggedIn],
   action: function () {
     BlazeLayout.render(
       'App_body',
@@ -35,8 +64,8 @@ FlowRouter.route('/signin', {
   }
 });
 
-
 FlowRouter.route('/signup', {
+  triggersEnter: [notLoggedIn],
   action: function () {
     BlazeLayout.render(
       'App_body',
@@ -46,6 +75,7 @@ FlowRouter.route('/signup', {
 });
 
 FlowRouter.route('/forgot-password', {
+  triggersEnter: [notLoggedIn],
   action: function () {
     BlazeLayout.render(
       'App_body',
@@ -60,11 +90,7 @@ FlowRouter.route('/forgot-password', {
 let userRoutes = FlowRouter.group({
   prefix: '/user',
   name: 'user',
-  triggersEnter: [(context, redirect) => {
-    if (!Meteor.user()) {
-      FlowRouter.go('/');
-    }
-  }],
+  triggersEnter: [isUserLoggedIn],
 });
 
 
@@ -154,11 +180,7 @@ userRoutes.route('/rating/rate',{
 const adminRoutes = FlowRouter.group({
   prefix: '/admin',
   name: 'admin',
-  triggersEnter: [(context, redirect) => {
-    if (!Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
-      FlowRouter.go('/');
-    }
-  }],
+  triggersEnter: [isAdminLoggedIn],
 });
 
 adminRoutes.route('/user/view_edit',{
@@ -176,15 +198,15 @@ adminRoutes.route('/user/view_edit',{
 
 adminRoutes.route('/user/manage',{
   action: function () {
-      BlazeLayout.render(
-        'App_body',
-        {
-          header: 'Header_admin',
-          main: 'User_manage_page',
-          footer: 'Footer_admin'
-        }
-      );
-    }
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header_admin',
+        main: 'User_manage_page',
+        footer: 'Footer_admin'
+      }
+    );
+  }
 });
 
 adminRoutes.route('/user/create',{
