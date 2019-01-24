@@ -40,7 +40,34 @@ export const createUsers = (num) => {
 
   }
 
+  
+  //Create normal user
+  Accounts.createUser({
+    email: 'user@meltwater.org',
+    username: 'user',
+    firstName: casual.first_name,
+    lastName: casual.last_name,
+    gender: randFromArr(['Male','Female']),
+    country: randFromArr(countries).country,
+    userType:randFromArr(types).type,
+    userRole: "User",
+    password: 'password',
+    status: "Deactivated",
+  });
 
+  //Create staff user
+  Accounts.createUser({
+    email: 'staff@meltwater.org',
+    username: 'staff',
+    firstName: casual.first_name,
+    lastName: casual.last_name,
+    gender: randFromArr(['Male','Female']),
+    country: randFromArr(countries).country,
+    userType:randFromArr(types).type,
+    userRole: "Staff",
+    password: 'password',
+    status: "Deactivated",
+  });
 
   //Create admin user
   Accounts.createUser({

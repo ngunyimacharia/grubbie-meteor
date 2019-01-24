@@ -6,8 +6,7 @@ import './user/view.js';
 import './user/view_edit.js';
 import './user/manage.js';
 import './user/create.js';
-import './user/user_notifications.js';
-import './user/admin_notifications.js';
+import './user/notifications.js';
 import './user/forgot_password.js';
 
 //Meal pages
@@ -25,5 +24,6 @@ import './rating/admin.js'
 //inventory
 import './inventory/view';
 
-// not found
-import './application/404';
+//application pages
+import './app/404.js';
+import './app/seeder.js';

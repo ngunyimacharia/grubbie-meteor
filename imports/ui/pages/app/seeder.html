@@ -1,0 +1,23 @@
+<template name="Seeder_page">
+  <div id="content-container">
+    <h1>Seed database</h1>
+    <hr/>
+    <p>Seeding your database will lead to dataloss of current data</p>
+    <p>
+      To login into the application after seeding, use the following credentials:
+      <ul>
+        <li><b>Email:</b> user@meltwater.org; <b>Password:</b> password</li>
+        <li><b>Email:</b> staff@meltwater.org; <b>Password:</b> password</li>
+        <li><b>Email:</b> admin@meltwater.org; <b>Password:</b> password</li>
+      </ul>
+    </p>
+    <hr/>
+    <center>
+    {{#if seeding}}
+      <b>Seeding, please wait!</b>
+    {{else}}
+      <button class="btn-success seed">Seed!</button>
+    {{/if}}
+  </center>
+  </div>
+</template>

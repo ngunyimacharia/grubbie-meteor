@@ -1,7 +1,10 @@
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
 
 import './header_admin.html';
+import './footer_admin.html';
+
+import './header_user.html';
+import './footer_user.html';
 
 Template.Header_admin.rendered = function(){
 
@@ -23,3 +26,30 @@ Template.Header_admin.rendered = function(){
     });
 
 }
+
+Template.Header_admin.helpers({
+  links(){
+    return [
+      {
+        href:'/admin/user/manage',
+        icon:'fa fa-user-o',
+        title:'Users'
+      },
+      {
+        href:'/admin/menu/create',
+        icon:'fa fa-cutlery',
+        title:'Meals',
+      },
+      {
+        href:'/admin/rating/admin',
+        icon:'fa fa-thumbs-o-up',
+        title:'Feedback'
+      },
+      {
+        href:'/admin/user/notifications',
+        icon:'fa fa-envelope-o',
+        title:'Messages'
+      }
+    ]
+  }
+});
