@@ -2,24 +2,30 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
  
-export const Menu = new Mongo.Collection('menu');
+export const Option = new Mongo.Collection('menu');
  
 if (Meteor.isServer) {
     // This code only runs on the server
     // Only publish tasks that are public or belong to the current user
 
-  }
+
    
 Meteor.methods({
     //This method creates a menu item for a specific week. menuID - week and year.
-    'menu.createMenu'(menuId) {
+    'menu.addMealToMenu'(menuId) {
         check(menuId, String);
      
-    WeeklyMenu.addMenu({
+    Options.insert({
+        mealId,
+        date,
+        mealTimeId,
+        chosen,
+        mealCategoryId,
         menuId,
-        week,
+
         createdAt: new Date(),
         updatedAt: new Date(),
+        
         });
     },
 
@@ -51,6 +57,6 @@ Meteor.methods({
         createdAt: new Date(),
         updatedAt: new Date(),
     });
-  }
-
-});
+    }
+    });
+};
