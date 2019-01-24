@@ -24,5 +24,6 @@ import './rating/admin.js'
 //inventory
 import './inventory/view';
 
-//dev pages
-import './dev/seeder.js';
+//application pages
+import './app/404.js';
+import './app/seeder.js';

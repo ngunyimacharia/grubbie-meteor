@@ -254,7 +254,7 @@ adminRoutes.route('/inventory/view',{
 
 
 // Developer routes
-FlowRouter.route('/dev/seeder', {
+FlowRouter.route('/app/seeder', {
   action: function () {
     BlazeLayout.render(
       'App_body',
