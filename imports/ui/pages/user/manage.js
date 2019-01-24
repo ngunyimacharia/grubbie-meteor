@@ -19,11 +19,6 @@ Template.User_manage_page.helpers({
     dep.depend();
     return Roles.getUsersInRole(userFilter);
     // return Meteor.users.find({ _id: { $ne: this.userId } }, { sort: { 'profile.firstName': 1 } });
-  },
-  isAdmin() {
-    if (Roles.userIsInRole(Meteor.user(), ["Super-Admin"])) { 
-      return true;
-    }
   }
 });
 

@@ -10,30 +10,14 @@
 
       <nav class="admin">
         <ul>
+          {{#each links}}
           <li>
-            <a href="/user/manage">
-              <i class="fa fa-user-o" title="Users"></i>
-              <span>Users</span>
+            <a href="{{ href }}">
+              <i class="{{ icon }}" title="{{ title }}"></i>
+              <span>{{ title }}</span>
             </a>
           </li>
-          <li>
-            <a href="/menu/create">
-              <i class="fa fa-cutlery" title="Meals"></i>
-              <span>Meals</span>
-            </a>
-          </li>
-          <li>
-            <a href="/inventory/view">
-              <i class="fa fa-clipboard"></i>
-              <span>Inventory</span>
-            </a>
-          </li>
-          <li>
-            <a href="/rating/admin">
-              <i class="fa fa-thumbs-o-up" title="Ratings"></i>
-              <span>Feedback</span>
-            </a>
-          </li>
+          {{/each}}
           <li>
             <a  id="notifications" href="/user/admin-notifications">
               <div>
