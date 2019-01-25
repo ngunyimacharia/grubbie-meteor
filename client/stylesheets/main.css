@@ -3167,6 +3167,78 @@ blockquote {
   }
 }
 
+.rounded-container .rate-text input {
+  padding: 5px;
+  width: 110%;
+  margin-top: 3px;
+}
+
+.stars {
+  margin-top: 5px;
+}
+
+.sta:hover {
+  color: yellow;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.ratesubmit {
+  border-radius: 1px;
+  max-width: 55px;
+}
+
+.rounded-container .rate-text {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.rate-wrapper {
+  width: 80%;
+  margin: auto;
+  padding-right: 20px;
+  border-radius: 120px;
+}
+
+.rate-text {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+@media screen and (max-width: 767px) {
+  .rounded-container .rate-wrapper {
+    width: 100%;
+  }
+}
+.rate-input {
+  margin: 0;
+  width: auto;
+}
+.rate-input input[type=text] {
+  width: 80%;
+}
+.rate-input button {
+  width: 0;
+  background: transparent;
+  border: 0;
+  margin: 0;
+}
+.rate-input button i {
+  font-size: 20px;
+  vertical-align: bottom;
+  color: #5CB85C;
+}
+.rate-input button:hover {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.rate-input button:hover i {
+  color: #fff;
+}
+
 .logo-white {
   text-align: center;
   width: 100%;
@@ -3390,25 +3462,6 @@ div.notifications-container .notification div .timestamp {
 .rounded-container .rounded-text a {
   color: #fff;
   text-decoration: none;
-}
-.rounded-container .rate-wrapper {
-  width: 80%;
-  margin: auto;
-  padding-right: 20px;
-  border-radius: 120px;
-}
-.rounded-container .rate-text {
-  margin-top: -90px;
-  vertical-align: middle;
-  display: inline-block;
-}
-@media screen and (max-width: 767px) {
-  .rounded-container .rate-text {
-    margin-left: 80px;
-  }
-  .rounded-container .rounded-container .rate-wrapper {
-    width: 100%;
-  }
 }
 .rounded-container input {
   background: transparent;
