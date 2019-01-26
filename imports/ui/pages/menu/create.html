@@ -1,55 +1,56 @@
 <template name="Menu_create_page">
-<div id="content-container">
-  <div class="create-menu">
-    <div class="clearfix"><br/></div>
-    <div class="row">
-      <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-        <br/>
-        <div class="row">
-          <div class = "col-lg-7 col-md-7 col-sm-7 col-5">
-            <h2>Create Menu</h2>
-          </div>
-          <div class = "col-lg-4 col-md-4 col-sm-4 col-7">
-            <br/>
-            <select class="date-select">
-              <option>Nov 12, 2018 - Nov 16, 2018</option>
-              <option>Nov 19, 2018 - Nov 23, 2018</option>
-            </select>
-          </div>
-        </div>
-        <hr/>
-        {{> days}}
-        <div class="bls">
-          <button class="breakfast">Breakfast</button>
-          <button class="lunch">Lunch</button>
-          <button class="dinner">Dinner</button>
-        </div>
-        <div class="order-options">
-          <br />
-          <br />
-          <h4 class="text-center">Choose meal options:</h4>
+
+  <div id="content-container">
+    <div class="create-menu">
+      <div class="clearfix"><br/></div>
+      <div class="row">
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
           <br/>
-          {{#each carbs}}
           <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-              <input onClick="showAdds(event)" type="checkbox" name="{{this}}" id="" />
+            <div class = "col-lg-7 col-md-7 col-sm-7 col-5">
+              <h2>Create Menu</h2>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-              <label for="jollofRice">{{this}}</label>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-5 text-center">
-            </div>
-            <div class="col-lg-12 adds">
-              <select class="pull-right col-5" name="general">
-                <option value="general">General</option>
-                {{#each stews}}
-                <option>{{this}}</option>
-                {{/each}}
+            <div class = "col-lg-4 col-md-4 col-sm-4 col-7">
+              <br/>
+              <select class="date-select">
+                <option>Nov 12, 2018 - Nov 16, 2018</option>
+                <option>Nov 19, 2018 - Nov 23, 2018</option>
               </select>
             </div>
-            <div class="col-lg-12 adds">
-              <select class="pull-right col-5">
-                <option value="general">Vegeterian</option>
+          </div>
+          <hr/>
+          {{> days}}
+          <div class="bls">
+            <button class="breakfast">Breakfast</button>
+            <button class="lunch">Lunch</button>
+            <button class="dinner">Dinner</button>
+          </div>
+          <div class="order-options">
+            <br />
+            <br />
+            <h4 class="text-center">Choose meal options:</h4>
+            <br/>
+            {{#each carbs}}
+            <div class="row">
+              <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                <input onClick="showAdds(event)" type="checkbox" name="{{this}}" id="" />
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                <label for="jollofRice">{{this}}</label>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-5 text-center">
+              </div>
+              <div class="col-lg-12 adds">
+                <select class="pull-right col-5" name="general">
+                  <option value="general">General</option>
+                  {{#each stews}}
+                  <option>{{this}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <div class="col-lg-12 adds">
+                <select class="pull-right col-5">
+                  <option value="general">Vegeterian</option>
                   {{#each vegs}}
                   <option>{{this}}</option>
                   {{/each}}
@@ -432,5 +433,4 @@
     </div>
   </div>
 
-
-    </template>
+</template>

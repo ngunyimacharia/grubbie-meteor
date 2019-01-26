@@ -60,29 +60,6 @@
         text-decoration: none;
       }
     }
-    .rate-wrapper{
-      width: 80%;
-    //   height: 80px;
-      margin: auto;
-      padding-right: 20px;
-      border-radius: 120px;
-    }
-    .rate-text{
-      margin-top: -90px;
-    //   margin-left: 80px;
-      vertical-align: middle;
-      display: inline-block;
-    }
-
-    @media screen and (max-width: 767px){
-      .rate-text{
-        margin-left: 80px;
-      }
-
-      .rounded-container .rate-wrapper {
-          width: 100%;
-      }
-    }
 
     input{
       background: transparent;

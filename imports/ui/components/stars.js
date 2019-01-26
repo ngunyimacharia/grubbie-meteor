@@ -48,8 +48,7 @@ Template.stars.rendered = function(){
 
 
 Template.stars.events({
-  'click .sta' : function str(Meals) {
-    event.preventDefault();
+  'click .sta' : function str(event) {
     let menuoption_id = Template.currentData().menuoption_id;
     clearStars(menuoption_id);
     let star = event.target;
@@ -65,7 +64,7 @@ Template.stars.events({
     document.getElementById('star_id').value = star_id;
   },
 
-  'click .ratesubmit' : function(event) {
+  'submit form' : function(event) {
     event.preventDefault();
     let container = event.target.parentElement.parentElement.parentElement;
     // let user_id = Meteor.userId

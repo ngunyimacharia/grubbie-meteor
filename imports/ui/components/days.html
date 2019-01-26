@@ -1,9 +1,11 @@
 <template name="days">
   <div class="days">
-      <button class="day active">Mon</button>
-      <button class="day">Tue</button>
-      <button class="day">Wed</button>
-      <button class="day">Thu</button>
-      <button class="day">Fri</button>
+    {{#each days}}
+      {{#if activeDay day}}
+        <button class="day active" id="{{day}}">{{day}}</button>
+      {{else}}
+        <button class="day" id="{{day}}">{{day}}</button>
+      {{/if}}
+    {{/each}}
   </div>
 </template>

@@ -15,6 +15,7 @@ import { createMeals } from './meals.js';
 import { createMenus } from './menus.js';
 import { createVotes } from './votes.js';
 import { createRatings } from './ratings.js';
+import { createNotifications } from './notifications.js';
 
 
 Meteor.methods({
@@ -50,4 +51,6 @@ const optionalSeeds = () => {
   createVotes(100);
   //Seed Ratings
   createRatings(100);
+  //Seed notifications
+  createNotifications(50);
 }

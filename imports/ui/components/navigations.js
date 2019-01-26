@@ -1,55 +1,79 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Notifications } from '../../api/notifications.js';
 
-import './header_admin.html';
-import './footer_admin.html';
+import './header.html';
+import './footer.html';
 
-import './header_user.html';
-import './footer_user.html';
+//Admin navigation links
+const adminLinks = [
+    {
+      href:'/admin/user/manage',
+      icon:'fa fa-user-o',
+      title:'Users'
+    },
+    {
+      href:'/admin/menu/create',
+      icon:'fa fa-cutlery',
+      title:'Meals',
+    },
+    {
+      href:'/admin/rating/admin',
+      icon:'fa fa-thumbs-o-up',
+      title:'Feedback'
+    },
+    {
+      href:'/admin/user/notifications',
+      icon:'fa fa-envelope-o',
+      title:'Messages',
+      notifications:true
+    }
+  ];
 
-Template.Header_admin.rendered = function(){
+const userLinks = [
+    {
+      href:'/user/view',
+      icon:'fa fa-user-o',
+      title:'Profile'
+    },
+    {
+      href:'/user/menu/view',
+      icon:'fa fa-cutlery',
+      title:'Meals',
+    },
+    {
+      href:'/user/rating/rate',
+      icon:'fa fa-thumbs-o-up',
+      title:'Rate'
+    },
+    {
+      href:'/user/notifications',
+      icon:'fa fa-envelope-o',
+      title:'Messages',
+      notifications:true
+    }
+  ];
 
-    var notificationsLnk = document.getElementById("notifications");
-    var notifications =  document.querySelector("header .notifications-container");
-    var notificationsIcon =  document.querySelector("header .notifications-notice");
-    var visible = false;
+const bodyOnCreated = () => {
+  Meteor.subscribe('notifications');
+};
 
-    notificationsLnk.addEventListener("click",function(e){
-      e.preventDefault();
-      if(visible){
-        notifications.style.display = "none";
-        visible = false;
-      }else{
-        notifications.style.display = "initial";
-        visible = true;
-        notificationsIcon.style.display = "none";
-      }
-    });
+const helpers = {
 
-}
-
-Template.Header_admin.helpers({
+  hasNotifications(){
+    return Notifications.find({userId:Meteor.userId(),read:false}).count();
+  },
   links(){
-    return [
-      {
-        href:'/admin/user/manage',
-        icon:'fa fa-user-o',
-        title:'Users'
-      },
-      {
-        href:'/admin/menu/create',
-        icon:'fa fa-cutlery',
-        title:'Meals',
-      },
-      {
-        href:'/admin/rating/admin',
-        icon:'fa fa-thumbs-o-up',
-        title:'Feedback'
-      },
-      {
-        href:'/admin/user/notifications',
-        icon:'fa fa-envelope-o',
-        title:'Messages'
-      }
-    ]
+    if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
+      return adminLinks;
+    }else{
+      return userLinks;
+    }
   }
-});
+};
+
+Template.Header.onCreated(bodyOnCreated);
+Template.Header.helpers(helpers);
+
+Template.Footer.onCreated(bodyOnCreated);
+Template.Footer.helpers(helpers);

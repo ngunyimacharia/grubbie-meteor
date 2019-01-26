@@ -27,3 +27,6 @@ reactive-dict
 kevohagan:sweetalert
 accounts-base
 momentjs:moment
+navybits:pagination
+manuel:reactivearray
+session

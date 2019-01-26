@@ -1,5 +1,4 @@
 <template name="User_view_page">
-{{#with currentUser}}
   <div id="content-container">
     <div class="profile-view">
       <form action = "/user/view_edit">
@@ -13,7 +12,7 @@
               <div class="col-2"></div>
               <a class="btn-warning col-3" href="/user/view_edit"> Edit </a>
               <div class="col-1"></div>
-              <a class="btn-danger col-3"  href="/"> Logout </a>
+              <a class="btn-danger col-3"  href="/logout"> Logout </a>
             </div>
           </div>
           <div class="col-lg-7 col-12">
@@ -64,5 +63,4 @@
       </form>
     </div>
   </div>
-  {{/with}}
 </template>

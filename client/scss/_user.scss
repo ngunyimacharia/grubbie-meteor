@@ -71,3 +71,37 @@
     font-weight: 900;
   }
 }
+
+
+div.notifications-container{
+  width: 92%;
+  max-width: 600px;
+  margin-left: 15px;
+
+  .notification{
+    background-image: $grubbie_gradient;
+    margin:20px 0;
+    padding: 3px 20px 7px;
+    vertical-align: middle;
+    position: relative;
+
+    img{
+      float: left;
+      width: 20px;
+      margin: 15px 7px 0 2px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    div{
+      margin-left: 35px;
+      a{
+        color:$white;
+        text-decoration: none;
+      }
+
+      .timestamp{
+        font-size: 0.7em;
+      }
+    }
+  }
+}

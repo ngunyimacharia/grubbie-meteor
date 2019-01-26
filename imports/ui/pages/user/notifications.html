@@ -1,53 +1,87 @@
 <template name="Notifications_page">
 
   <div id="content-container">
-    <h1>User Notifications</h1>
-    <div class="notifications-container">
-      <div class="notification">
-        <div class="arrow-left"></div>
-        <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
-        <div>
-          <a href="/orders/view"><p>The menu for this week has been sent</p></a>
-          <span class="timestamp">1 hour ago</span>
+    <div class="create-menu">
+      <div class="clearfix"><br/></div>
+      <div class="row">
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+          <br/>
+          <div class="row">
+            <div class = "col-lg-7 col-md-7 col-sm-7 col-5">
+              <h2>Unread Notifications</h2>
+            </div>
+            <div class = "col-lg-4 col-md-4 col-sm-4 col-7">
+              <br/>
+            </div>
+          </div>
+          <hr/>
+          <br/>
+          {{#if unreadNotifications}}
+          <div>
+            <button class="col-lg-5 col-md-4 col-sm-4 col-6 pull-right" id="markRead">
+              Mark all as read
+            </button>
+          </div>
+          <br/>
+          <br/>
+
+
+          {{#navybitsPagination data=unreadNotifications}}
+          <div class="notifications-container">
+            <div class="notification">
+              <div class="arrow-left"></div>
+              <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+              <div>
+                <a href="/orders/view"><p>{{content}}</p></a>
+                <span class="timestamp">{{timeFrom(createdAt)}}</span>
+              </div>
+            </div>
+          </div>
+          {{/navybitsPagination}}
+
+          {{else}}
+          <br/>
+          <div>
+            <center>All clear, no new notifications</center>
+          </div>
+          {{/if}}
         </div>
-      </div>
-      <div class="notification">
-        <div class="arrow-left"></div>
-        <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
-        <div>
-          <a href="/orders/view">
-            <p>
-              The menu for this week has been sent
-            </p>
-          </a>
-          <span class="timestamp">1 day ago</span>
-        </div>
-      </div>
-      <div class="notification">
-        <div class="arrow-left"></div>
-        <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
-        <div>
-          <a href="/orders/view"><p>The menu for this week has been sent</p></a>
-          <span class="timestamp">7 days ago</span>
-        </div>
-      </div>
-      <div class="notification">
-        <div class="arrow-left"></div>
-        <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
-        <div>
-          <a href="/orders/view"><p>The menu for this week has been sent</p></a>
-          <span class="timestamp">14 days ago</span>
-        </div>
-      </div>
-      <div class="notification">
-        <div class="arrow-left"></div>
-        <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
-        <div>
-          <a href="/orders/view"><p>The menu for this week has been sent</p></a>
-          <span class="timestamp">21 days ago</span>
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+          <div class="preview">
+            <div class="row">
+              <div class = "col-lg-7 col-md-7 col-sm-7 col-5">
+                <h2>Previous Notifications</h2>
+              </div>
+              <div class = "col-lg-5 col-md-5 col-sm-5 col-7">
+                <br/>
+              </div>
+            </div>
+            <hr/>
+
+            {{#if readNotifications}}
+            {{#navybitsPagination data=readNotifications}}
+            <div class="notifications-container">
+              <div class="notification">
+                <div class="arrow-left"></div>
+                <img src="/images/inventory_icon_inv.png" alt="Clipboard" title="Clipboard"/>
+                <div>
+                  <a href="/orders/view"><p>{{content}}</p></a>
+                  <span class="timestamp">{{timeFrom(createdAt)}}</span>
+                </div>
+              </div>
+            </div>
+            {{/navybitsPagination}}
+            {{else}}
+            <br/>
+            <div>
+              <center>All clear, no previous notifications</center>
+            </div>
+            {{/if}}
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 
 </template>
