@@ -44,3 +44,9 @@ const showAdds = function(event){
     });
   }
 }
+
+function changeColorOnClick() {
+document.getElementById("create-menu").addEventListener("click", function(){
+  console.log("Beki clicks")
+});
+}

@@ -2918,7 +2918,7 @@ blockquote {
   border: 1px solid white;
   border-radius: 15px;
 }
-.create-menu button:hover {
+.create-menu button:active {
   background: linear-gradient(#CAAD08, #B85A3F);
 }
 .create-menu .btn-success {
