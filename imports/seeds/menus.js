@@ -2,6 +2,7 @@ import casual from 'casual';
 import moment from 'moment'
 import { Menus } from '../api/menus.js';
 import { Options } from '../api/options.js';
+import { Meals } from  '../api/meals.js';
 import { MealTimes } from '../api/mealtimes.js';
 import { MealCategories } from '../api/mealcategories.js';
 
@@ -9,9 +10,11 @@ export const createMenus = () => {
 
   //prepare data
   const mealCategories = MealCategories.find({}).fetch();
-  
+  const meals = Meals.find({}).fetch();
+
   // remove Types
   Menus.remove({});
+  Options.remove({});
   //
   const start = moment().subtract(9,'months');
   do{
@@ -34,7 +37,7 @@ export const createMenus = () => {
         const mealTimes = ["Breakfast","Lunch","Supper"];
         mealTimes.forEach((time,ind) => {
           // create breakfast option
-          Options.insert({
+          const optionId = Options.insert({
             date: `${menuday.year()}-${menuday.month()}-${menuday.date()}`,
             mealtimeId: time,
             chosen: i ? true : false,
@@ -43,6 +46,10 @@ export const createMenus = () => {
             createdAt: new Date(),
             updatedAt: new Date()
           });
+          // Add two meals to the option
+          for(let i=0 ; i<3 ; i++){
+            Options.addMeal(optionId,randFromArr(meals)._id);
+          }
         });
       }
     }

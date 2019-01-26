@@ -6,10 +6,6 @@
       </div>
       <div class = "col-lg-4 col-md-4 col-sm-4 col-7">
         <br/>
-        <!-- <select class="date-select">
-          <option>Nov 12, 2018 - Nov 16, 2018</option>
-          <option>Nov 19, 2018 - Nov 23, 2018</option>
-        </select> -->
       </div>
     </div>
     <hr/>
@@ -20,11 +16,16 @@
     <div class="rounded-container">
       {{#each Meals}}
       <div class="rate-wrapper">
-        <div class="rounded-image"></div>
+        <div class="rounded-image">
+        </div>
 
         <div class="rate-text">  <!-- <br/><br/>Tea and Bread <br/> -->
-            {{Meal}}
-            {{> stars menuoption_id=menuoption_id }}
+            <div class="meal-title">{{meal}}</div>
+            {{#if future}}
+              <div class="future-rating"><br/>Rating not yet available</div>
+            {{else}}
+              {{> stars optionId=_id rating=rating comments=comments}}
+            {{/if}}
         </div>
 
           <!-- <input type="text" name="" id="" value="Wonderful meal!" disabled> -->
