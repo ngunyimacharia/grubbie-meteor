@@ -1,15 +1,17 @@
 <template name="stars">
+
   <div class="stars-below">
 
   </div>
   <div>
+    {{ #if comments}}
+      <div class="comments">{{comments}}</div>
+    {{ else }}
     <form class = 'rate-input'>
       <input type="hidden" value="0" id="star_id">
       <input type="text" name="comment" value="" placeholder="comment about this meal..." />
       <button type="submit" class="ratesubmit"><i class="fa fa-check-square"></i></button>
-      <br/><br/>
     </form>
+    {{/if}}
   </div>
-  <br/><br/><br/>
-
 </template>

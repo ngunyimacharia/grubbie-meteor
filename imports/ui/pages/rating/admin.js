@@ -1,9 +1,12 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import Chart from 'chartjs';
 
 import './admin.html';
 
+
 Template.Rating_admin_page.rendered = function(){
+	$('#my-datepicker').datepicker();
   new Chart(document.getElementById("canvas"), {
     type: 'horizontalBar',
     data: {
