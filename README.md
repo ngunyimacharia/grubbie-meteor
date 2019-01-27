@@ -61,9 +61,19 @@ Meteor (Blaze templating engine)
 
 #### Packages used
 
+Meteor Accounts
+- https://atmospherejs.com/meteor/accounts-base
+- https://atmospherejs.com/meteor/accounts-password
+
+Meteor Roles
+- https://atmospherejs.com/alanning/roles
+
 Flow Router (Routing)
 - https://atmospherejs.com/kadira/flow-router
 - https://atmospherejs.com/kadira/blaze-layout
+
+Tracker (Dependency Tracker)
+- https://atmospherejs.com/meteor/tracker
 
 Bootstrap Grid (Grid system)
 - https://getbootstrap.com/docs/4.1/layout/grid/
@@ -73,6 +83,9 @@ Font Awesome (Icon Pack)
 
 Chart.js (Charting)
 - http://chartjs.org/
+
+Sweet Alert
+- https://atmospherejs.com/kevohagan/sweetalert
 
 
 #### General file naming rules

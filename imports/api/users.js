@@ -1,5 +1,4 @@
 import { Meteor } from "meteor/meteor";
-import { Mongo } from "meteor/mongo";
 import { check, Match } from "meteor/check";
 
 const MAX_USERS = 15;
@@ -11,12 +10,20 @@ if (Meteor.isServer) {
             check(x, Match.Integer);
             return x >= 0;
         });
+
         check(skipCount, positiveIntegerCheck);
+
+        Counts.publish(this, 'userCount', Meteor.users.find(), {
+            noReady: true
+        });
 
         return Meteor.users.find({}, {
             limit: MAX_USERS,
             skip: skipCount
         });
+    });
+    Meteor.publish('currentUser', function () {
+        Meteor.users.find({_id: this.userId});
     });
     Meteor.publish(null, function() {
         Meteor.roles.find({});
@@ -74,4 +81,12 @@ Meteor.methods({
 
         Users.remove(taskId);
     },
+    'user.activate'(id) {
+        check(id, String);
+        Meteor.users.update({ _id: id }, { $set: { "profile.status": true } });
+    },
+    'user.deactivate'(id) {
+        check(id, String);
+        Meteor.users.update({ _id: id }, { $set: { "profile.status": false } });
+    }
 });

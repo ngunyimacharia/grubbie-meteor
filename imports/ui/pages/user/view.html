@@ -1,6 +1,7 @@
 <template name="User_view_page">
   <div id="content-container">
     <div class="profile-view">
+    {{#with currentUser}}
       <form action = "/user/view_edit">
         <div id="Translation" class="row cont">
           <div class="col-lg-5 col-12">
@@ -61,6 +62,7 @@
           <div class="clearfix"><br/></div>
         </div>
       </form>
+      {{/with}}
     </div>
   </div>
 </template>

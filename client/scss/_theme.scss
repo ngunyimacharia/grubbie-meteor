@@ -131,7 +131,7 @@ hr{
   color: #fff;
   height: auto !important;
   border-radius: 25px;
-  width: 300px !important;
+  width: 100px !important;
 }
 
 .btn-success{
@@ -437,6 +437,7 @@ hr{
             .hv{
               opacity: 0;
               transition: opacity 0.4s;
+              text-align: center
             }
           }
 

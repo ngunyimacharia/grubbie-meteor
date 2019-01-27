@@ -8,27 +8,33 @@ import './footer.html';
 //Admin navigation links
 const adminLinks = [
     {
-      href:'/admin/user/manage',
-      icon:'fa fa-user-o',
-      title:'Users'
+        href: "/admin/user/manage",
+        icon: "fa fa-user-o",
+        title: "Users"
     },
     {
-      href:'/admin/menu/create',
-      icon:'fa fa-cutlery',
-      title:'Meals',
+        href: "/admin/menu/create",
+        icon: "fa fa-cutlery",
+        title: "Meals"
     },
     {
-      href:'/admin/rating/admin',
-      icon:'fa fa-thumbs-o-up',
-      title:'Feedback'
+        href: "/admin/rating/admin",
+        icon: "fa fa-thumbs-o-up",
+        title: "Feedback"
     },
     {
-      href:'/admin/user/notifications',
-      icon:'fa fa-envelope-o',
-      title:'Messages',
-      notifications:true
+        href: "/admin/user/notifications",
+        icon: "fa fa-envelope-o",
+        title: "Messages",
+        notifications: true
+    },
+    {
+        href: "/logout",
+        icon: "fa fa-sign-out",
+        title: "Log Out",
+        notifications: true
     }
-  ];
+];
 
 const userLinks = [
     {

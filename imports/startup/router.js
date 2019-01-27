@@ -107,6 +107,19 @@ userRoutes.route('/view',{
   }
 });
 
+userRoutes.route('/view_edit',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'User_view_edit_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 userRoutes.route('/notifications', {
   action: function () {
     BlazeLayout.render(
