@@ -31,8 +31,7 @@ const adminLinks = [
     {
         href: "/logout",
         icon: "fa fa-sign-out",
-        title: "Log Out",
-        notifications: true
+        title: "Log Out"
     }
 ];
 
