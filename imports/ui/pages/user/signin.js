@@ -24,11 +24,24 @@ Template.User_signin_page.events({
                     type: "error",
                 });
             } else {
-                // checking if user is admin
-                if (Roles.userIsInRole(Meteor.user(), ["User"])) {
-                    FlowRouter.go('/user/view');
+                if (Meteor.user().profile.status == true) {
+                    // checking if user is admin
+                    if (Roles.userIsInRole(Meteor.user(), ["User"])) {
+                            FlowRouter.go('/user/view');
+                            
+                    } else {
+                            FlowRouter.go("/admin/user/manage");
+                    }
                 } else {
-                    FlowRouter.go('/admin/user/manage');
+                    Meteor.logout();
+                    FlowRouter.go('/');
+                    return swal({
+                        title: "Account not activated",
+                        text: "Please contact the Administrator to activate your account ",
+                        timer: 3000,
+                        showConfirmButton: false,
+                        type: "error",
+                    });
                 }
          }
         });

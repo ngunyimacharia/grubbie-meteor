@@ -1,31 +1,49 @@
 <template name="User_create_page">
-  <div>
+  <div class="container">
     <form action = "/menu/view" method="POST">
-      <p><input type = "text" name = "firstName" placeholder = "First Name"/></p>
-      <p><input type = "text" name = "lastName" placeholder = "Last Name"/></p>
-      <p><input type = "text" name = "email" placeholder = "Enter your Meltwater e-mail address"/></p>
-      <p><select name = "gender">
-        <option value = "Male"> Male</option>
-        <option value = "Female"> Female</option>
-      </select></p>
-      <p><select name = "country">
-          {{#each countries}}
-            {{> country}}
-          {{/each}} 
-      </select></p>
-      <p><select name = "userType">
-          {{#each types}}
-            {{> type}}
-          {{/each}}      
-          </select></p>
-      <p><select name="userRole">
+      <div class="form-group">
+        <input type = "text" name = "firstName" placeholder = "First Name" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <input type = "text" name = "lastName" placeholder = "Last Name" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <input type = "text" name = "email" placeholder = "Enter your Meltwater e-mail address" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <select name = "gender" class="form-control">
+          <option value = "Male"> Male</option>
+          <option value = "Female"> Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="country" class="form-control">
+            {{#each countries}}
+              {{> country}}
+            {{/each}} 
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="userType" class="form-control">
+            {{#each types}}
+              {{> type}}
+            {{/each}}      
+        </select>
+      </div>
+      <div class="form-group">
+        <select name="userRole" class="form-control">
           {{>role }}    
-          </select></p>
-      <p><input type = "password" name = "password" placeholder = "Enter your password"/></p>
-      <p><input type = "password" name = "confirmPassword" placeholder = "Confirm your password"/></p>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type = "password" name = "password" placeholder = "Enter your password" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <input type = "password" name = "confirmPassword" placeholder = "Confirm your password" class="form-control"/>
+      </div>
       <br/>
-      <button class="btn btn-primary" type="submit">Add New User</button>
-      <a href="/admin/user/manage" class="btn btn-primary">Done</a>
+      <button class="btn btn-primary btn-block no-gutters" type="submit">Add New User</button>
+      <a href="/admin/user/manage" class="btn btn-outline-primary btn-block no-gutters">Done</a>
     </form>
   </div>
 </template>

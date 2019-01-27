@@ -12,6 +12,8 @@ import './user/reset_password.js';
 
 //Meal pages
 import './meal/view.js';
+import './meal/ingredients.js';
+import './meal/create.js';
 
 //Menu pages
 import './menu/view.js';

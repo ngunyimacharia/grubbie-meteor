@@ -149,6 +149,14 @@ hr{
   background-color: $danger;
 }
 
+.btn-danger-secondary {
+  color: $white;
+  background-color: $danger;
+}
+.btn-danger-secondary:hover {
+  color: $white;
+}
+
 .round-btn-danger{
   @extend %btn;
   background-color: $danger;
@@ -362,8 +370,6 @@ hr{
     }
 
     .top-actions{
-
-
       .select{
         color:rgba(255,255,255,0.9);
         font-size: 1.2em;
@@ -373,8 +379,6 @@ hr{
       input[type="checkbox"]{
         background: transparent;
       }
-
-
     }
 
     .main-section{
@@ -658,4 +662,51 @@ ul.navy-pagination{
     padding-right: 0;
     padding-left: 0;
   }
+}
+/* ingredients dynamic fields */
+[data-role="dynamic-fields"] > .form-inline + .form-inline {
+    margin-top: 0.5em;
+}
+
+/* [data-role="dynamic-fields"] > .form-inline [data-role="add"] {
+    display: none;
+}
+ */
+[data-role="dynamic-fields"] > .form-inline:last-child [data-role="add"] {
+    display: inline-block;
+}
+
+[data-role="dynamic-fields"] > .form-inline:first-child [data-role="remove"] {
+    display: inline-block;
+}
+
+/* ingredients list */
+.list-indredients {
+    height: 300px;
+    -webkit-column-count: 10;
+       -moz-column-count: 10;
+            column-count: 10;
+}
+
+.list-ingredients li {
+    display: inline-block;
+    margin-right: 15px;
+    background: rgba(255,218,0,.7);
+    padding: 3px;
+    border-radius: 10px;
+    margin: 4px;
+    color: black;
+}
+
+.list-ingredients li i {
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.list-ingredients li i:hover {
+  color:$danger;
+}
+
+.center {
+  text-align: center;
 }

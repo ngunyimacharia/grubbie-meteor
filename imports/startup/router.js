@@ -267,6 +267,32 @@ adminRoutes.route('/menu/create',{
   }
 });
 
+adminRoutes.route('/meal/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Meal_create_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+adminRoutes.route('/ingredient/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Ingredients_create_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 adminRoutes.route('/rating/admin',{
   action: function(){
     BlazeLayout.render(
