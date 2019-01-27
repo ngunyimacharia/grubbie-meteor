@@ -8,6 +8,8 @@ import './seeder.html';
 
 
 Template.Seeder_page.onCreated(function bodyOnCreated() {
+  //Log you out
+  Accounts.logout();
   this.state = new ReactiveDict();
   //Global variable for seeding status
   this.state.set('seedingStatus',false);

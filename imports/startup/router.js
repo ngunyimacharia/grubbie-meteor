@@ -50,7 +50,12 @@ FlowRouter.route('/', {
 FlowRouter.route('/logout', {
   name: 'logout',
   action() {
-    Accounts.logout();
+    Accounts.logout((err)=>{
+      if(err){
+        console.log(err);
+      }
+      FlowRouter.go("/");
+    });
   }
 });
 

@@ -22,8 +22,8 @@ export const createMenus = () => {
     let weekStop = weekStart.clone().add(5,'days');
 
     const menu = {
-      startDate: `${weekStart.year()}-${weekStart.month()}-${weekStart.date()}`,
-      endDate: `${weekStop.year()}-${weekStop.month()}-${weekStop.date()}`,
+      startDate: weekStart.format("YYYY-MM-DD"),
+      endDate: weekStop.format("YYYY-MM-DD"),
       createdAt: new Date(),
       updatedAt: new Date()
     }
@@ -38,7 +38,7 @@ export const createMenus = () => {
         mealTimes.forEach((time,ind) => {
           // create breakfast option
           const optionId = Options.insert({
-            date: `${menuday.year()}-${menuday.month()}-${menuday.date()}`,
+            date: menuday.format("YYYY-MM-DD"),
             mealtimeId: time,
             chosen: i ? true : false,
             mealCategoryId: randFromArr(mealCategories).name,
