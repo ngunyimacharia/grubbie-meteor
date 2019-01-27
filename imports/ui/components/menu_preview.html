@@ -7,8 +7,9 @@
       <div class="col-lg-5 col-md-5 col-sm-5 col-7">
         <br />
         <select class="date-select pull-right">
-          <option>Nov 12, 2018 - Nov 16, 2018</option>
-          <option>Nov 19, 2018 - Nov 23, 2018</option>
+          {{#each menus}}
+          <option>{{readableDate}}</option>
+          {{/each}}
         </select>
       </div>
     </div>

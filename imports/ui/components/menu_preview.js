@@ -5,6 +5,7 @@ import './menu_preview.html';
 
 import { Menus } from '../../api/menus.js';
 import { Options } from "../../api/options"
+import { read } from 'fs';
 
 const weekStart = moment().startOf('isoWeek');
 
@@ -15,13 +16,9 @@ Template.Menu_preview.onCreated(function bodyOnCreated() {
 
 Template.Menu_preview.rendered = () => {
     const dateString = `${weekStart.year()}-${weekStart.month()}-${weekStart.date()}`;
-    console.log(dateString)
     const menu = Menus.find({ startDate: dateString }).fetch()[0];
-    console.log(menu);
-
     if (typeof menu != "undefined") {
         const options = Options.find({ menuId: menu._id, chosen: true }).fetch();
-        console.log(options);
     }
 }
 
@@ -87,6 +84,17 @@ Template.Menu_preview.helpers({
             supperOptions[ind].meal = mealString;
         });
         return supperOptions;
+    },
+    menus() {
+        // This helper returns the date in human readable format
+        const menus = Menus.find().fetch();
+        menus.forEach((menu, ind) => {
+            const readableDate = moment(menu.startDate, "YYYY-MM-DD").format("MMM, Do YYYY");
+            (menus[ind]).readableDate = readableDate;
+            console.log(menu.startDate);
+            console.log(menu.readableDate);
+        });
+        return menus;
     }
 })
 
