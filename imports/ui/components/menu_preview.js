@@ -1,13 +1,31 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import moment from 'moment';
-import './menu_preview.html';
+import { ReactiveVar } from 'meteor/reactive-var';
 
+import './menu_preview.html';
 import { Menus } from '../../api/menus.js';
 import { Options } from "../../api/options"
-import { read } from 'fs';
 
-const weekStart = moment().startOf('isoWeek');
+let weekStart = moment().startOf('isoWeek');
+const weekMenu = new ReactiveVar([]);
+
+const createDays = () => {
+    let newMenu = [];
+    const dayLabels = ['Sunday', 'Monday', 'Tuesday', 'Wednesdy', 'Thursday', 'Friday', 'Saturday'];
+
+    for (let i = 0; i < 5; i++) {
+        let menuday = weekStart.clone().add(i, 'days');
+        const label = dayLabels[menuday.day()];
+        newMenu.push(
+            {
+                date: menuday.format("YYYY-MM-DD"),
+                label
+            }
+        )
+    }
+    weekMenu.set(newMenu);
+}
 
 Template.Menu_preview.onCreated(function bodyOnCreated() {
     Meteor.subscribe('menus');
@@ -15,34 +33,22 @@ Template.Menu_preview.onCreated(function bodyOnCreated() {
 })
 
 Template.Menu_preview.rendered = () => {
-    const dateString = `${weekStart.year()}-${weekStart.month()}-${weekStart.date()}`;
+    const dateString = weekStart.format("YYYY-MM-DD");
     const menu = Menus.find({ startDate: dateString }).fetch()[0];
     if (typeof menu != "undefined") {
         const options = Options.find({ menuId: menu._id, chosen: true }).fetch();
     }
+    createDays();
 }
 
 Template.Menu_preview.helpers({
     days() {
         // This helper populates the days of each week in the template
-        let weekMenu = [];
-        const dayLabels = ['Sunday', 'Monday', 'Tuesday', 'Wednesdy', 'Thursday', 'Friday', 'Saturday'];
-
-        for (let i = 0; i < 5; i++) {
-            let menuday = weekStart.clone().add(i, 'days');
-            const label = dayLabels[menuday.day()];
-            weekMenu.push(
-                {
-                    date: `${menuday.year()}-${menuday.month()}-${menuday.date()}`,
-                    label
-                }
-            )
-        }
-        return weekMenu;
+        return weekMenu.get();
     },
     breakfast(dateString) {
         // This helper populates the chosen breakfast meals
-        const breakfastOptions = Options.find({ date: dateString, mealtimeId: "Breakfast",chosen: true }).fetch();
+        const breakfastOptions = Options.find({ date: dateString, mealtimeId: "Breakfast", chosen: true }).fetch();
         breakfastOptions.forEach((option, ind) => {
             //Get meals
             const meals = Options.getMeals(option._id);
@@ -57,7 +63,7 @@ Template.Menu_preview.helpers({
     },
     lunch(dateString) {
         // This helper populates the chosen lunch meals
-        const lunchOptions = Options.find({ date: dateString, mealtimeId: "Lunch",chosen: true }).fetch();
+        const lunchOptions = Options.find({ date: dateString, mealtimeId: "Lunch", chosen: true }).fetch();
         lunchOptions.forEach((option, ind) => {
             //Get meals
             const meals = Options.getMeals(option._id);
@@ -72,7 +78,7 @@ Template.Menu_preview.helpers({
     },
     supper(dateString) {
         // This helper populates the chosen lunch meals
-        const supperOptions = Options.find({ date: dateString, mealtimeId: "Supper",chosen: true }).fetch();
+        const supperOptions = Options.find({ date: dateString, mealtimeId: "Supper", chosen: true }).fetch();
         supperOptions.forEach((option, ind) => {
             //Get meals
             const meals = Options.getMeals(option._id);
@@ -91,10 +97,16 @@ Template.Menu_preview.helpers({
         menus.forEach((menu, ind) => {
             const readableDate = moment(menu.startDate, "YYYY-MM-DD").format("MMM, Do YYYY");
             (menus[ind]).readableDate = readableDate;
-            console.log(menu.startDate);
-            console.log(menu.readableDate);
         });
         return menus;
+    }
+})
+
+Template.Menu_preview.events({
+    'change .date-select'(event) {
+        const target = event.target;
+        weekStart = moment(target.value, "MMM, Do YYYY");
+        createDays();
     }
 })
 
