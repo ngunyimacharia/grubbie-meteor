@@ -50,7 +50,7 @@ const optionalSeeds = () => {
   //Seed Votes
   createVotes(100);
   //Seed Ratings
-  createRatings(100);
+  createRatings(20);
   //Seed notifications
   createNotifications(50);
 }

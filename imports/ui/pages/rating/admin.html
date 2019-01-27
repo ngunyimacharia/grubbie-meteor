@@ -4,178 +4,113 @@
       <div class = "col-lg-3 col-md-3 col-sm-3 col-12 left-menu">
         <ul>
           <li>
-            <div class="row">
-              <div class="col-3">
-                <br/>
-                &nbsp;&nbsp;<label>Period:</label>
-              </div>
-              <div class="col-9">
-                <input type="text" class="form-control" id="my-datepicker">
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="clearfix"><br/><br/><br/></div>
-            <!-- <div class="row text-right">
-              <div class="col-lg-12">
-                <label>Filter:</label>
-                <br/>
-                <select>
-                  <option>Highest to Lowest</option>
-                  <option>Lowest to Highest</option>
-                </select>
-              </div>
-            </div> -->
-          </li>
-          <a href="#" class="active"><li>
-            Jollof rice + Grilled meat
+            <!-- <div class="row">
+            <div class="col-3">
             <br/>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <br/>
-            167 Reviews
-          </li></a>
-          <a href="#"><li>
-            Banku + Tilapia Fish Stew
-            <br/>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-alt"></i>
-            <i class="fa fa-star"></i>
-            <br/>
-            67 Reviews
-          </li></a>
-          <a href="#"><li>
-            Mukimu + Goat meat
-            <br/>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-alt"></i>
-            <i class="fa fa-star"></i>
-            <br/>
-            67 Reviews
-          </li></a>
-          <a href="#"><li>
-            Chapati + Grilled chicken salad
-            <br/>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-alt"></i>
-            <i class="fa fa-star"></i>
-            <br/>
-            67 Reviews
-          </li></a>
-        </ul>
-
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-9 col-12 right-main">
-        <div class="top-options">
-
+            &nbsp;&nbsp;<label>Period:</label>
+          </div>
+          <div class="col-9">
+          <input type="text" class="form-control" id="my-datepicker">
         </div>
-        <div class="clearfix"><br/></div>
+      </div> -->
+    </li>
+    <li>
+      <div class="clearfix"><br/><br/><br/></div>
+      <!-- <div class="row text-right">
+      <div class="col-lg-12">
+      <label>Filter:</label>
+      <br/>
+      <select>
+      <option>Highest to Lowest</option>
+      <option>Lowest to Highest</option>
+    </select>
+  </div>
+</div> -->
+</li>
+{{#each Meals}}
+{{#if activeMeal meal}}
+<a href="#" class="active"><li>
+  <span class="meal-title">{{meal}}</span>
+  <br/>
+  {{#each stars avgRating}}
+  {{#if yellow}}
+  <i class="fa fa-star yellow"></i>
+  {{else}}
+  <i class="fa fa-star"></i>
+  {{/if}}
+  {{/each}}
+  <br/>
+  {{noRatings}} Reviews
+</li>
+</a>
+{{else}}
+<a href="#"><li>
+  <span class="meal-title">{{meal}}</span>
+  <br/>
+  {{#each stars avgRating}}
+  {{#if yellow}}
+  <i class="fa fa-star yellow"></i>
+  {{else}}
+  <i class="fa fa-star"></i>
+  {{/if}}
+  {{/each}}
+  <br/>
+  {{noRatings}} Reviews
+</li>
+</a>
+{{/if}}
+{{/each}}
+</ul>
 
-        <div class="clearfix"><br/></div>
-        <div class="main-section">
-          <div class="cont">
-            <div class="body">
-              <div id="ratings-canvas-cont">
-                <canvas id="canvas" style="width:150px;height:70px" ></canvas>
-              </div>
-              <div class="row text-right">
-                <div class="col-lg-12">
-                  <label>Filter:</label>
-                  <br/>
-                  <select>
-                    <option>Worst to Best</option>
-                    <option>Best to Worst</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <p>
-                  "I hate jollof"
-                </p>
-                <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </p>
-              </div>
-              <div>
-                <p>
-                  "Too spicy, please reduce the spices especially pepper"
-                </p>
-                <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </p>
-              </div>
-              <div>
-                <p>
-                  "Nigerian jollof tastes better"
-                </p>
-                <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </p>
-              </div>
-              <div>
-                <p>
-                  "I hate jollof"
-                </p>
-                <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </p>
-              </div>
-              <div>
-                <p>
-                  "Too spicy, please reduce the spices especially pepper"
-                </p>
-                <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </p>
-              </div>
-              <div>
-                <p>
-                  "Nigerian jollof tastes better"
-                </p>
-                <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </p>
-              </div>
-            </div>
+</div>
+<div class="col-lg-9 col-md-9 col-sm-9 col-12 right-main">
+  <div class="top-options">
+
+  </div>
+  <div class="clearfix"><br/></div>
+
+  <div class="clearfix"><br/></div>
+  <div class="main-section">
+    <div class="cont">
+      <div class="body">
+        <div id="ratings-canvas-cont">
+          {{> highchartsHelper chartId="test" chartWidth="100%" charHeight="100%" chartObject=topGenresChart}}
+        </div>
+        <div class="row text-right">
+          <div class="col-lg-12">
+            <label>Filter:</label>
+            <br/>
+            <select class="rating-order">
+              <option value="-1">Best to Worst</option>
+              <option value="1">Worst to Best</option>
+            </select>
           </div>
         </div>
+        <div class="ratings-list">
 
+          {{#navybitsPagination data=ratings}}
+          <div class="rating">
+            <p>
+              {{comments}}
+            </p>
+            <p>
+              {{#each stars rating}}
+              {{#if yellow}}
+              <i class="fa fa-star yellow"></i>
+              {{else}}
+              <i class="fa fa-star"></i>
+              {{/if}}
+              {{/each}}
+            </p>
+          </div>
+          {{/navybitsPagination}}
+        </div>
       </div>
     </div>
   </div>
-  <script src="/js/ratings-graph.js"></script>
+
+</div>
+</div>
+</div>
 
 </template>
