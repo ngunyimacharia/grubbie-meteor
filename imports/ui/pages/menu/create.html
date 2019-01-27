@@ -2,23 +2,23 @@
 
   <div id="content-container">
     <div class="create-menu">
-      <div class="clearfix"><br/></div>
+      <div class="clearfix"><br /></div>
       <div class="row">
         <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-          <br/>
+          <br />
           <div class="row">
-            <div class = "col-lg-7 col-md-7 col-sm-7 col-5">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-5">
               <h2>Create Menu</h2>
             </div>
-            <div class = "col-lg-4 col-md-4 col-sm-4 col-7">
-              <br/>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-7">
+              <br />
               <select class="date-select">
                 <option>Nov 12, 2018 - Nov 16, 2018</option>
                 <option>Nov 19, 2018 - Nov 23, 2018</option>
               </select>
             </div>
           </div>
-          <hr/>
+          <hr />
           {{> days}}
           <div class="bls">
             <button class="breakfast">Breakfast</button>
@@ -29,7 +29,7 @@
             <br />
             <br />
             <h4 class="text-center">Choose meal options:</h4>
-            <br/>
+            <br />
             {{#each carbs}}
             <div class="row">
               <div class="col-lg-1 col-md-1 col-sm-1 col-1">
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-          
+          {{>Menu_preview}}
         </div>
       </div>
     </div>

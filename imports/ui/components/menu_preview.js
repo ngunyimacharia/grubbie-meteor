@@ -6,6 +6,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './menu_preview.html';
 import { Menus } from '../../api/menus.js';
 import { Options } from "../../api/options"
+import { toUnicode } from 'punycode';
 
 let weekStart = moment().startOf('isoWeek');
 const weekMenu = new ReactiveVar([]);
@@ -97,6 +98,10 @@ Template.Menu_preview.helpers({
         menus.forEach((menu, ind) => {
             const readableDate = moment(menu.startDate, "YYYY-MM-DD").format("MMM, Do YYYY");
             (menus[ind]).readableDate = readableDate;
+            const thisWeek = moment().startOf('isoWeek').format("MMM, Do YYYY");
+            if (thisWeek == readableDate) {
+                (menus[ind]).default = true;
+            }
         });
         return menus;
     }
