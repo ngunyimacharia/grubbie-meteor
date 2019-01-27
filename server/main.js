@@ -21,6 +21,11 @@ import "../imports/api/votes.js";
 import '../imports/seeds/seeder.js';
 
 Meteor.startup(() => {
-  // code to run on server at startup
+  // setting up email environment
+  process.env.MAIL_URL = 'smtp://YOUR_EMAIL:YOUR_PASSWORD@SMTP_SERVER:587';
+
+  Accounts.urls.resetPassword = function (token) {
+    return Meteor.absoluteUrl('reset-password/' + token);
+  }
 
 });

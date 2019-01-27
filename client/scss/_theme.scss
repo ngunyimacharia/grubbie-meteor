@@ -131,7 +131,7 @@ hr{
   color: #fff;
   height: auto !important;
   border-radius: 25px;
-  width: 300px !important;
+  width: 100px !important;
 }
 
 .btn-success{
@@ -437,6 +437,7 @@ hr{
             .hv{
               opacity: 0;
               transition: opacity 0.4s;
+              text-align: center
             }
           }
 
@@ -631,4 +632,30 @@ ul.navy-pagination{
 .pager .disabled > span {
   color: #777777;
   cursor: not-allowed;
+}
+.searchbox {
+    background: none;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 7px 20px;
+    width: 100%;
+}
+.searchbox::placeholder {
+  color:white
+}
+.searchbox:focus {
+  outline: none;
+}
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
