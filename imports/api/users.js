@@ -32,54 +32,15 @@ if (Meteor.isServer) {
 
 
 Meteor.methods({
-    'user.insert'(firstname, lastname, email, gender, country, usertype, password) {
-        check(firstname, String);
-        check(lastname, String);
-        check(email, String);
-        check(gender, String);
-        check(country, String);
-        check(usertype, String);
-        check(password, String);
+    'user.update'(id) {
+        check(id, String);
 
-        // Make sure the user is logged in before inserting a task
-        /* if (!this.userId) {
-            throw new Meteor.Error('not-authorized');
-        } */
-
-        Users.insert({
-            firstname,
-            lastname,
-            email,
-            gender,
-            country,
-            usertype,
-            password,
-            image: '',
-            approved: false,
-            createdAt: new Date(),
-            updatedAt: ''
-        });
+        Meteor.users.update({_id: id}, { $set: { text: text } });
     },
-    'user.update'(taskId, text) {
-        check(text, String);
+    'user.remove'(id) {
+        check(id, String);
 
-        if (!this.userId) {
-            throw new Meteor.Error('not-authorized');
-        }
-
-        Users.update(taskId, { $set: { text: text } });
-    },
-    'user.remove'(taskId) {
-        check(taskId, String);
-
-        const task = Tasks.findOne(taskId);
-
-        if (task.private && task.owner !== this.userId) {
-            // If the task is private, make sure only the owner can delete it
-            throw new Meteor.Error('not-authorized');
-        }
-
-        Users.remove(taskId);
+        Meteor.user.remove({_id: id });
     },
     'user.activate'(id) {
         check(id, String);

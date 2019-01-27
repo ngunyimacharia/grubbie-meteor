@@ -2786,6 +2786,35 @@ ul.navy-pagination li.active a {
   cursor: not-allowed;
 }
 
+.searchbox {
+  background: none;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid white;
+  padding: 7px 20px;
+  width: 100%;
+}
+
+.searchbox::placeholder {
+  color: white;
+}
+
+.searchbox:focus {
+  outline: none;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+.no-gutters > .col,
+.no-gutters > [class*=col-] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 @media only screen and (min-width: 768px) {
   header {
     max-height: 12vh;

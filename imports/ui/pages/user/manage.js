@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
 import { Meteor } from 'meteor/meteor';
 
 import './manage.html';
@@ -43,7 +42,7 @@ Template.User_manage_page.helpers({
     var nextPage = morePages() ? currentPage() + 1 : currentPage();
 
     return currentPath().split(':')[0] + nextPage;
-  }
+  },
 });
 
 Template.User_manage_page.events({
