@@ -31,7 +31,7 @@ let isUserLoggedIn = (context, redirect) => {
 }
 
 let isAdminLoggedIn = (context, redirect) => {
-  if (!Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
+  if (!Roles.userIsInRole(Meteor.user(), ['Admin'])) {
     FlowRouter.go('/');
   }
 }
@@ -86,6 +86,14 @@ FlowRouter.route('/forgot-password', {
   }
 });
 
+FlowRouter.route('/reset-password/:token', {
+  triggersEnter: [notLoggedIn],
+  name: 'resetpassword',
+  action: function () {
+    BlazeLayout.render("App_body", { main: "User_reset_password_page" });
+  }
+});
+
 // User routes
 let userRoutes = FlowRouter.group({
   prefix: '/user',
@@ -101,6 +109,19 @@ userRoutes.route('/view',{
       {
         header: 'Header',
         main: 'User_view_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+userRoutes.route('/view_edit',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'User_view_edit_page',
         footer: 'Footer'
       }
     );

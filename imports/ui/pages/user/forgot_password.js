@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { Accounts } from "meteor/accounts-base";
-import { ReactiveVar } from 'meteor/reactive-var';
 
 import './forgot_password.html';
 
@@ -31,7 +30,7 @@ Template.User_forgot_password_page.events({
                     type: "success"
                 });
             }
-        }); 
+        });
     } 
 }); 
 

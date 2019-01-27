@@ -28,15 +28,13 @@
         </div>
       </div>
       <div class="col-lg-10 col-md-10 col-sm-9 col-12 right-main">
-        <div class="row top-actions">
-          <div class="col-lg-7 col-md-6 col-sm-4 col-12 select">
-            <input type="checkbox" /> Select All
+        <div class="top-actions">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-8 pull-left no-gutters">
+            <input class="searchbox" type="text" name="search" placeholder="Enter to search ..."/>
           </div>
-          <div class="col-lg-5 col-md-6 col-sm-8 col-12">
-            <div class="row">
-              <button class="btn-success col-lg-3 col-md-3 col-sm-3 col-3">Activate</button>
-              <button class="btn-danger col-lg-3 col-md-4 col-sm-4  col-4">Deactivate</button>
-            </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4 pull-right no-gutters">
+            <button class="btn-danger pull-right" id="bulk-deactivate">Deactivate</button>
+            <button class="btn-success pull-right" id="bulk-activate">Activate</button>
           </div>
         </div>
         <div class="clearfix"><br/></div>
@@ -46,7 +44,7 @@
             <div class="headers">
               <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                  &nbsp;
+                  <input type="checkbox" id="bulkselect"/>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-3">
                   Name
@@ -58,15 +56,16 @@
                   Country
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-">
-                  Status
+                  Activate/Deativate
                 </div>
               </div>
             </div>
             <div class="body">
+            {{#if Template.subscriptionsReady}}
               {{#each users}}
               <div class="list lg">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                  <input type="checkbox" />
+                  <input type="checkbox" id="checkbox"/>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-3">
                   {{ profile.firstName }} {{ profile.lastName }}
@@ -83,22 +82,19 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-12 hv">
                   {{#if profile.status }}
-                  <a class="circ-warning" href="#">
+                  <a class="circ-warning" href="#" id="deactivate">
                     <i class="fa fa-pause fa-xs"></i>
                   </a>
                   {{ else }}
-                  <a class="circ-success" href="#">
+                  <a class="circ-success" href="#" id="activate">
                     <i class="fa fa-play fa-xs"></i>
                   </a>
                   {{/if}}
-                  <a class="circ-danger" href="#">
-                    <i class="fa fa-times fa-xs"></i>
-                  </a>
                 </div>
               </div>
               <div class="row xs">
                 <div class="col-1">
-                  <input type="checkbox" />
+                  <input type="checkbox" id="checkbox" />
                 </div>
                 <div class = "col-9">
                   <div class="data">
@@ -115,22 +111,22 @@
                     <div class="clearfix"></div>
                     <div class="actions">
                       {{#if profile.status }}
-                      <a class="circ-warning" href="#">
+                      <a class="circ-warning" href="#" id="deactivate">
                         <i class="fa fa-pause fa-xs"></i>
                       </a>
                       {{else}}
-                      <a class="circ-success" href="#">
+                      <a class="circ-success" href="#" id="activate">
                         <i class="fa fa-play fa-xs"></i>
                       </a>
                       {{/if}}
-                      <a class="circ-danger" href="#">
-                        <i class="fa fa-times fa-xs"></i>
-                      </a>
                     </div>
                   </div>
                 </div>
               </div>
               {{/each}}
+              {{else}}
+                <span>Loading ...</span>
+              {{/if}}
             </div>
           </div>
         </div>

@@ -1,10 +1,12 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Menus } from '../../../api/menus.js';
 
 import './create.html';
 
 Template.Menu_create_page.helpers({
   carbs(){
+    //return [Menus.find().fetch()]
     return ["Jollof Rice","Fried Yam","White Rice","Potatoe Chips","Eba","Plantain","Fufu","Banku","Amala","Acheke","Chapati","Mukimu","Githeri","Akuoroba","Viazi","Semovita","Wache","Kenke"];
   },
 
@@ -41,4 +43,10 @@ const showAdds = function(event){
       add.style.display = "none";
     });
   }
+}
+
+function changeColorOnClick() {
+document.getElementById("create-menu").addEventListener("click", function(){
+  console.log("Beki clicks")
+});
 }

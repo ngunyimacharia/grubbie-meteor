@@ -29,6 +29,9 @@ accounts-base
 momentjs:moment
 navybits:pagination
 session
+meteortoys:allthings
+tmeasday:publish-counts
 rajit:bootstrap3-datepicker
 jquery
 maazalik:highcharts
+email
