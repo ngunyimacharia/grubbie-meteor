@@ -15,7 +15,7 @@ let ratingOrder = -1;
 const ratings = new ReactiveVar([]);
 
 const loadMeals = () => {
-  const dateString = `${date.get().year()}-${date.get().month()}-${date.get().date()}`;
+  const dateString = date.get().format("YYYY-MM-DD");
   const newOptions = Options.find({date:dateString,chosen:true}).fetch();
   newOptions.forEach((option,ind)=>{
     //Get meals

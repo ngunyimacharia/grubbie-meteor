@@ -11,7 +11,7 @@ let date = moment();
 let options = new ReactiveVar([]);
 
 const loadMeals = () => {
-  const dateString = `${date.year()}-${date.month()}-${date.date()}`;
+  const dateString = date.format("YYYY-MM-DD");
   const newOptions = Options.find({date:dateString,chosen:true}).fetch();
   newOptions.forEach((option,ind)=>{
     //Get meals
