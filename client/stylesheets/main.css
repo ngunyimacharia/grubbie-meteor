@@ -2815,6 +2815,16 @@ ul.navy-pagination li.active a {
   padding-left: 0;
 }
 
+.datetimepicker {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-weight: bolder;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 768px) {
   header {
     max-height: 12vh;
@@ -3076,7 +3086,7 @@ blockquote {
   border: 1px solid white;
   border-radius: 15px;
 }
-.create-menu button:active {
+.create-menu button:hover {
   background: linear-gradient(#CAAD08, #B85A3F);
 }
 .create-menu .btn-success {

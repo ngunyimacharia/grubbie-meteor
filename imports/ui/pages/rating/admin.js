@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Session } from 'meteor/session';
 import { MealTimes } from '../../../api/mealtimes.js';
 import { Options } from '../../../api/options.js';
 import { Ratings } from '../../../api/ratings.js';
@@ -9,15 +8,14 @@ import { Meals } from '../../../api/meals.js';
 
 import './admin.html';
 
-let date = moment().subtract(5,'days');
+let date = new ReactiveVar(moment());
 let options = new ReactiveVar([]);
 let activeMeal = new ReactiveVar("");
-let activeOption;
 let ratingOrder = -1;
 const ratings = new ReactiveVar([]);
 
 const loadMeals = () => {
-  const dateString = `${date.year()}-${date.month()}-${date.date()}`;
+  const dateString = `${date.get().year()}-${date.get().month()}-${date.get().date()}`;
   const newOptions = Options.find({date:dateString,chosen:true}).fetch();
   newOptions.forEach((option,ind)=>{
     //Get meals
@@ -31,9 +29,8 @@ const loadMeals = () => {
     });
     newOptions[ind].meal = mealString;
     //set activeMeal
-    if(!ind){
-      activeMeal.set(mealString);
-      activeOption = option._id;
+    if(!ind && activeMeal.get() == ""){
+      activeMeal.set(option._id);
     }
     //set average ratings
     newOptions[ind].avgRating = Options.getAvgRatings(option._id);
@@ -46,11 +43,11 @@ const loadMeals = () => {
 }
 
 const loadRatings = () => {
-  ratings.set( Ratings.find({optionId:activeOption},{sort:{rating: ratingOrder}}).fetch() );
+  ratings.set( Ratings.find({optionId:activeMeal.get()},{sort:{rating: ratingOrder}}).fetch() );
 }
 
 Tracker.autorun(()=>{
-  date = moment.unix(Session.get('date'));
+  Session.get('date');
   loadMeals();
 });
 
@@ -63,15 +60,16 @@ Template.Rating_admin_page.onCreated(function bodyOnCreated() {
 
 
 Template.Rating_admin_page.rendered = () => {
-
+  loadMeals();
+  $('#datetimepicker').datetimepicker();
 }
 
 Template.Rating_admin_page.helpers({
   Meals(){
     return options.get();
   },
-  activeMeal(meal){
-    return (meal === activeMeal.get()) ? true : false;
+  activeMeal(optionId){
+    return (optionId === activeMeal.get()) ? true : false;
   },
   ratings(){
     return ratings.get();
@@ -156,5 +154,19 @@ Template.Rating_admin_page.events({
   'change .rating-order':(event) => {
     ratingOrder = event.target.value;
     loadRatings();
+  },
+  'click .meal-option':(event) => {
+    let optionId;
+    if(event.target.getAttribute('data-id')){
+      optionId = event.target.getAttribute('data-id');
+    }else{
+      optionId = event.target.parentNode.getAttribute('data-id');
+    }
+    activeMeal.set(optionId);
+  },
+  'change #datetimepicker':(event)=>{
+    date.set(moment(event.target.value,"YYYY-MM-DD HH:mm"));
+    activeMeal.set("")
+    loadMeals();
   }
 });

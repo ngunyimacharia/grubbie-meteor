@@ -4,113 +4,104 @@
       <div class = "col-lg-3 col-md-3 col-sm-3 col-12 left-menu">
         <ul>
           <li>
-            <!-- <div class="row">
-            <div class="col-3">
-            <br/>
-            &nbsp;&nbsp;<label>Period:</label>
-          </div>
-          <div class="col-9">
-          <input type="text" class="form-control" id="my-datepicker">
-        </div>
-      </div> -->
-    </li>
-    <li>
-      <div class="clearfix"><br/><br/><br/></div>
-      <!-- <div class="row text-right">
-      <div class="col-lg-12">
-      <label>Filter:</label>
-      <br/>
-      <select>
-      <option>Highest to Lowest</option>
-      <option>Lowest to Highest</option>
-    </select>
-  </div>
-</div> -->
-</li>
-{{#each Meals}}
-{{#if activeMeal meal}}
-<a href="#" class="active"><li>
-  <span class="meal-title">{{meal}}</span>
-  <br/>
-  {{#each stars avgRating}}
-  {{#if yellow}}
-  <i class="fa fa-star yellow"></i>
-  {{else}}
-  <i class="fa fa-star"></i>
-  {{/if}}
-  {{/each}}
-  <br/>
-  {{noRatings}} Reviews
-</li>
-</a>
-{{else}}
-<a href="#"><li>
-  <span class="meal-title">{{meal}}</span>
-  <br/>
-  {{#each stars avgRating}}
-  {{#if yellow}}
-  <i class="fa fa-star yellow"></i>
-  {{else}}
-  <i class="fa fa-star"></i>
-  {{/if}}
-  {{/each}}
-  <br/>
-  {{noRatings}} Reviews
-</li>
-</a>
-{{/if}}
-{{/each}}
-</ul>
-
-</div>
-<div class="col-lg-9 col-md-9 col-sm-9 col-12 right-main">
-  <div class="top-options">
-
-  </div>
-  <div class="clearfix"><br/></div>
-
-  <div class="clearfix"><br/></div>
-  <div class="main-section">
-    <div class="cont">
-      <div class="body">
-        <div id="ratings-canvas-cont">
-          {{> highchartsHelper chartId="test" chartWidth="100%" charHeight="100%" chartObject=topGenresChart}}
-        </div>
-        <div class="row text-right">
-          <div class="col-lg-12">
-            <label>Filter:</label>
-            <br/>
-            <select class="rating-order">
-              <option value="-1">Best to Worst</option>
-              <option value="1">Worst to Best</option>
-            </select>
-          </div>
-        </div>
-        <div class="ratings-list">
-
-          {{#navybitsPagination data=ratings}}
-          <div class="rating">
-            <p>
-              {{comments}}
-            </p>
-            <p>
-              {{#each stars rating}}
+            <div class="row">
+              <input class="datetimepicker" id="datetimepicker" type="text" placeholder="Period" >
+            </div>
+          </li>
+          {{#if Meals}}
+          {{#each Meals}}
+          {{#if activeMeal _id}}
+          <a href="#" class="active meal-option" data-id="{{_id}}">
+            <li data-id="{{_id}}">
+              <span class="meal-title" data-id="{{_id}}">{{meal}}</span>
+              <br/>
+              {{#each stars avgRating}}
               {{#if yellow}}
-              <i class="fa fa-star yellow"></i>
+              <i class="fa fa-star yellow" data-id="{{_id}}"></i>
               {{else}}
-              <i class="fa fa-star"></i>
+              <i class="fa fa-star" data-id="{{_id}}"></i>
               {{/if}}
               {{/each}}
-            </p>
-          </div>
-          {{/navybitsPagination}}
+              <br/>
+              {{noRatings}} Reviews
+            </li>
+          </a>
+          {{else}}
+          <a href="#" class="meal-option"  data-id="{{_id}}">
+            <li data-id="{{_id}}">
+              <span class="meal-title" data-id="{{_id}}">{{meal}}</span>
+              <br/>
+              {{#each stars avgRating}}
+              {{#if yellow}}
+              <i class="fa fa-star yellow" data-id="{{_id}}"></i>
+              {{else}}
+              <i class="fa fa-star" data-id="{{_id}}"></i>
+              {{/if}}
+              {{/each}}
+              <br/>
+              {{noRatings}} Reviews
+            </li>
+          </a>
+          {{/if}}
+          {{/each}}
+          {{else}}
+          No meals available for selected date
+          {{/if}}
+        </ul>
+
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-12 right-main">
+        <div class="top-options">
+
         </div>
+        <div class="clearfix"><br/></div>
+
+        <div class="clearfix"><br/></div>
+        <div class="main-section">
+          <div class="cont">
+            <div class="body">
+              {{#if ratings}}
+              <div id="ratings-canvas-cont">
+                {{> highchartsHelper chartId="test" chartWidth="100%" charHeight="100%" chartObject=topGenresChart}}
+              </div>
+              <div class="row text-right">
+                <div class="col-lg-12">
+                  <label>Filter:</label>
+                  <br/>
+                  <select class="rating-order">
+                    <option value="-1">Best to Worst</option>
+                    <option value="1">Worst to Best</option>
+                  </select>
+                </div>
+              </div>
+              <div class="ratings-list">
+
+                {{#navybitsPagination data=ratings}}
+                <div class="rating">
+                  <p>
+                    {{comments}}
+                  </p>
+                  <p>
+                    {{#each stars rating}}
+                    {{#if yellow}}
+                    <i class="fa fa-star yellow"></i>
+                    {{else}}
+                    <i class="fa fa-star"></i>
+                    {{/if}}
+                    {{/each}}
+                  </p>
+                </div>
+                {{/navybitsPagination}}
+              </div>
+              {{else}}
+              No ratings available for selected meal
+              {{/if}}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-
-</div>
-</div>
-</div>
 
 </template>
