@@ -85,9 +85,15 @@
   color: yellow;
 
 }
+
+.fa{
+  color:white;
+}
+
 .yellow {
   color: yellow;
 }
+
 
 .ratesubmit {
   border-radius: 1px;
@@ -103,17 +109,20 @@
   display: flex;
   align-content: center;
 }
+
+
+.meal-title{
+  text-transform: capitalize;
+  font-weight: 900;
+  padding-left: 0;
+}
+
 .rate-text{
   margin-top:10px;
     padding-left: 10px;
 
   div{
     padding-left: 10px;
-  }
-  .meal-title{
-    text-transform: capitalize;
-    font-weight: 900;
-    padding-left: 0;
   }
   .future-rating{
     font-style: italic;
@@ -164,4 +173,15 @@
 
   }
 
+}
+
+.ratings-list{
+  margin: 10px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+
+  .rating{
+    margin:10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    width:100%;
+  }
 }

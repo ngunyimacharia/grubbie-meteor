@@ -42,3 +42,16 @@ Options.getMeals = (optionId) => {
 Options.getRating = (optionId) => {
   return Ratings.find({userId:Meteor.userId(),optionId}).fetch()[0];
 }
+
+Options.getAvgRatings = (optionId) => {
+  const ratings = Ratings.find({optionId}).fetch();
+  let totalRating = 0;
+  ratings.forEach((rating,index)=>{
+    totalRating += rating.rating;
+  });
+  return Math.round(totalRating / ratings.length);
+}
+
+Options.getNoRatings = (optionId) => {
+  return Ratings.find({optionId}).count();
+}

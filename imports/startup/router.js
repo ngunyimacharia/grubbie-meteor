@@ -50,7 +50,12 @@ FlowRouter.route('/', {
 FlowRouter.route('/logout', {
   name: 'logout',
   action() {
-    Accounts.logout();
+    Accounts.logout((err)=>{
+      if(err){
+        console.log(err);
+      }
+      FlowRouter.go("/");
+    });
   }
 });
 
@@ -204,6 +209,20 @@ const adminRoutes = FlowRouter.group({
   name: 'admin',
   triggersEnter: [isAdminLoggedIn],
 });
+
+adminRoutes.route('/user/view', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'User_view_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 
 adminRoutes.route('/user/view_edit',{
   action: function(){

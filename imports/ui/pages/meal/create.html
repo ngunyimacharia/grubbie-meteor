@@ -1,0 +1,53 @@
+<template name="Meal_create_page">  
+    <h1>Create Meal</h1>
+    <div class="container">
+        <div id="content-container">
+            <form>
+                <div class="form-group">
+                    <input name="mealName" type="text" class="form-control" id="mealname" placeholder="Meal Name"/>
+                </div>
+                <div class="form-group">
+                    <input name="mealDesc" type="textarea" class="form-control" id="mealdesc" placeholder="Meal Description"/>
+                </div>
+                <div class="form-group">
+                    <select name="mealCountry" id="mealcountry" class="form-control">
+                        {{#each countries }}
+                            <option value="{{ _id }}">{{ country }}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="mealCategory" id="mealcategory" class="form-control">
+                        {{#each categories }}
+                            <option value="{{ _id }}">{{ name }}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <!--<div class="form-group">
+                    <input name="mealPhoto" type="file" class="form-control" id="mealphoto"/>
+                </div>-->
+                <div class="clearfix"></div>
+                <h2>Ingredients</h2>
+                <div class="control-group" id="fields" data-role="dynamic-fields">
+                    <div class="input-group form-inline" id="field-value">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-danger-secondary" type="button" data-role="remove"><span class="fa fa-minus"></span></button>
+                        </div>
+                        <select class="custom-select" id="ingredients">
+                            <option selected>Choose...</option>
+                            {{#each ingredients }}
+                                <option value="{{ name }}">{{ name }}</option>
+                            {{/each}}
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" data-role="add"><span class="fa fa-plus"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+                <div class="clearfix"></div>
+                <button name="submit" type="submit" class="btn btn-primary btn-block no-gutter">Create Meal</button>
+            </form>
+        </div> 
+    </div>
+</template>

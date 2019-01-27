@@ -1,0 +1,48 @@
+<template name="Ingredients_create_page">
+    <div class="container">    
+        <div id="content-container">
+            <div class="row">
+                <div class="col-6">
+                    <form class="new-ingredient">
+                        <div class="form-group">
+                            <input name="ingredientName" type="text" class="form-control" id="ingredientname" placeholder="Ingredient Name"/>
+                        </div>
+                        <br/><br/>
+                        <div class="clearfix"></div>
+                        <button name="submit" type="submit" class="btn btn-primary btn-block no-gutter">Create Ingredient</button>
+                    </form> 
+
+            
+                    <div>
+                        <h3 class="center">Ingredients List</h3>
+                        <ul class="list-ingredients">
+                            {{#each ingredients}}
+                                <li>{{ name }}<i class="fa fa-minus-circle" id="ingredient-delete"></i></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <form class="new-mealcategoryname">
+                        <div class="form-group">
+                            <input name="categoryName" type="text" class="form-control" id="mealcategoryname" placeholder="Meal Category Name"/>
+                        </div>
+                        <br/><br/>
+                        <div class="clearfix"></div>
+                        <button name="submit" type="submit" class="btn btn-primary btn-block no-gutter">Create Meal Category</button>
+                    </form> 
+
+            
+                    <div>
+                        <h3 class="center">Meal Categories</h3>
+                        <ul class="list-ingredients">
+                            {{#each category}}
+                                <li>{{ name }}<i class="fa fa-minus-circle" id="mealcategory-delete"></i></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
