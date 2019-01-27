@@ -18,7 +18,7 @@ const loadMeals = () => {
     const meals = Options.getMeals(option._id);
     let mealString = "";
     meals.forEach((meal,ind)=>{
-      if(ind){ mealString += " ,"; }
+      if(ind){ mealString += " + "; }
       mealString += meal.name;
     });
     newOptions[ind].meal = mealString;

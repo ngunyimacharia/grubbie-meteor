@@ -29,10 +29,9 @@ const adminLinks = [
         notifications: true
     },
     {
-        href: "/logout",
-        icon: "fa fa-sign-out",
-        title: "Log Out",
-        notifications: true
+        href: "/user/view",
+        icon: "fa fa-user",
+        title: "Profile"
     }
 ];
 

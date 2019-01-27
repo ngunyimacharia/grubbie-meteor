@@ -10,17 +10,20 @@ export const createRatings = (num) => {
 
   //Clear ingredients
   Ratings.remove({});
-  //Add ingredients
-  for(let i=0 ; i<num ; i++){
-    Ratings.insert({
-      rating: casual.integer(1,5),
-      comments: casual.sentence,
-      optionId: randFromArr(options)._id,
-      userId: randFromArr(users)._id,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    });
-  }
+  //Add ratings to all selected options
+  options.forEach((option,index)=>{
+    //Add ratings for each chosen option
+    for(let i=0 ; i<num ; i++){
+      Ratings.insert({
+        rating: casual.integer(0,5),
+        comments: casual.sentence,
+        optionId: option._id,
+        userId: randFromArr(users)._id,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+    }
+  });
 }
 
 
