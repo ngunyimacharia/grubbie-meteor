@@ -1,13 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Menus } from './menus';
  
 export const Option = new Mongo.Collection('menu');
  
 if (Meteor.isServer) {
     // This code only runs on the server
     // Only publish tasks that are public or belong to the current user
-
+    Meteor.publish('menus',function(){
+        return Menus.find({});
+    });
 
    
 Meteor.methods({
