@@ -4,19 +4,23 @@ import {Mongo} from 'meteor/mongo';
 
 export const Ratings = new Mongo.Collection("ratings");
 
-  Meteor.startup(function () {
-    // code to run on server at startup
+if (Meteor.isServer) {
+
+  Meteor.publish('ratings', function () {
+    return Ratings.find({});
   });
 
 
+}
+
   Meteor.methods({
-    'rating.insert'(rating, comments, menuoption_id) {
+    'rating.insert'(rating, comments, optionId) {
 
       Ratings.insert({
-        rating,
-        // user_id,
-        comments,
-        menuoption_id,
+        rating:rating,
+        userId:Meteor.userId(),
+        comments:comments,
+        optionId:optionId,
         createdAt: new Date()
       })
     }

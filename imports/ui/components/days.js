@@ -18,7 +18,7 @@ for(let i=0;i<5;i++){
   const label = dayLabels[day.day()];
   const dayObj = {
     day: label,
-    date:moment
+    date:day
   }
   days.push(dayObj);
 }
@@ -29,14 +29,18 @@ const setDate = (activeDay) => {
   active.set(activeDay);
   days.forEach((day,ind)=>{
     if(day.day == activeDay){
-      Session.set('date',day.date);
+      Session.set('date',day.date.unix());
     }
   });
 };
 
 
 Template.days.rendered = () => {
-  setDate(dayLabels[today.day()]);
+  if(today.day() > 0 && today.day() < 6){
+    setDate(dayLabels[today.day()]);
+  }else{
+    setDate(dayLabels[5]);
+  }
 };
 
 Template.days.helpers({

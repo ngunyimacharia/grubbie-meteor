@@ -28,7 +28,8 @@ kevohagan:sweetalert
 accounts-base
 momentjs:moment
 navybits:pagination
-manuel:reactivearray
 session
 meteortoys:allthings
 tmeasday:publish-counts
+rajit:bootstrap3-datepicker
+jquery
