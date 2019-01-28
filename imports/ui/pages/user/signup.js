@@ -39,6 +39,8 @@ Template.User_signup_page.events({
             gender = event.target.gender.value,
             country = event.target.country.value,
             userType = event.target.userType.value,
+            preference = event.target.preference.value,
+            allergies = event.target.allergies.value,
             password = event.target.password.value,
             confirmPassword = event.target.confirmPassword.value;
 
@@ -79,6 +81,8 @@ Template.User_signup_page.events({
                 country: country,
                 userType: userType,
                 userRole: userRole,
+                preference: preference,
+                allergies: allergies,
                 password: password,
                 status: "false",
             }, function (error) {

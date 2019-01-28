@@ -11,3 +11,18 @@ if (Meteor.isServer) {
   });
 
 }
+
+Meteor.methods({
+  //This method creates a menu item for a specific week. menuID - week and year.
+  'menu.create'(start, end) {
+    check(start, String);
+    check(end, String);
+
+    Menus.insert({
+      startDate: start,
+      endDate: end,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+  }
+});
