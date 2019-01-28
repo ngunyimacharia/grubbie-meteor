@@ -14,23 +14,29 @@
     <div class="clearfix"><br/></div>
     <div class="clearfix"><br/></div>
     <div class="rounded-container">
+      {{#if Meals}}
       {{#each Meals}}
       <div class="rate-wrapper">
         <div class="rounded-image">
         </div>
 
         <div class="rate-text">  <!-- <br/><br/>Tea and Bread <br/> -->
-            <div class="meal-title">{{meal}}</div>
-            {{#if future}}
-              <div class="future-rating"><br/>Rating not yet available</div>
-            {{else}}
-              {{> stars optionId=_id rating=rating comments=comments}}
-            {{/if}}
+          <div class="meal-title">{{meal}}</div>
+          {{#if future}}
+          <div class="future-rating"><br/>Rating not yet available</div>
+          {{else}}
+          {{> stars optionId=_id rating=rating comments=comments}}
+          {{/if}}
         </div>
 
-          <!-- <input type="text" name="" id="" value="Wonderful meal!" disabled> -->
+        <!-- <input type="text" name="" id="" value="Wonderful meal!" disabled> -->
       </div>
-    {{/each}}
+      {{/each}}
+      {{else}}
+      <div class="container">
+          <div class="text-center">Rating not yet available</div>
+      </div>
+      {{/if}}
     </div>
   </div>
 </template>

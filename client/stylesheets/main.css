@@ -9421,6 +9421,7 @@ body {
   font-family: "Montserrat", sans-serif;
   top: 0;
   clear: both;
+  background: transparent;
 }
 body #content-container {
   width: auto;

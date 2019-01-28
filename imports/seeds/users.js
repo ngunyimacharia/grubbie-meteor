@@ -40,7 +40,7 @@ export const createUsers = (num) => {
 
   }
 
-  
+
   //Create normal user
   Accounts.createUser({
     email: 'user@meltwater.org',
@@ -52,7 +52,7 @@ export const createUsers = (num) => {
     userType:randFromArr(types).type,
     userRole: "User",
     password: 'password',
-    status: "Deactivated",
+    status: true,
   });
 
   //Create staff user
@@ -66,7 +66,7 @@ export const createUsers = (num) => {
     userType:randFromArr(types).type,
     userRole: "Staff",
     password: 'password',
-    status: "Deactivated",
+    status: true,
   });
 
   //Create admin user
@@ -80,7 +80,7 @@ export const createUsers = (num) => {
     userType:randFromArr(types).type,
     userRole: "Admin",
     password: 'password',
-    status: "true",
+    status: true,
   });
 }
 
