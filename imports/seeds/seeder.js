@@ -40,7 +40,7 @@ const mandatorySeeds = () => {
 
 const optionalSeeds = () => {
   //Seed users
-  createUsers(50);
+  createUsers(10);
   //Seed ingredients
   createIngredients(50);
   //Seed meals
