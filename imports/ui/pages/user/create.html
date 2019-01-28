@@ -1,49 +1,60 @@
 <template name="User_create_page">
   <div class="container">
-    <form action = "/menu/view" method="POST">
-      <div class="form-group">
-        <input type = "text" name = "firstName" placeholder = "First Name" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <input type = "text" name = "lastName" placeholder = "Last Name" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <input type = "text" name = "email" placeholder = "Enter your Meltwater e-mail address" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <select name = "gender" class="form-control">
-          <option value = "Male"> Male</option>
-          <option value = "Female"> Female</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <select name="country" class="form-control">
-            {{#each countries}}
-              {{> country}}
-            {{/each}} 
-        </select>
-      </div>
-      <div class="form-group">
-        <select name="userType" class="form-control">
-            {{#each types}}
-              {{> type}}
-            {{/each}}      
-        </select>
-      </div>
-      <div class="form-group">
-        <select name="userRole" class="form-control">
-          {{>role }}    
-        </select>
-      </div>
-      <div class="form-group">
-        <input type = "password" name = "password" placeholder = "Enter your password" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <input type = "password" name = "confirmPassword" placeholder = "Confirm your password" class="form-control"/>
-      </div>
-      <br/>
-      <button class="btn btn-primary btn-block no-gutters" type="submit">Add New User</button>
-      <a href="/admin/user/manage" class="btn btn-outline-primary btn-block no-gutters">Done</a>
-    </form>
+    <div id="content-container">
+      <form action = "/menu/view" method="POST">
+        <div class="form-group">
+          <input type = "text" name = "firstName" placeholder = "First Name" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <input type = "text" name = "lastName" placeholder = "Last Name" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <input type = "text" name = "email" placeholder = "Enter your Meltwater e-mail address" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <select name = "gender" class="form-control">
+            <option value = "Male"> Male</option>
+            <option value = "Female"> Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="country" class="form-control">
+              {{#each countries}}
+                {{> country}}
+              {{/each}} 
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="userType" class="form-control">
+              {{#each types}}
+                {{> type}}
+              {{/each}}      
+          </select>
+        </div>
+        <div class="form-group">
+          <select name = "preference" class="form-control">
+            <option value = "Vegeterian"> Vegeterian</option>
+            <option value = "Vegan"> Vegan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="form-control" type = "text" name = "allergies" placeholder = "Enter user allergies comma separated"/>
+        </div>
+        <div class="form-group">
+          <select name="userRole" class="form-control">
+            {{>role }}    
+          </select>
+        </div>
+        <div class="form-group">
+          <input type = "password" name = "password" placeholder = "Enter user password" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <input type = "password" name = "confirmPassword" placeholder = "Confirm user password" class="form-control"/>
+        </div>
+        <br/>
+        <button class="btn btn-primary btn-block no-gutters" type="submit">Add New User</button>
+        <a href="/admin/user/manage" class="btn btn-outline-primary btn-block no-gutters">Done</a>
+      </form>
+    </div>
   </div>
 </template>

@@ -9,6 +9,8 @@ Accounts.onCreateUser(function (options, user) {
     user.profile.gender = options.gender;
     user.profile.country = options.country;
     user.profile.userType = options.userType;
+    user.profile.preference = options.preference;
+    user.profile.allergies = options.allergies;
 
     // user status
     user.profile.status = options.status;

@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { check, Match } from "meteor/check";
+import { Accounts } from "meteor/accounts-base";
 
 const MAX_USERS = 15;
 
@@ -32,10 +33,27 @@ if (Meteor.isServer) {
 
 
 Meteor.methods({
-    'user.update'(id) {
+    'user.update'(user, id) {
         check(id, String);
 
-        Meteor.users.update({_id: id}, { $set: { text: text } });
+        console.log(id);
+        console.log(user);
+
+        
+        Meteor.users.update({ _id: id }, { $set: { 'profile.firstName': user.firstName, 'profile.lastName': user.lastName, 'profile.country': user.country, 'profile.allergies': user.allergies, 'profile.preference': user.preference, 'profile.userType': user.userType } });
+
+        // Updating password
+        Accounts.setPassword(id, user.password);
+
+
+        // removing and updating email address
+        var user = Meteor.user();
+        var oldemail = user.emails;
+        if (oldemail != null) {
+            Accounts.removeEmail(user._id, user.emails[0].address)
+        }
+        Accounts.addEmail(user._id, email);
+        Accounts.sendVerificationEmail(user._id);
     },
     'user.remove'(id) {
         check(id, String);

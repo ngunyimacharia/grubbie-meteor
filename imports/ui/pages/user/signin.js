@@ -24,7 +24,7 @@ Template.User_signin_page.events({
                     type: "error",
                 });
             } else {
-                if (Meteor.user().profile.status == true) {
+                if (Meteor.user().profile.status == 'true') {
                     // checking if user is admin
                     if (Roles.userIsInRole(Meteor.user(), ["User"])) {
                             FlowRouter.go('/user/view');
@@ -33,8 +33,8 @@ Template.User_signin_page.events({
                             FlowRouter.go("/admin/user/manage");
                     }
                 } else {
-                    Meteor.logout();
                     FlowRouter.go('/');
+                    Meteor.logout();
                     return swal({
                         title: "Account not activated",
                         text: "Please contact the Administrator to activate your account ",
