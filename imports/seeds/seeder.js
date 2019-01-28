@@ -42,13 +42,13 @@ const optionalSeeds = () => {
   //Seed users
   createUsers(10);
   //Seed ingredients
-  createIngredients(50);
+  createIngredients(10);
   //Seed meals
   createMeals(50);
   //Seed menus
   createMenus();
   //Seed Votes
-  createVotes(100);
+  createVotes();
   //Seed Ratings
   createRatings(20);
   //Seed notifications

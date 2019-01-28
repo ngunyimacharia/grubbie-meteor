@@ -22,7 +22,7 @@ const vote = (date,mealtimeId,userId) => {
   });
 }
 
-export const createVotes = (num) => {
+export const createVotes = () => {
   //Prepare data
   options = Options.find({}).fetch();
   users = Meteor.users.find({}).fetch();

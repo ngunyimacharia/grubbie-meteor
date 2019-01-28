@@ -58,11 +58,11 @@ export const createMenus = () => {
   Menus.remove({});
   Options.remove({});
   //
-  const start = moment().subtract(9,'months');
+  const start = moment().subtract(3,'months');
   do{
     makeMenu(start);
     start.add(7,'days');
-  }while(start.isBefore(moment().add(1,'days')));
+  }while(start.isBefore(moment().add(7,'days')));
 
   //Add menu for 2 weeks in future
   for(let i=1 ; i<=2 ; i++){
