@@ -1,52 +1,55 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Menus } from '../../../api/menus.js';
+import { Meals } from '../../../api/meals'
+import { MealCategories } from "../../../api/mealcategories.js"
 
 import './create.html';
 
+let weekStart = moment().startOf('isoWeek');
+const weekMenu = new ReactiveVar([]);
+
+Template.Menu_create_page.onCreated(function bodyOnCreated() {
+  Meteor.subscribe('mealcategories');
+  Meteor.subscribe('meals');
+  Meteor.subscribe('menus');
+})
+
+Template.Menu_create_page.rendered = () => {
+  const dateString = weekStart.format("YYYY-MM-DD");
+  const menu = Menus.find({ }).fetch();
+  console.log(menu);
+  // if (typeof menu == "undefined") {
+  //   const menuId = Meteor.call('menu.create', weekStart.format("YYYY-MM-DD"), weekStart.add(5,'days').format("YYYY-MM-DD"));
+  //   console.log(menuId);
+  // }else{
+  //   console.log(menu);
+  // }
+}
+
 Template.Menu_create_page.helpers({
-  carbs(){
-    //return [Menus.find().fetch()]
-    return ["Jollof Rice","Fried Yam","White Rice","Potatoe Chips","Eba","Plantain","Fufu","Banku","Amala","Acheke","Chapati","Mukimu","Githeri","Akuoroba","Viazi","Semovita","Wache","Kenke"];
-  },
 
-  stews(){
-    return ["Grilled chicken salad","Goat meat","Bitter leaf soup","Grilled fish","Fish stew","Chicken curry sauce","Fish curry sauce"];
+  getMeals(mealcategoryId) {
+    let meals = Meals.find({ mealcategoryId }).fetch();
+    return meals;
   },
-
-  vegs(){
-    return ["Chick peas","Mushroom stew","Ovacado salad","Vegetable stew","Beans stew","Green grams stew"];
+  getCategory() {
+    let mealCategories = MealCategories.find().fetch();
+    return mealCategories;
   }
 });
 
 
-
-
-document.querySelectorAll('input').forEach(function(input){
+document.querySelectorAll('input').forEach(function (input) {
   input.checked = false;
 });
 
-const showAdds = function(event){
-  if(event.target.checked){
-    console.log("Show adds");
-    let parentRow = event.target.parentNode.parentNode;
-    let adds = parentRow.querySelectorAll('.adds').forEach(function(add) {
-      add.style.display = "initial";
-    });
-    let selects = parentRow.querySelectorAll('select').forEach(function(select) {
-      select.value = "general";
-    });
-  }else{
-    console.log("Hide adds");
-    let parentRow = event.target.parentNode.parentNode;
-    let adds = parentRow.querySelectorAll('.adds').forEach(function(add) {
-      add.style.display = "none";
-    });
-  }
-}
+Template.Menu_create_page.events({
+  'submit form': function (event) {
+    event.preventDefault();
+    console.log("Form submitted");
+    console.log(event.type);
 
-function changeColorOnClick() {
-document.getElementById("create-menu").addEventListener("click", function(){
-  console.log("Beki clicks")
+    // Meteor.call("Call the task that will add the form elements to the database");
+  }
 });
-}
