@@ -48,8 +48,7 @@ Template.User_view_edit_page.events({
             country = event.target.country.value,
             userType = event.target.userType.value,
             preference = event.target.preference.value,
-            allergies = event.target.allergies.value,
-            password = event.target.password.value;
+            allergies = event.target.allergies.value;
 
         var user = {
                     email: email,
@@ -59,7 +58,6 @@ Template.User_view_edit_page.events({
                     userType: userType,
                     preference: preference,
                     allergies: allergies,
-                    password: password,
         }
 
         Meteor.call('user.update', user, Meteor.userId());

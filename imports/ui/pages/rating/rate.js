@@ -7,11 +7,12 @@ import { Options } from '../../../api/options.js';
 import { Meals } from '../../../api/meals.js';
 import './rate.html';
 
-let date = moment();
+let date = moment().subtract(14,'days');
 let options = new ReactiveVar([]);
 
 const loadMeals = () => {
   const dateString = date.format("YYYY-MM-DD");
+  console.log(dateString);
   const newOptions = Options.find({date:dateString,chosen:true}).fetch();
   newOptions.forEach((option,ind)=>{
     //Get meals
@@ -33,12 +34,12 @@ const loadMeals = () => {
       newOptions[ind].comments = '';
     }
   });
-
+  console.log(newOptions);
   options.set(newOptions);
 }
 
 Tracker.autorun(()=>{
-  date = moment.unix(Session.get('date'));
+  date = moment.unix(Session.get('date')).subtract(14,'days');
   loadMeals();
 });
 

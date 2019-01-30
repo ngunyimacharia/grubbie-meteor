@@ -14,7 +14,6 @@
     <div class="clearfix"><br/></div>
     <div class="clearfix"><br/></div>
     <div class="rounded-container">
-      {{#if Meals}}
       {{#each Meals}}
       <div class="rate-wrapper">
         <div class="rounded-image">
@@ -32,11 +31,6 @@
         <!-- <input type="text" name="" id="" value="Wonderful meal!" disabled> -->
       </div>
       {{/each}}
-      {{else}}
-      <div class="container">
-          <div class="text-center">Rating not yet available</div>
-      </div>
-      {{/if}}
     </div>
   </div>
 </template>
