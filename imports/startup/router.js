@@ -11,12 +11,14 @@ Tracker.autorun(() => {
 let notLoggedIn = (context, redirect) => {
   if (Meteor.user()) {
     // checking if user is admin
-    if (Roles.userIsInRole(Meteor.user(), ["User"])) {
-      FlowRouter.go('/user/view');
-    } else {
+    if (Roles.userIsInRole(Meteor.user(), ["Admin"])) {
       FlowRouter.go('/admin/user/manage');
+    } else if(Roles.userIsInRole(Meteor.user(), ["Staff"])) {
+      FlowRouter.go('/staff');
+    } else {
+      FlowRouter.go('/user/view');
     }
-  }else{
+  } else {
     FlowRouter.current();
   }
 }
@@ -32,6 +34,12 @@ let isUserLoggedIn = (context, redirect) => {
 
 let isAdminLoggedIn = (context, redirect) => {
   if (!Roles.userIsInRole(Meteor.user(), ['Admin'])) {
+    FlowRouter.go('/');
+  }
+}
+
+let isStaffLoggedIn = (context, redirect) => {
+  if (!Roles.userIsInRole(Meteor.user(), ['Staff'])) {
     FlowRouter.go('/');
   }
 }
@@ -52,7 +60,7 @@ FlowRouter.route('/logout', {
   action() {
     Accounts.logout((err)=>{
       if(err){
-        console.log(err);
+        Meteor.log(err);
       }
       FlowRouter.go("/");
     });
@@ -93,7 +101,6 @@ FlowRouter.route('/forgot-password', {
 
 FlowRouter.route('/reset-password/:token', {
   triggersEnter: [notLoggedIn],
-  name: 'resetpassword',
   action: function () {
     BlazeLayout.render("App_body", { main: "User_reset_password_page" });
   }
@@ -260,6 +267,18 @@ adminRoutes.route('/user/create',{
   }
 });
 
+adminRoutes.route('/rating/admin', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Rating_admin_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 adminRoutes.route('/user/notifications',{
   action: function(){
     BlazeLayout.render(
@@ -272,6 +291,7 @@ adminRoutes.route('/user/notifications',{
     );
   }
 });
+
 
 adminRoutes.route('/notification/create',{
   action: function(){
@@ -286,57 +306,6 @@ adminRoutes.route('/notification/create',{
   }
 });
 
-adminRoutes.route('/menu/create',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header',
-        main: 'Menu_create_page',
-        footer: 'Footer'
-      }
-    );
-  }
-});
-
-adminRoutes.route('/meal/create',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header',
-        main: 'Meal_create_page',
-        footer: 'Footer'
-      }
-    );
-  }
-});
-
-adminRoutes.route('/ingredient/create',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header',
-        main: 'Ingredients_create_page',
-        footer: 'Footer'
-      }
-    );
-  }
-});
-
-adminRoutes.route('/rating/admin',{
-  action: function(){
-    BlazeLayout.render(
-      'App_body',
-      {
-        header: 'Header',
-        main: 'Rating_admin_page',
-        footer: 'Footer'
-      }
-    );
-  }
-});
 
 adminRoutes.route('/inventory/view',{
   action: function(){
@@ -350,6 +319,76 @@ adminRoutes.route('/inventory/view',{
     );
   }
 });
+
+// Staff routes
+let staffRoutes = FlowRouter.group({
+  prefix: '/staff',
+  name: 'staff',
+  triggersEnter: [isStaffLoggedIn],
+});
+
+staffRoutes.route('/rating/staff', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Rating_admin_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+staffRoutes.route('/menu/create', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Menu_create_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+staffRoutes.route('/meal/create', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Meal_create_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+staffRoutes.route('/ingredient/create', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Ingredients_create_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+staffRoutes.route('/rating/admin', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Rating_admin_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+
+
 
 
 // Developer routes

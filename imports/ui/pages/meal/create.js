@@ -55,10 +55,24 @@ Template.Meal_create_page.events({
             ingredients: ingredients
         }
 
-        Meteor.call('meal.insert', meal);
-        
-        console.log(meal);
-        console.log("Form submitted");
+        if (Meteor.call('meal.insert', meal)) {
+
+            return swal({
+                title: "Success",
+                text: "Meal Item created successfully",
+                showConfirmButton: false,
+                type: "success"
+            });
+            
+        } else {
+            return swal({
+                title: "Failed",
+                text: "Oops, there was an error. Please try again.",
+                showConfirmButton: false,
+                type: "error"
+            });
+        }
+    
     },
     'click [data-role="dynamic-fields"] > .form-inline [data-role="add"]': function (event, template) {
         event.preventDefault();

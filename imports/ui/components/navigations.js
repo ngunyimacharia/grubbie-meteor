@@ -13,11 +13,6 @@ const adminLinks = [
         title: "Users"
     },
     {
-        href: "/admin/menu/create",
-        icon: "fa fa-cutlery",
-        title: "Meals"
-    },
-    {
         href: "/admin/rating/admin",
         icon: "fa fa-thumbs-o-up",
         title: "Feedback"
@@ -33,6 +28,26 @@ const adminLinks = [
         icon: "fa fa-user",
         title: "Profile"
     }
+];
+
+// Staff navigation links
+const staffLinks = [
+  {
+    href: "/staff/rating/staff",
+    icon: "fa fa-thumbs-o-up",
+    title: "Feedback"
+  },
+  {
+    href: "/staff/menu/create",
+    icon: "fa fa-cutlery",
+    title: "Meals"
+  },
+  {
+    href: "/staff/user/notifications",
+    icon: "fa fa-envelope-o",
+    title: "Messages",
+    notifications: true
+  },
 ];
 
 const userLinks = [
@@ -57,7 +72,7 @@ const userLinks = [
       title:'Messages',
       notifications:true
     }
-  ];
+];
 
 const bodyOnCreated = () => {
   Meteor.subscribe('notifications');
@@ -71,7 +86,9 @@ const helpers = {
   links(){
     if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
       return adminLinks;
-    }else{
+    }else if(Roles.userIsInRole(Meter.userId, ['Staff'])){
+      return staffLinks;
+    } else {
       return userLinks;
     }
   }

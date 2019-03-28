@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
 
 import './templates/type.js';
 import './templates/country.js';
@@ -7,8 +6,8 @@ import './templates/role.js';
 import './create.html';
 
 
-import { Countries } from "../../../api/countries.js";
-import { Types } from "../../../api/types.js";
+import { Countries } from '../../../api/countries';
+import { Types } from '../../../api/types';
 
 
 Template.User_create_page.onCreated(function bodyOnCreated() {
