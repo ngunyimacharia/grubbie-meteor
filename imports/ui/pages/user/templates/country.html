@@ -1,3 +1,5 @@
 <template name="country">
-    <option value="{{ country }}">{{ country }}</option>
+    {{#if Template.subscriptionsReady}}
+        <option value="{{ country }}">{{ country }}</option>
+    {{/if}}
 </template>

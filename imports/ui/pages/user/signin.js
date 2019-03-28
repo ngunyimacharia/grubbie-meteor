@@ -3,7 +3,11 @@ import { Template } from 'meteor/templating';
 
 import './signin.html';
 
-Template.User_signin_page.helpers({ 
+
+Template.User_signin_page.helpers({
+    processLogin() {
+        return Meteor.loggingIn();
+    }
 }); 
 
 Template.User_signin_page.events({
@@ -24,13 +28,14 @@ Template.User_signin_page.events({
                     type: "error",
                 });
             } else {
-                if (Meteor.user().profile.status == 'true') {
+                if (Meteor.user().profile.status == true) {
                     // checking if user is admin
-                    if (Roles.userIsInRole(Meteor.user(), ["User"])) {
-                            FlowRouter.go('/user/view');
-                            
-                    } else {
+                    if (Roles.userIsInRole(Meteor.user(), ["Admin"])) {
                             FlowRouter.go("/admin/user/manage");
+                    } else if(Roles.userIsInRole(Meteor.user(), ["Staff"])) {
+                            FlowRouter.go("/staff/menu/create");
+                    } else {
+                        FlowRouter.go('/user/view');
                     }
                 } else {
                     FlowRouter.go('/');
@@ -50,4 +55,3 @@ Template.User_signin_page.events({
         return false;
     }
 });
-

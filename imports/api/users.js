@@ -36,10 +36,6 @@ Meteor.methods({
     'user.update'(user, id) {
         check(id, String);
 
-        console.log(id);
-        console.log(user);
-
-        
         Meteor.users.update({ _id: id }, { $set: { 'profile.firstName': user.firstName, 'profile.lastName': user.lastName, 'profile.country': user.country, 'profile.allergies': user.allergies, 'profile.preference': user.preference, 'profile.userType': user.userType } });
 
         // Updating password
@@ -52,6 +48,7 @@ Meteor.methods({
         if (oldemail != null) {
             Accounts.removeEmail(user._id, user.emails[0].address)
         }
+        
         Accounts.addEmail(user._id, email);
         Accounts.sendVerificationEmail(user._id);
     },
