@@ -3,19 +3,15 @@ import { Template } from 'meteor/templating';
 
 import './signin.html';
 
-
 Template.User_signin_page.helpers({
-    processLogin() {
-        return Meteor.loggingIn();
-    }
-}); 
+});
 
 Template.User_signin_page.events({
     'submit form': function (event) {
         // Form fields
         var username = event.target.username.value,
             password = event.target.password.value;
-        
+
         // Calling the loginWithPassword function on the user
         Meteor.loginWithPassword(username, password, function (error) {
             if (error) {
@@ -30,12 +26,11 @@ Template.User_signin_page.events({
             } else {
                 if (Meteor.user().profile.status == true) {
                     // checking if user is admin
-                    if (Roles.userIsInRole(Meteor.user(), ["Admin"])) {
-                            FlowRouter.go("/admin/user/manage");
-                    } else if(Roles.userIsInRole(Meteor.user(), ["Staff"])) {
-                            FlowRouter.go("/staff/menu/create");
+                    if (Roles.userIsInRole(Meteor.user(), ["User"])) {
+                            FlowRouter.go('/user/view');
+
                     } else {
-                        FlowRouter.go('/user/view');
+                            FlowRouter.go("/admin/user/manage");
                     }
                 } else {
                     FlowRouter.go('/');
