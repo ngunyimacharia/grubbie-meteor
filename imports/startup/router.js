@@ -273,6 +273,19 @@ adminRoutes.route('/user/notifications',{
   }
 });
 
+adminRoutes.route('/notification/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Notification_create_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 adminRoutes.route('/menu/create',{
   action: function(){
     BlazeLayout.render(
