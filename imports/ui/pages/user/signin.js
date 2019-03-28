@@ -3,15 +3,15 @@ import { Template } from 'meteor/templating';
 
 import './signin.html';
 
-Template.User_signin_page.helpers({ 
-}); 
+Template.User_signin_page.helpers({
+});
 
 Template.User_signin_page.events({
     'submit form': function (event) {
         // Form fields
         var username = event.target.username.value,
             password = event.target.password.value;
-        
+
         // Calling the loginWithPassword function on the user
         Meteor.loginWithPassword(username, password, function (error) {
             if (error) {
@@ -24,11 +24,11 @@ Template.User_signin_page.events({
                     type: "error",
                 });
             } else {
-                if (Meteor.user().profile.status == 'true') {
+                if (Meteor.user().profile.status == true) {
                     // checking if user is admin
                     if (Roles.userIsInRole(Meteor.user(), ["User"])) {
                             FlowRouter.go('/user/view');
-                            
+
                     } else {
                             FlowRouter.go("/admin/user/manage");
                     }
@@ -50,4 +50,3 @@ Template.User_signin_page.events({
         return false;
     }
 });
-
