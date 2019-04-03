@@ -7,8 +7,9 @@ import './user/view_edit.js';
 import './user/manage.js';
 import './user/create.js';
 import './user/notifications.js';
+import './user/create_notification.js';
 import './user/forgot_password.js';
-// import './user/reset_password.js';
+import './user/reset_password.js';
 
 //Meal pages
 import './meal/view.js';

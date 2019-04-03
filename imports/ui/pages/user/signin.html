@@ -3,6 +3,14 @@
   <div id="grubbie-gradient"></div>
 
   <div class="paper">
+    {{#if processLogin}}
+      <div class="d-flex pull-right p-10">
+        <div class="spinner-border spinner-border-sm text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    {{/if}}
     <div class = "logo-white" >
       <a href = "/"><img src="/images/logo.png" alt = "logo" /></a>
     </div>

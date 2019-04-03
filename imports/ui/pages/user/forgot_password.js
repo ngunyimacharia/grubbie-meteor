@@ -15,7 +15,7 @@ Template.User_forgot_password_page.events({
             if (error) {
                 return swal({
                     title: "Oops there was an error",
-                    text: "Please enter a valid e-mail address",
+                    text: "Please try again later",
                     timer: 3000,
                     showConfirmButton: false,
                     type: "error",
@@ -24,7 +24,7 @@ Template.User_forgot_password_page.events({
                 // success
                 return swal({
                     title: "Success",
-                    text: "Password reset request successful. You will receive and email with your a reset link.",
+                    text: "Password reset request successful. You will receive an email with your a reset link.",
                     timer: 3000,
                     showConfirmButton: false,
                     type: "success"
