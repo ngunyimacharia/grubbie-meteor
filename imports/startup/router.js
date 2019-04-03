@@ -286,6 +286,19 @@ adminRoutes.route('/menu/create',{
   }
 });
 
+adminRoutes.route('/menu/list',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Menu_list_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 adminRoutes.route('/meal/create',{
   action: function(){
     BlazeLayout.render(

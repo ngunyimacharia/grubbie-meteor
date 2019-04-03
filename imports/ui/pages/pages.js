@@ -19,6 +19,7 @@ import './meal/create.js';
 import './menu/view.js';
 import './menu/mobile.js';
 import './menu/create.js';
+import './menu/list';
 
 //Ratings page
 import './rating/rate.js';

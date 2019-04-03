@@ -9,7 +9,6 @@ if (Meteor.isServer) {
   Meteor.publish('menus', function () {
     return Menus.find({});
   });
-
 }
 
 Meteor.methods({
