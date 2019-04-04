@@ -15,7 +15,7 @@ const vote = (date,mealtimeId,userId) => {
   //vote
   Votes.insert({
     optionId: myChoice._id,
-    mealId: myChoice.menuId,
+    menuId: myChoice.menuId,
     userId: userId,
     createdAt: new Date(),
     updatedAt: new Date()

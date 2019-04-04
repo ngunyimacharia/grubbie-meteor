@@ -21,6 +21,7 @@ import './menu/view.js';
 import './menu/mobile.js';
 import './menu/create.js';
 import './menu/list';
+import './menu/voting';
 
 //Ratings page
 import './rating/rate.js';

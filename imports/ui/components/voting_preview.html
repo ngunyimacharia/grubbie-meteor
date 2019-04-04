@@ -1,0 +1,66 @@
+<template name="Voting_preview">
+  <div class="preview">
+    <div class="row">
+      <div class="col-lg-12 col-md-7 col-sm-7 col-5">
+        <h2>Voting Menu</h2>
+      </div>
+      <div class="col-lg-12 col-md-5 col-sm-5 col-7">
+        <br />
+        <select class="date-select pull-right">
+          {{#each menus}}
+          {{#if default}}
+          <option selected>{{readableDate}}</option>
+          {{else}}
+          <option>{{readableDate}}</option>
+          {{/if}}
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <button class="edit"><i class="fas fa-pen"></i> &nbsp;Submit</button>
+    </div>
+    <div class="clearfix"></div>
+    <div class="lg">
+      <table>
+        <ul>
+          {{#each days}}
+          <tr class="day">
+            <td colspan="25">{{ label }}</td>
+          </tr>
+          <tr>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+          </tr>
+          <tr>
+            <td>
+              <form>
+                {{#each breakfast date}}
+                <input type="radio" name="breakfastOption" value={{meal}} checked>{{meal}}<br>
+                {{/each}}
+              </form>
+            </td>
+            <td>
+              <form>
+                {{#each lunch date}}
+                <input type="radio" name="lunchOption" value={{meal}} checked>{{meal}}<br>
+                {{/each}}
+              </form>
+            </td>
+            <td>
+              <form>
+                {{#each supper date}}
+                <input type="radio" name="supperOption" value={{meal}} checked>{{meal}}<br>
+                {{/each}}
+              </form>
+            </td>
+          </tr>
+          <br>
+          {{/each}}
+        </ul>
+      </table>
+    </div>
+  </div>
+</template>

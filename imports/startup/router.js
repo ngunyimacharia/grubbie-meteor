@@ -183,6 +183,19 @@ userRoutes.route('/menu/view',{
   }
 });
 
+userRoutes.route('/menu/voting',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Voting_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 userRoutes.route('/menu/mobile',{
   action: function(){
     BlazeLayout.render(

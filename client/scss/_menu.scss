@@ -113,9 +113,9 @@
       margin: 0;
     }
 
-    i{
-      // margin-left: 28px;
-    }
+    // i{
+    //   // margin-left: 28px;
+    // }
   }
 
   .order-options > .row{
@@ -149,7 +149,7 @@
       }
     }
 
-    .edit{
+    .edit .submit {
       width: auto;
       height: auto;
       float:right;
@@ -159,8 +159,13 @@
     }
   }
 
-  .submit{
-    // padding-right: 20px;
-  }
+  // .submit{
+  //     width: auto;
+  //     height: auto;
+  //     float:right;
+  //     padding: 8px 15px 5px;
+  //     border-radius: 15px;
+  //     border:0;
+  // }
 
 }
