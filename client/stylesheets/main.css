@@ -10371,12 +10371,15 @@ blockquote {
   min-height: 70vh;
   border-radius: 15px;
 }
+.create-menu .preview table {
+  width: 100%;
+}
 .create-menu .preview table .day {
   height: 50px;
   text-transform: uppercase;
   font-weight: 900;
 }
-.create-menu .preview .edit {
+.create-menu .preview .edit, .create-menu .preview .submit {
   width: auto;
   height: auto;
   float: right;
@@ -10384,6 +10387,7 @@ blockquote {
   border-radius: 15px;
   border: 0;
 }
+
 .admin-rate .right-main .main-section {
   overflow: auto;
 }
@@ -10797,6 +10801,9 @@ form select, form input {
   border: none;
   border-bottom: 1px solid #fff;
   color: #fff;
+}
+form input[type=radio] {
+  width: auto;
 }
 form select option {
   color: #000;
