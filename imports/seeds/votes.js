@@ -51,5 +51,4 @@ export const createVotes = () => {
   });
 }
 
-
 const randFromArr = (arr) => arr[Math.floor(Math.random() * arr.length)];

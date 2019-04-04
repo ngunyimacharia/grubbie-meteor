@@ -135,5 +135,9 @@ Template.Voting_preview.events({
         const target = event.target;
         weekStart = moment(target.value, "MMM, Do YYYY");
         createDays();
-    }
+    },
+    "click .submit": function() {
+        preventDefault();
+        console.log("You clicked submit")
+    },
 });
