@@ -39,7 +39,7 @@ const makeMenu = (start) => {
           updatedAt: new Date()
         });
         // Add two meals to the option
-        for(let i=0 ; i<3 ; i++){
+        for(let i=0 ; i<2 ; i++){
           Options.addMeal(optionId,randFromArr(meals)._id);
         }
       });
@@ -58,7 +58,7 @@ export const createMenus = () => {
   Menus.remove({});
   Options.remove({});
   //
-  const start = moment().subtract(3,'months');
+  const start = moment().subtract(1,'months');
   do{
     makeMenu(start);
     start.add(7,'days');

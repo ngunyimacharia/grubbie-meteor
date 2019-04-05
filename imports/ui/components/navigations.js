@@ -7,26 +7,31 @@ import './footer.html';
 
 //Admin navigation links
 const adminLinks = [
-    {
-        href: "/admin/user/manage",
-        icon: "fa fa-user-o",
-        title: "Users"
-    },
-    {
-        href: "/admin/rating/admin",
-        icon: "fa fa-thumbs-o-up",
-        title: "Feedback"
-    },
-    {
-        href: "/admin/user/notifications",
-        icon: "fa fa-envelope-o",
-        title: "Messages",
-        notifications: true
-    },
-    {
-        href: "/admin/user/view",
-        icon: "fa fa-user",
-        title: "Profile"
+  {
+    href: "/admin/user/manage",
+    icon: "fa fa-user-o",
+    title: "Users"
+  },
+  {
+    href: "/admin/rating/admin",
+    icon: "fa fa-thumbs-o-up",
+    title: "Feedback"
+  },
+  {
+    href: "/menu/list",
+    icon: "fa fa-cutlery",
+    title: "Menu"
+  },
+  {
+    href: "/admin/user/notifications",
+    icon: "fa fa-envelope-o",
+    title: "Messages",
+    notifications: true
+  },
+  {
+    href: "/admin/user/view",
+    icon: "fa fa-user",
+    title: "Profile"
   },
   {
     href: '/logout',
@@ -43,14 +48,9 @@ const staffLinks = [
     title: "Feedback"
   },
   {
-    href: "/staff/menu/create",
+    href: "/menu/list",
     icon: "fa fa-cutlery",
     title: "Menu"
-  },
-  {
-    href: "/staff/meal/create",
-    icon: "fa fa-cutlery",
-    title: "Meals"
   },
   {
     href: "/staff/user/notifications",

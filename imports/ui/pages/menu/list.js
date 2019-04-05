@@ -1,27 +1,45 @@
 import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 import { Menus } from '../../../api/menus.js';
 
-import "./list.html"
+import './list.html';
 
 Template.Menu_list_page.onCreated(function bodyOnCreated() {
   Meteor.subscribe('menus');
 })
 
 Template.Menu_list_page.rendered = () => {
-  const menus = Menus.find().fetch();
 }
 
 Template.Menu_list_page.helpers({
-  getMenus() {
-    let weeklyMenus = Menus.find().fetch();
-    for (i = 0; i < weeklyMenus.length; i++) {
-      weeklyMenus[i][1] = moment().format("YYYY-MMMM-DD");
-    }
 
-    // Start my for loop to go through all items
-    // Create moment = readableStart
-    // Call object 1, assign it readable Start and apply format on it
-
-    return weeklyMenus;
+  menus() {
+    const menus = Menus.find({ }).fetch();
+    console.log(menus);
+    return menus;
+  },
+  admin(){
+    return Roles.userIsInRole(Meteor.user(), ["Admin"]);
+  },
+  staff(){
+    return Roles.userIsInRole(Meteor.user(), ["Staff"]);
   }
+});
+
+
+Template.Menu_list_page.events({
+    "click .publish": function(event, t) {
+        event.preventDefault();
+
+        // Form fields
+        var menuId = event.target.dataset.id;
+        Meteor.call('menu.publish', menuId);
+        swal({
+            title: "Menu successfully published.",
+            timer: 3000,
+            showConfirmButton: false,
+            type: "success",
+        });
+    },
+
 });
