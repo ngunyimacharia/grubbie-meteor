@@ -38,17 +38,22 @@ const staffLinks = [
     title: "Feedback"
   },
   {
-    href: "/staff/menu/create",
+    href: "/staff/menu/list",
     icon: "fa fa-cutlery",
-    title: "Meals"
+    title: "Menus"
   },
   {
-    href: "/staff/user/notifications",
-    icon: "fa fa-envelope-o",
-    title: "Messages",
-    notifications: true
+      href: "/staff/user/notifications",
+      icon: "fa fa-envelope-o",
+      title: "Messages",
+      notifications: true
   },
-];
+  {
+      href: "/staff/user/view",
+      icon: "fa fa-user",
+      title: "Profile"
+  }
+]
 
 const userLinks = [
     {
@@ -86,7 +91,7 @@ const helpers = {
   links(){
     if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
       return adminLinks;
-    }else if(Roles.userIsInRole(Meter.userId, ['Staff'])){
+    }else if(Roles.userIsInRole(Meteor.userId(), ['Staff'])){
       return staffLinks;
     } else {
       return userLinks;

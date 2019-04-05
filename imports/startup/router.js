@@ -14,7 +14,7 @@ let notLoggedIn = (context, redirect) => {
     if (Roles.userIsInRole(Meteor.user(), ["Admin"])) {
       FlowRouter.go('/admin/user/manage');
     } else if(Roles.userIsInRole(Meteor.user(), ["Staff"])) {
-      FlowRouter.go('/staff');
+      FlowRouter.go('/staff/user/view');
     } else {
       FlowRouter.go('/user/view');
     }
@@ -339,6 +339,18 @@ staffRoutes.route('/rating/staff', {
   }
 });
 
+staffRoutes.route('/menu/list', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Menu_list_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 staffRoutes.route('/menu/create', {
   action: function () {
     BlazeLayout.render(
@@ -388,7 +400,31 @@ staffRoutes.route('/rating/admin', {
 });
 
 
+staffRoutes.route('/user/notifications',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Notifications_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
 
+staffRoutes.route('/user/view', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'User_view_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
 
 
 // Developer routes
