@@ -37,7 +37,11 @@ Options.getMeals = (optionId) => {
   const omeals = OptionMeals.find({ optionId }).fetch();
   const meals = [];
   omeals.forEach((omeal,ind) => {
-    const meal = Meals.findOne(omeal.mealId);
+    let mealId = omeal.mealId;
+    if(typeof mealId == 'object'){
+      mealId = mealId.mealId;
+    }
+    const meal = Meals.findOne(mealId);
     meals.push(meal);
   });
   return meals;
