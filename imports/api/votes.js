@@ -10,3 +10,9 @@ if (Meteor.isServer) {
     return Votes.find({});
   });
 }
+
+Meteor.methods({
+  'votes.vote'(userVotes) {
+    console.log("Vote method has been called correctly");
+  }
+});

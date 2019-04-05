@@ -6,9 +6,11 @@ import { ReactiveVar } from "meteor/reactive-var";
 import "./voting_preview.html";
 import { Menus } from "../../api/menus.js";
 import { Options } from "../../api/options";
+import { Votes } from "../../api/votes";
 
 let weekStart = moment().startOf("isoWeek");
 const weekMenu = new ReactiveVar([]);
+let voteObj = {};
 
 const createDays = () => {
     let newMenu = [];
@@ -136,8 +138,20 @@ Template.Voting_preview.events({
         weekStart = moment(target.value, "MMM, Do YYYY");
         createDays();
     },
-    "click .submit": function() {
-        preventDefault();
-        console.log("You clicked submit")
+    
+    "click .radioButton"() {
+        // collect the id and name key value pairs from selcted radio buttons
+        const target = event.target;        
+        var id = target.value;
+        var name = target.name;
+        // save id and name key value pairs in the vote Object
+        voteObj[name] = id;
     },
+
+    'click .submit'() {
+        // collect the id's of all the meal options voted for on that day
+        const votes = Object.values(voteObj);
+        console.log(votes);
+        Meteor.call('votes.vote', votes);
+      }
 });
