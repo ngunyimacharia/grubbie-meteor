@@ -3,13 +3,14 @@ import './user/splash.js';
 import './user/signin.js';
 import './user/signup.js';
 import './user/view.js';
-import './user/view_edit.js';
+import './user/edit.js';
 import './user/manage.js';
 import './user/create.js';
 import './user/notifications.js';
 import './user/create_notification.js';
 import './user/forgot_password.js';
 import './user/reset_password.js';
+
 
 //Meal pages
 import './meal/view.js';
@@ -21,6 +22,8 @@ import './menu/view.js';
 import './menu/mobile.js';
 import './menu/create.js';
 import './menu/list.js';
+import './menu/voting.js';
+
 
 //Ratings page
 import './rating/rate.js';

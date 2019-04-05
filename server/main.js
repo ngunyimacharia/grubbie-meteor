@@ -22,7 +22,7 @@ import '../imports/seeds/seeder.js';
 
 Meteor.startup(() => {
   // setting up email environment
-  process.env.MAIL_URL = "smtp://vickesnet@gmail.com:pixels55374@smtp.gmail.com:587";
+  process.env.MAIL_URL = "smtp://835eb6900e49d4:26b062d847fbd7@smtp.mailtrap.io:465";
 
   Accounts.urls.resetPassword = function (token) {
     return Meteor.absoluteUrl('reset-password/' + token);

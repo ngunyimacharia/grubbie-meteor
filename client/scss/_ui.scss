@@ -103,6 +103,9 @@ form{
     border-bottom: 1px solid $white;
     color: $white;
   }
+  input[type="radio"]{
+    width:auto;
+  }
       select option {
       color: $black;
     }

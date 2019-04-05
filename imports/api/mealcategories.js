@@ -6,6 +6,8 @@ export const MealCategories = new Mongo.Collection('mealcategories');
 // check if this executions are serverside
 if (Meteor.isServer) {
   Meteor.publish('mealcategories', function () {
-    return MealCategories.find({});
+    return MealCategories.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 }

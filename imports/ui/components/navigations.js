@@ -27,7 +27,12 @@ const adminLinks = [
         href: "/admin/user/view",
         icon: "fa fa-user",
         title: "Profile"
-    }
+  },
+  {
+    href: '/logout',
+    icon: 'fa fa-sign-out',
+    title: 'Log Out',
+  }
 ];
 
 // Staff navigation links
@@ -40,7 +45,12 @@ const staffLinks = [
   {
     href: "/staff/menu/list",
     icon: "fa fa-cutlery",
-    title: "Menus"
+    title: "Menu"
+  },
+  {
+    href: "/staff/meal/create",
+    icon: "fa fa-cutlery",
+    title: "Meals"
   },
   {
       href: "/staff/user/notifications",
@@ -49,11 +59,16 @@ const staffLinks = [
       notifications: true
   },
   {
-      href: "/staff/user/view",
-      icon: "fa fa-user",
-      title: "Profile"
+    href: '/staff/user/view',
+    icon: 'fa fa-user',
+    title: 'Profile',
+  },
+  {
+    href: '/logout',
+    icon: 'fa fa-sign-out',
+    title: 'Log Out',
   }
-]
+];
 
 const userLinks = [
     {
@@ -67,6 +82,11 @@ const userLinks = [
       title:'Meals',
     },
     {
+      href:'/user/menu/voting',
+      icon:'fa fa-cutlery',
+      title:'Voting',
+    },
+    {
       href:'/user/rating/rate',
       icon:'fa fa-thumbs-o-up',
       title:'Rate'
@@ -76,6 +96,16 @@ const userLinks = [
       icon:'fa fa-envelope-o',
       title:'Messages',
       notifications:true
+    },
+    {
+      href:'/user/view',
+      icon: 'fa fa-user',
+      title:'Profile',
+    },
+    {
+      href:'/logout',
+      icon: 'fa fa-sign-out',
+      title:'Log Out',
     }
 ];
 
@@ -90,10 +120,12 @@ const helpers = {
   },
   links(){
     if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
+      console.log("Admin");
       return adminLinks;
-    }else if(Roles.userIsInRole(Meteor.userId(), ['Staff'])){
+    } else if(Roles.userIsInRole(Meteor.userId(), ['Staff'])){
       return staffLinks;
     } else {
+      console.log("User");
       return userLinks;
     }
   }

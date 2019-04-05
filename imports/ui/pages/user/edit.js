@@ -5,9 +5,9 @@ import '../../../api/users.js';
 import { Countries } from "../../../api/countries.js";
 import { Types } from "../../../api/types.js";
 
-import './view_edit.html';
+import './edit.html';
 
-Template.User_view_edit_page.onCreated(function bodyOnCreated() {
+Template.User_edit_page.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
     Meteor.subscribe('currentUser');
     Meteor.subscribe('roles');
@@ -17,7 +17,7 @@ Template.User_view_edit_page.onCreated(function bodyOnCreated() {
     console.log(Meteor.subscribe('currentUser'));
 });
 
-Template.User_view_edit_page.helpers({
+Template.User_edit_page.helpers({
     currentUser() {
         return Meteor.user();
     },
@@ -36,7 +36,7 @@ Template.User_view_edit_page.helpers({
     }
 });
 
-Template.User_view_edit_page.events({
+Template.User_edit_page.events({
     'submit form': function (event, template) {
         event.preventDefault();
 

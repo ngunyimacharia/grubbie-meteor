@@ -7,6 +7,8 @@ export const Countries = new Mongo.Collection('countries');
 // check if this executions are serverside
 if (Meteor.isServer) {
     Meteor.publish('countries', function () {
-        return Countries.find({});
+        return Countries.find({}, {
+            pollingIntervalMs: 3000
+        });
     });
 }

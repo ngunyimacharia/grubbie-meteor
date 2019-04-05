@@ -29,7 +29,7 @@ Template.Menu_list_page.events({
         // Form fields
         var menuId = event.target.dataset.id;
         Meteor.call('menu.publish', menuId);
-        
+
     },
 
 });

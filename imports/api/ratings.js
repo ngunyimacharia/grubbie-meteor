@@ -7,7 +7,9 @@ export const Ratings = new Mongo.Collection("ratings");
 if (Meteor.isServer) {
 
   Meteor.publish('ratings', function () {
-    return Ratings.find({});
+    return Ratings.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 

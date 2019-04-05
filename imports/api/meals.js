@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
+// exporting the collections
 export const Meals = new Mongo.Collection('meals');
 export const MealIngredients = new Mongo.Collection('mealingredients'); //pivot table
 
@@ -9,11 +10,15 @@ export const MealIngredients = new Mongo.Collection('mealingredients'); //pivot 
 if (Meteor.isServer) {
 
   Meteor.publish('meals', function () {
-    return Meals.find({});
+    return Meals.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
   Meteor.publish('mealingredients', function () {
-    return MealIngredients.find({});
+    return MealIngredients.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

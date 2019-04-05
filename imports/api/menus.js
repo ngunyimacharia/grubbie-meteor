@@ -10,7 +10,9 @@ import { Options } from './options';
 if (Meteor.isServer) {
 
   Meteor.publish('menus', function () {
-    return Menus.find({});
+    return Menus.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

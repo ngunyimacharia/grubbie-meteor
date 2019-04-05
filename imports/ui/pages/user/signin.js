@@ -4,6 +4,9 @@ import { Template } from 'meteor/templating';
 import './signin.html';
 
 Template.User_signin_page.helpers({
+  processLogin() {
+    return Meteor.loggingIn();
+  }
 });
 
 Template.User_signin_page.events({
