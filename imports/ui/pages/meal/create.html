@@ -3,10 +3,10 @@
     <div class="container">
         <div id="content-container">
             <a href="/staff/ingredient/create" class="btn-default pull-right">
-              New Ingredients
+                New Ingredients
             </a>
         {{#if Template.subscriptionsReady}}
-            <form>
+            <form class="meal-create" enctype="multipart/form-data">
                 <div class="form-group">
                     <input name="mealName" type="text" class="form-control" id="mealname" placeholder="Meal Name"/>
                 </div>

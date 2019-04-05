@@ -60,22 +60,26 @@ Template.Meal_create_page.events({
                         countryId: event.target.mealCountry.value,
                         ingredients: ingredients
                     }
-
-                    if (Meteor.call('meal.insert', meal)) {
-                        return swal({
-                            title: "Success",
-                            text: "Meal Item created successfully",
-                            showConfirmButton: false,
-                            type: "success"
-                        });
-                    } else {
-                        return swal({
-                            title: "Failed",
-                            text: "Oops, there was an error. Please try again.",
-                            showConfirmButton: false,
-                            type: "error"
-                        });
-                    }
+                    
+                    Meteor.call('meal.insert', meal, function (error) {
+                        if (error) {
+                            return swal({
+                                title: "Failed",
+                                text: "Oops, there was an error. Please try again.",
+                                showConfirmButton: false,
+                                type: "error",
+                                timer: 2000
+                            });
+                        } else {
+                            return swal({
+                                title: "Success",
+                                text: "Meal Item created successfully",
+                                showConfirmButton: false,
+                                type: "success",
+                                timer: 2000
+                            });
+                        }
+                    });
                 }
             });
         }
