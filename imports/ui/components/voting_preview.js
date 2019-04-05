@@ -38,6 +38,7 @@ const createDays = () => {
 Template.Voting_preview.onCreated(function bodyOnCreated() {
     Meteor.subscribe("menus");
     Meteor.subscribe("options");
+    Meteor.subscribe("votes");
 });
 
 Template.Voting_preview.rendered = () => {
@@ -129,6 +130,19 @@ Template.Voting_preview.helpers({
             }
         });
         return menus;
+    },
+    voted(){
+
+        const menu = Menus.find({ startDate: weekStart.format("YYYY-MM-DD") }).fetch()[0];
+        console.log(Meteor.userId,menu);
+        if(typeof menu != 'undefined'){
+            const votes = Votes.find({
+                userId:Meteor.userId(),
+                menuId:menu._id,
+            }).fetch();
+            console.log(votes);
+            return votes.length
+        }
     }
 });
 
@@ -151,6 +165,8 @@ Template.Voting_preview.events({
     'click .submit'() {
         // collect the id's of all the meal options voted for on that day
         const votes = Object.values(voteObj);
-        Meteor.call('votes.vote', votes);
+        const menu = Menus.find({ startDate: weekStart.format("YYYY-MM-DD") }).fetch()[0];
+        console.log(menu);
+        Meteor.call('votes.vote', votes, menu._id);
       }
 });

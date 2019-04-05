@@ -77,14 +77,9 @@ const userLinks = [
       title:'Profile'
     },
     {
-      href:'/user/menu/view',
-      icon:'fa fa-cutlery',
-      title:'Meals',
-    },
-    {
       href:'/user/menu/voting',
       icon:'fa fa-cutlery',
-      title:'Voting',
+      title:'Meals',
     },
     {
       href:'/user/rating/rate',

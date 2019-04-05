@@ -14,7 +14,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'votes.vote'(userVotes) {
+  'votes.vote'(userVotes,menuId) {
     console.log("Vote method has been called correctly");
     console.log(userVotes);
 
@@ -24,8 +24,10 @@ Meteor.methods({
       Votes.insert({
         userId:Meteor.userId(),
         optionId:option,
+        menuId,
         createdAt: new Date()
       })
     }
   }
+
 });
