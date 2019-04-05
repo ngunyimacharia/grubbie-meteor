@@ -155,6 +155,6 @@ Template.Menu_create_page.events({
         showConfirmButton: false,
         type: "success",
     });
-    FlowRouter.go('/staff/menu/list');
+    FlowRouter.go('/menu/list');
   }
 });
