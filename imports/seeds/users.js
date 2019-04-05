@@ -31,7 +31,7 @@ export const createUsers = (num) => {
       country: randFromArr(countries).country,
       userType:randFromArr(types).type,
       userRole: randFromArr(["User","Staff","Admin"]),
-      profPicture: randFromArr(images),
+      profilePicture: randFromArr(images),
       password: casual.password,
       status: casual.boolean
     }

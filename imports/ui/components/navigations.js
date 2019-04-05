@@ -120,7 +120,8 @@ const helpers = {
   },
   links(){
     if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
-      console.log("Admin");
+      let userRole = "Admin";
+      console.log("User role: ", userRole);
       return adminLinks;
     } else if(Roles.userIsInRole(Meteor.userId(), ['Staff'])){
       return staffLinks;

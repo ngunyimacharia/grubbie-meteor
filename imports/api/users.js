@@ -4,6 +4,34 @@ import { Accounts } from "meteor/accounts-base";
 
 const MAX_USERS = 15;
 
+
+export const ProfileImages = new FS.Collection('profileimages', {
+    stores: [new FS.Store.GridFS('profileimages')],
+    filter: {
+        maxSize: 512000,
+        allow: {
+            contentTypes: ['image/*'] //allow only images in this FS.Collection
+        }
+    },
+    transformWrite: function (fileObj, readStream, writeStream) {
+        gm(readStream, fileObj.name()).resize('100', '100').stream().pipe(writeStream);
+    }
+});
+    
+// setting rules
+ProfileImages.allow({ 
+    insert: function(userId, doc) { 
+        return true; 
+    }, 
+    update: function(userId, doc, fields, modifier) { 
+        return true; 
+    }, 
+    remove: function(userId, doc) { 
+        return true; 
+    } 
+});
+    
+
 // check if this executions are serverside
 if (Meteor.isServer) {
     Meteor.publish('users', function (skipCount) {
@@ -86,6 +114,10 @@ if(Meteor.isServer) {
         'user.deactivate'(id) {
             check(id, String);
             Meteor.users.update({ _id: id }, { $set: { "profile.status": false } });
+        },
+        'user.profile.image'(id, url) {
+            check(id, String);
+            Meteor.users.update({ _id: id }, { $set: { "profile.profilePicture": url } });
         }
     });
 }

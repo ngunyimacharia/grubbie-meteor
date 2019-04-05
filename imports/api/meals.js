@@ -5,6 +5,32 @@ import { check } from "meteor/check";
 // exporting the collections
 export const Meals = new Mongo.Collection('meals');
 export const MealIngredients = new Mongo.Collection('mealingredients'); //pivot table
+export const MealImages = new FS.Collection('mealimages', {
+  stores: [new FS.Store.GridFS('mealimages')],
+  filter: {
+    maxSize: 512000,
+    allow: {
+      contentTypes: ['image/*'] //allow only images in this FS.Collection
+    }
+  },
+  transformWrite: function (fileObj, readStream, writeStream) {
+    gm(readStream, fileObj.name()).resize('400', '300').stream().pipe(writeStream);
+  }
+});
+
+// setting rules
+MealImages.allow({
+  insert: function (userId, doc) {
+    return true;
+  },
+  update: function (userId, doc, fields, modifier) {
+    return true;
+  },
+  remove: function (userId, doc) {
+    return true;
+  }
+});
+
 
 // check if this executions are serverside
 if (Meteor.isServer) {
@@ -19,6 +45,10 @@ if (Meteor.isServer) {
     return MealIngredients.find({}, {
       pollingIntervalMs: 3000
     });
+  });
+
+  Meteor.publish('currentMeal', function () {
+    Meteor.meals.find({_id: this.mealId});
   });
 
 }

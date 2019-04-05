@@ -723,5 +723,23 @@ ul.navy-pagination{
 }
 
 .p-10 {
- padding: 10px;
+  padding: 10px;
+}
+
+.input-file {
+  position: relative;
+  top: -110px;
+  left: 50px;
+  color: #7f7f7f;
+}
+.input-file i {
+  font-size: 20px;
+}
+
+.input-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
 }
