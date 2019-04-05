@@ -76,6 +76,24 @@
 @media only screen and (max-width: 767px) {
 
   header{
+    height: 77px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  #logo {
+    text-align: center;
+    padding-top: 25px;
+  }
+
+  #logo img {
+    height: 50px;
+  }
+
+  #logo-caption {
+    display: none;
+  }
+
+  nav {
     display: none;
   }
 
@@ -84,6 +102,10 @@
     height: 86.7%;
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+
+  body #content-container {
+    padding-top: 0vh;
   }
 
   footer{

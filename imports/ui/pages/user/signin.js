@@ -4,6 +4,9 @@ import { Template } from 'meteor/templating';
 import './signin.html';
 
 Template.User_signin_page.helpers({
+    processLogin() {
+        return Meteor.loggingIn();
+    }
 });
 
 Template.User_signin_page.events({
@@ -26,11 +29,12 @@ Template.User_signin_page.events({
             } else {
                 if (Meteor.user().profile.status == true) {
                     // checking if user is admin
-                    if (Roles.userIsInRole(Meteor.user(), ["User"])) {
-                            FlowRouter.go('/user/view');
-
+                    if (Roles.userIsInRole(Meteor.user(), ["Admin"])) {
+                            FlowRouter.go('/admin/user/manage');
+                    } else if(Meteor.user(), ["Staff"]) {
+                            FlowRouter.go("/staff/menu/create");
                     } else {
-                            FlowRouter.go("/admin/user/manage");
+                        FlowRouter.go('/user/view');
                     }
                 } else {
                     FlowRouter.go('/');
@@ -43,7 +47,7 @@ Template.User_signin_page.events({
                         type: "error",
                     });
                 }
-         }
+            }
         });
         console.log("Form submitted.");
 

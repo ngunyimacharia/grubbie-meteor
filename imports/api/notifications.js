@@ -3,14 +3,13 @@ import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
 export const Notifications = new Mongo.Collection('notifications');
-
-import { Users } from "./users.js";
-
 // check if this executions are serverside
 if (Meteor.isServer) {
 
   Meteor.publish('notifications', function () {
-    return Notifications.find({});
+    return Notifications.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

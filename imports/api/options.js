@@ -12,10 +12,14 @@ const OptionMeals = new Mongo.Collection('optionmeals');
 if (Meteor.isServer) {
 
   Meteor.publish('options', function () {
-    return Options.find({});
+    return Options.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
   Meteor.publish('optionmeals', function () {
-    return OptionMeals.find({});
+    return OptionMeals.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 

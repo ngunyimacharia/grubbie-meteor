@@ -7,7 +7,9 @@ export const MealTimes = new Mongo.Collection('mealtimes');
 if (Meteor.isServer) {
 
   Meteor.publish('mealtimes', function () {
-    return MealTimes.find({});
+    return MealTimes.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

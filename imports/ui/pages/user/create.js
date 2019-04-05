@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
 
+import '../../../api/users.js';
+
 import './templates/type.js';
 import './templates/country.js';
 import './templates/role.js';
@@ -19,13 +21,12 @@ Template.User_create_page.onCreated(function bodyOnCreated() {
 Template.User_create_page.helpers({
     countries() {
         // Show countries
-        console.log(Meteor.roles.find({}));
         return Countries.find({});
     },
     types() {
         return Types.find({});
     },
- });
+});
 
 
 Template.User_create_page.events({
@@ -41,9 +42,7 @@ Template.User_create_page.events({
             userType = event.target.userType.value,
             userRole = event.target.userRole.value,
             preference = event.target.preference.value,
-            allergies = event.target.allergies.value,
-            password = event.target.password.value,
-            confirmPassword = event.target.confirmPassword.value;
+            allergies = event.target.allergies.value;
         
         // Trim Helper
         var trimInput = function (val) {
@@ -56,24 +55,21 @@ Template.User_create_page.events({
 
         console.log("Username", username);
 
-        // Check password is at least 6 chars long
-        var isValidPassword = function (pwd, pwd2) {
-            if (pwd === pwd2) {
-                return pwd.length >= 6 ? true : false;
-            } else {
-                return swal({
-                    title: "Passwords don't match",
-                    text: "Please try again",
-                    showConfirmButton: true,
-                    type: "error"
-                });
+        // Check if the email is valid
+        let isValidEmail = (email) => {
+            let regEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (regEx.test(email)) {
+                if (email.indexOf("@meltwater.org", email.length - "@meltwater.org".length) !== -1) {
+                    console.log("Email is valid", email);
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
 
-        // If validation passes, supply the appropriate fields to the
-        // Accounts.createUser function.
-        if (isValidPassword(password, confirmPassword)) {
-            Accounts.createUser({
+        if (isValidEmail(email)) {
+            let userObject = {
                 email: email,
                 username: username,
                 firstName: firstName,
@@ -84,23 +80,36 @@ Template.User_create_page.events({
                 userRole: userRole,
                 preference: preference,
                 allergies: allergies,
-                password: password,
                 status: "false",
-            }, function (error) {
+            }
+            
+            Meteor.call('user.create', userObject, function(error) { 
                 if (error) {
-                    console.log("Error: " + error.reason);
+                    console.log('Error: ', error.reason);
+                    return swal({
+                        title: "Error, something is wrong",
+                        text: "Please try again later",
+                        showConfirmButton: true,
+                        type: "error"
+                    });
                 } else {
+                    console.log("User created successfully");
                     return swal({
                         title: "Success",
                         text: "Account created successfully",
                         showConfirmButton: true,
                         type: "success"
-                    })
+                    });
                 }
             });
+            console.log("Form submitted");
+        } else {
+            return swal({
+                title: "E-mail is not valid",
+                text: "Please enter a correct @meltwater.org e-mail address",
+                showConfirmButton: true,
+                type: "error"
+            });
         }
-        console.log("Form submitted");
-
-        return false;
     }
 });

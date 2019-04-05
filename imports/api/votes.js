@@ -7,7 +7,9 @@ export const Votes = new Mongo.Collection('votes');
 // check if this executions are serverside
 if (Meteor.isServer) {
   Meteor.publish('votes', function () {
-    return Votes.find({});
+    return Votes.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 }
 

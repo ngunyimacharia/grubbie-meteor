@@ -127,13 +127,13 @@ userRoutes.route('/view',{
   }
 });
 
-userRoutes.route('/view_edit',{
+userRoutes.route('/edit',{
   action: function(){
     BlazeLayout.render(
       'App_body',
       {
         header: 'Header',
-        main: 'User_view_edit_page',
+        main: 'User_edit_page',
         footer: 'Footer'
       }
     );
@@ -244,13 +244,13 @@ adminRoutes.route('/user/view', {
 });
 
 
-adminRoutes.route('/user/view_edit',{
+adminRoutes.route('/user/edit',{
   action: function(){
     BlazeLayout.render(
       'App_body',
       {
         header: 'Header',
-        main: 'User_view_edit_page',
+        main: 'User_edit_page',
         footer: 'Footer'
       }
     );
@@ -333,7 +333,7 @@ adminRoutes.route('/inventory/view',{
   }
 });
 
-// Staff routes
+// staff routes
 let staffRoutes = FlowRouter.group({
   prefix: '/staff',
   name: 'staff',
@@ -388,7 +388,7 @@ staffRoutes.route('/ingredient/create', {
   }
 });
 
-staffRoutes.route('/rating/admin', {
+staffRoutes.route('/rating/staff', {
   action: function () {
     BlazeLayout.render(
       'App_body', {
@@ -404,7 +404,7 @@ staffRoutes.route('/rating/admin', {
 
 
 
-// Developer routes
+// developer routes
 FlowRouter.route('/app/seeder', {
   action: function () {
     BlazeLayout.render(

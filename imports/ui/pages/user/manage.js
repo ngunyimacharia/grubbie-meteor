@@ -64,10 +64,6 @@ Template.User_manage_page.events({
     toggleActive();
     console.log("admin clicked");
   },
-  'click #bulkselect'() {
-    toggle(this);
-    helloWorld();
-  },
   'click #checkbox'() {
     var id = this._id;
     if (event.target.checked) {
@@ -116,16 +112,6 @@ function toggleActive() {
     this.className += " active";
     });
   }
-}
-
-// select all checkboxes
-function toggle(source) {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  for (var i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i] != source)
-      checkboxes[i].checked = source.target.checked;
-  }
-  console.log(checkboxes);
 }
 
 function helloWorld() {

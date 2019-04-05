@@ -9,7 +9,9 @@ export const Ingredients = new Mongo.Collection('ingredients');
 // check if this executions are serverside
 if (Meteor.isServer) {
   Meteor.publish('ingredients', function () {
-    return Ingredients.find({});
+    return Ingredients.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 }
 
