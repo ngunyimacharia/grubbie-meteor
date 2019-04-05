@@ -4,6 +4,8 @@ import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
 export const Menus = new Mongo.Collection('menus');
+import { Options } from './options';
+
 // check if this executions are serverside
 if (Meteor.isServer) {
 
@@ -15,17 +17,41 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   //This method creates a menu item for a specific week. menuID - week and year.
-  'menu.create'(start, end) {
+  'menu.create'(start, end,menuDays=None) {
     check(start, String);
     check(end, String);
+    console.log(menuDays);
 
-    Menus.insert({
+    const menuId = Menus.insert({
       startDate: start,
       endDate: end,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
+    console.log(menuId)
+
+    if(!menuDays){
+      return
+    }
+
+    menuDays.forEach(menuDay=>{
+      //Breakfast
+      menuDay.mealTimes.breakfast.forEach(option=>{
+        const optionId = Options.insert({
+          date:menuDay.date,
+          mealtimeId:'Breakfast',
+          menuId:menuId
+        });
+        console.log(optionId)
+        option.meals.forEach(meal=>{
+          Options.addMeal(optionId,meal);
+        })
+
+      })
+    });
   },
+
+
 
   'menu.publish'(id) {
     check(id, String);
