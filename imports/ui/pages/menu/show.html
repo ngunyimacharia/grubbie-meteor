@@ -1,0 +1,67 @@
+<template name="Menu_show">
+
+
+  <div id="content-container">
+
+    <div class="create-menu">
+      <div class="clearfix"><br/></div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="preview">
+            <div class="row">
+              <div class="col-lg-7 col-md-7 col-sm-7 col-5">
+                <h2>View Menu</h2>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-7">
+                <a href="/menu/list" class="pull-right btn-default"><i class="fas fa-pen"></i> &nbsp;Back to menus</a>
+              
+              </div>
+            </div>
+            <hr />
+            <div>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="lg">
+              <table style="width:100%;">
+                  {{#each days}}
+                  <tr class="day">
+                    <td colspan="3">{{ label }}</td>
+                  </tr>
+                  <tr>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <ul>
+                        {{#each breakfast date}}
+                        <li class="meal-title">{{meal}}</li>
+                        {{/each}}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        {{#each lunch date}}
+                        <li class="meal-title">{{meal}}</li>
+                        {{/each}}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        {{#each supper date}}
+                        <li class="meal-title">{{meal}}</li>
+                        {{/each}}
+                      </ul>
+                    </td>
+                  </tr>
+                  {{/each}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

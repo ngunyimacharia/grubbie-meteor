@@ -34,7 +34,12 @@ Template.Menu_list_page.events({
         // Form fields
         var menuId = event.target.dataset.id;
         Meteor.call('menu.publish', menuId);
-
+        swal({
+            title: "Menu successfully published.",
+            timer: 3000,
+            showConfirmButton: false,
+            type: "success",
+        });
     },
 
 });

@@ -23,6 +23,7 @@ import './menu/mobile.js';
 import './menu/create.js';
 import './menu/list.js';
 import './menu/voting.js';
+import './menu/show.js';
 
 
 //Ratings page

@@ -150,7 +150,7 @@ Template.Menu_create_page.events({
     Meteor.call('menu.create',startDate,endDate,newMenu.get())
     newMenu.set([]);
     swal({
-        title: "Menu successfully published.",
+        title: "Menu successfully created.",
         timer: 3000,
         showConfirmButton: false,
         type: "success",

@@ -106,6 +106,36 @@ FlowRouter.route('/reset-password/:token', {
   }
 });
 
+//menu show
+FlowRouter.route('/menu/show/:menuId', {
+  action: function(params, queryParams) {
+    var menuId = FlowRouter.getParam("menuId");
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Menu_show',
+        footer: 'Footer',
+        menuId:menuId,
+      }
+    );
+  }
+});
+
+
+FlowRouter.route('/menu/list', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Menu_list_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+
 // User routes
 let userRoutes = FlowRouter.group({
   prefix: '/user',
@@ -333,6 +363,7 @@ adminRoutes.route('/menu/view',{
   }
 });
 
+
 // staff routes
 let staffRoutes = FlowRouter.group({
   prefix: '/staff',
@@ -352,17 +383,6 @@ staffRoutes.route('/rating/staff', {
   }
 });
 
-staffRoutes.route('/menu/list', {
-  action: function () {
-    BlazeLayout.render(
-      'App_body', {
-        header: 'Header',
-        main: 'Menu_list_page',
-        footer: 'Footer'
-      }
-    );
-  }
-});
 
 staffRoutes.route('/menu/create', {
   action: function () {

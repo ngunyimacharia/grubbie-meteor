@@ -33,9 +33,9 @@ Template.User_signin_page.events({
             FlowRouter.go('/user/view');
 
           }else if (Roles.userIsInRole(Meteor.user(), ["Staff"])) {
-            FlowRouter.go('/staff/menu/list');
+            FlowRouter.go('/menu/list');
           }else{
-            FlowRouter.go("/admin/user/manage");
+            FlowRouter.go("/menu/list");
           }
         } else {
           FlowRouter.go('/');

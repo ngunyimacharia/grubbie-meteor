@@ -7,31 +7,31 @@ import './footer.html';
 
 //Admin navigation links
 const adminLinks = [
-    {
-        href: "/admin/user/manage",
-        icon: "fa fa-user-o",
-        title: "Users"
-    },
-    {
-        href: "/admin/rating/admin",
-        icon: "fa fa-thumbs-o-up",
-        title: "Feedback"
-    },
-    {
-      href: "/staff/menu/list",
-      icon: "fa fa-cutlery",
-      title: "Menu"
-    },
-    {
-        href: "/admin/user/notifications",
-        icon: "fa fa-envelope-o",
-        title: "Messages",
-        notifications: true
-    },
-    {
-        href: "/admin/user/view",
-        icon: "fa fa-user",
-        title: "Profile"
+  {
+    href: "/admin/user/manage",
+    icon: "fa fa-user-o",
+    title: "Users"
+  },
+  {
+    href: "/admin/rating/admin",
+    icon: "fa fa-thumbs-o-up",
+    title: "Feedback"
+  },
+  {
+    href: "/menu/list",
+    icon: "fa fa-cutlery",
+    title: "Menu"
+  },
+  {
+    href: "/admin/user/notifications",
+    icon: "fa fa-envelope-o",
+    title: "Messages",
+    notifications: true
+  },
+  {
+    href: "/admin/user/view",
+    icon: "fa fa-user",
+    title: "Profile"
   },
   {
     href: '/logout',
@@ -48,15 +48,15 @@ const staffLinks = [
     title: "Feedback"
   },
   {
-    href: "/staff/menu/list",
+    href: "/menu/list",
     icon: "fa fa-cutlery",
     title: "Menu"
   },
   {
-      href: "/staff/user/notifications",
-      icon: "fa fa-envelope-o",
-      title: "Messages",
-      notifications: true
+    href: "/staff/user/notifications",
+    icon: "fa fa-envelope-o",
+    title: "Messages",
+    notifications: true
   },
   {
     href: '/staff/user/view',
@@ -71,42 +71,42 @@ const staffLinks = [
 ];
 
 const userLinks = [
-    {
-      href:'/user/view',
-      icon:'fa fa-user-o',
-      title:'Profile'
-    },
-    {
-      href:'/user/menu/view',
-      icon:'fa fa-cutlery',
-      title:'Meals',
-    },
-    {
-      href:'/user/menu/voting',
-      icon:'fa fa-cutlery',
-      title:'Voting',
-    },
-    {
-      href:'/user/rating/rate',
-      icon:'fa fa-thumbs-o-up',
-      title:'Rate'
-    },
-    {
-      href:'/user/notifications',
-      icon:'fa fa-envelope-o',
-      title:'Messages',
-      notifications:true
-    },
-    {
-      href:'/user/view',
-      icon: 'fa fa-user',
-      title:'Profile',
-    },
-    {
-      href:'/logout',
-      icon: 'fa fa-sign-out',
-      title:'Log Out',
-    }
+  {
+    href:'/user/view',
+    icon:'fa fa-user-o',
+    title:'Profile'
+  },
+  {
+    href:'/user/menu/view',
+    icon:'fa fa-cutlery',
+    title:'Meals',
+  },
+  {
+    href:'/user/menu/voting',
+    icon:'fa fa-cutlery',
+    title:'Voting',
+  },
+  {
+    href:'/user/rating/rate',
+    icon:'fa fa-thumbs-o-up',
+    title:'Rate'
+  },
+  {
+    href:'/user/notifications',
+    icon:'fa fa-envelope-o',
+    title:'Messages',
+    notifications:true
+  },
+  {
+    href:'/user/view',
+    icon: 'fa fa-user',
+    title:'Profile',
+  },
+  {
+    href:'/logout',
+    icon: 'fa fa-sign-out',
+    title:'Log Out',
+  }
 ];
 
 const bodyOnCreated = () => {
