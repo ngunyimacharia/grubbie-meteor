@@ -1,7 +1,10 @@
-<template name="Meal_create_page">  
+<template name="Meal_create_page">
     <h1>Create Meal</h1>
     <div class="container">
         <div id="content-container">
+            <a href="/staff/ingredient/create" class="btn-default pull-right">
+              New Ingredients
+            </a>
         {{#if Template.subscriptionsReady}}
             <form>
                 <div class="form-group">
@@ -59,6 +62,6 @@
                 </div>
             </div>
         {{/if}}
-        </div> 
+        </div>
     </div>
 </template>

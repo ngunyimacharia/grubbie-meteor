@@ -1,62 +1,125 @@
 <template name="Menu_create_page">
 
+  {{#if Template.subscriptionsReady}}
   <div id="content-container">
-    <div class="create-menu">
-      <div class="clearfix"><br /></div>
-      <div class="row">
-        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-          <br />
-          <div class="row">
-            <div class="col-lg-7 col-md-7 col-sm-7 col-5">
-              <h2>Create Menu</h2>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-7">
-              <br />
-              <select class="date-select">
-                <option>Nov 12, 2018 - Nov 16, 2018</option>
-                <option>Nov 19, 2018 - Nov 23, 2018</option>
-              </select>
-            </div>
+    <div class="row gmail-container">
+      <div class = "col-lg-3 col-md-3 col-sm-4 col-12 left-menu">
+
+        <form class="option-create">
+          <label>Day</label>
+          <select name="day">
+            <option value="0">Monday</option>
+            <option value="1">Tuesday</option>
+            <option value="2">Wednesdy</option>
+            <option value="3">Thursday</option>
+            <option value="4">Friday</option>
+          </select>
+          <br/>
+          <br/>
+            <label>Meal</label>
+            <select name="meal">
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="supper">Supper</option>
+            </select>
+            <br/>
+            <br/>
+          {{ #each getCategory }}
+          <label>{{ name }}</label>
+          <select name="{{name}}">
+            <option selected value="">N/A</option>
+            {{ #each getMeals _id }}
+            <option value="{{_id}}">{{ name }}</option>
+            {{/each}}
+          </select>
+          <br/>
+          <br/>
+          {{/each}}
+          <div class="submit text-center">
+            <button type="submit" class="btn-default">Add Option</button>
           </div>
-          <hr />
-          {{> days}}
-          <div class="bls">
-            <button class="breakfast">Breakfast</button>
-            <button class="lunch">Lunch</button>
-            <button class="dinner">Dinner</button>
+        </form>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-8 col-12 right-main">
+        <div class="top-actions">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-6 pull-right no-gutters" style="text-align:right">
+            <b>Menu Week:</b> <br/>
+            {{startDate}} - {{endDate}}
           </div>
-          <div class="order-options">
-            <br />
-            <br />
-            <h4 class="text-center">Choose meal options:</h4>
-            <br />
-            <div>
-              <form>
-                {{ #each getCategory }}
-                <label>{{ name }}</label>
-                <select>
-                  <option selected>N/A</option>
-                  {{ #each getMeals _id }}
-                  <option value="{{_id}}">{{ name }}</option>
+        </div>
+        <div class="clearfix"><br></div>
+        <div class="clearfix"><br></div>
+        <div class="main-section">
+          <div class="cont">
+            <div class="headers">
+            </div>
+            <div class="body">
+
+
+              {{#if Template.subscriptionsReady}}
+
+              <div class="lg">
+
+
+                <table>
+                  {{#each newMenu}}
+                  <tr class="day">
+                    <td colspan="3">{{ label }}</td>
+                  </tr>
+                  <tr>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <ul>
+                        {{#each mealTimes.breakfast}}
+                        <li class="meal-title"> {{ name }} </li>
+                        {{/each}}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        {{#each mealTimes.lunch}}
+                        <li class="meal-title">  {{ name }}  </li>
+                        {{/each}}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        {{#each mealTimes.supper}}
+                        <li class="meal-title">  {{ name }}  </li>
+                        {{/each}}
+                      </ul>
+                    </td>
+                  </tr>
+                  <br>
                   {{/each}}
-                </select>
-                <br/>
-                <br/>
-                {{/each}}
-                <div class="submit text-center">
-                  <button>Submit</button>
+
+                </table>
+
+                <button type="submit" class="btn-primary submit-menu">Submit Menu</button>
+
+              </div>
+
+              {{else}}
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border text-warning" role="status">
+                  <span class="sr-only">Loading...</span>
                 </div>
-              </form>
+              </div>
+              {{/if}}
+
             </div>
           </div>
-          <br />
         </div>
 
-        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-          {{>Menu_preview}}
-        </div>
       </div>
+
     </div>
   </div>
-
+  {{ else }}
+  Loading
+  {{/if}}
 </template>

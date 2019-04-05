@@ -14,7 +14,7 @@ let notLoggedIn = (context, redirect) => {
     if (Roles.userIsInRole(Meteor.user(), ["Admin"])) {
       FlowRouter.go('/admin/user/manage');
     } else if(Roles.userIsInRole(Meteor.user(), ["Staff"])) {
-      FlowRouter.go('/staff');
+      FlowRouter.go('/staff/user/view');
     } else {
       FlowRouter.go('/user/view');
     }
@@ -105,6 +105,36 @@ FlowRouter.route('/reset-password/:token', {
     BlazeLayout.render("App_body", { main: "User_reset_password_page" });
   }
 });
+
+//menu show
+FlowRouter.route('/menu/show/:menuId', {
+  action: function(params, queryParams) {
+    var menuId = FlowRouter.getParam("menuId");
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Menu_show',
+        footer: 'Footer',
+        menuId:menuId,
+      }
+    );
+  }
+});
+
+
+FlowRouter.route('/menu/list', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body', {
+        header: 'Header',
+        main: 'Menu_list_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 
 // User routes
 let userRoutes = FlowRouter.group({
@@ -320,7 +350,7 @@ adminRoutes.route('/notification/create',{
 });
 
 
-adminRoutes.route('/inventory/view',{
+adminRoutes.route('/menu/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',
@@ -332,6 +362,7 @@ adminRoutes.route('/inventory/view',{
     );
   }
 });
+
 
 // staff routes
 let staffRoutes = FlowRouter.group({
@@ -351,6 +382,7 @@ staffRoutes.route('/rating/staff', {
     );
   }
 });
+
 
 staffRoutes.route('/menu/create', {
   action: function () {
@@ -401,7 +433,31 @@ staffRoutes.route('/rating/staff', {
 });
 
 
+staffRoutes.route('/user/notifications',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Notifications_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
 
+staffRoutes.route('/user/view', {
+  action: function () {
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'User_view_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
 
 
 // developer routes

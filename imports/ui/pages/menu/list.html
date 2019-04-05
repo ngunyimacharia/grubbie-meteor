@@ -1,21 +1,118 @@
 <template name="Menu_list_page">
 
-    <div id="content-container">
-        <div class="create-menu">
-            <div class="clearfix"><br /></div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2>Menu list</h2>
-                </div>
-                <div>
-                    {{ #each getMenus }}
-                    <div class="menu-dates">
-                        {{startDate}}
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
+  <div id="content-container">
+    <div class="row gmail-container">
+      <div class="col-lg-2 col-md-2 col-sm-1 col-1"></div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-10 right-main">
+        <div class="top-actions">
+          {{#if staff}}
+          <a href="/staff/meal/create" class="btn-success pull-right">
+            New Meal
+          </a>
+          <a href="/staff/menu/create" class="btn-success pull-right">
+            New Menu
+          </a>
+          {{/if}}
         </div>
+        <div class="clearfix"><br></div>
+        <div class="clearfix"><br></div>
+        <div class="main-section">
+          <div class="cont">
+            <div class="headers">
+              <div class="row">
+                <div class="col">
+                  Start Date
+                </div>
+                <div class="col">
+                  End Date
+                </div>
+                <div class="col">
+                  Published Date
+                </div>
+                {{#if admin}}
+                <div class="col">
+                  Publish?
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            <div class="body">
+
+
+              {{#if Template.subscriptionsReady}}
+              {{#each menus}}
+
+              <div class="list lg">
+                <div class="col">
+                  <a href="/menu/show/{{_id}}">{{ startDate }}</a>
+                </div>
+                <div class="col">
+                  <a href="/menu/show/{{_id}}">{{ endDate }}</a>
+                </div>
+                <div class="col">
+                  {{ publishedDate }}
+                </div>
+                {{#if admin}}
+                <div class="col hv">
+                  {{ #if publishedDate }}
+
+                  {{ else }}
+                  <a class="circ-success publish" data-id="{{_id}}">
+                    <i class="fa fa-play fa-xs" data-id="{{_id}}"></i>
+                  </a>
+                  {{/if}}
+                </div>
+                {{/if}}
+              </div>
+              <div class="row xs">
+                <div class="col">
+                  <div class="data">
+                    <div>
+                      <label>Start Date:</label> {{startDate}}
+                    </div>
+                    <div>
+                      <label>End Date:</label> {{ endDate }}
+
+                    </div>
+                    <div>
+                      <label>Published Date:</label> {{publishedDate}}
+                    </div>
+                    <div class="clearfix"></div>
+
+                    {{#if admin}}
+                    <div class="actions">
+
+                      {{ #if publishedDate }}
+
+                      {{ else }}
+                      <a class="circ-success publish" data-id="{{_id}}">
+                        <i class="fa fa-play fa-xs" data-id="{{_id}}"></i>
+                      </a>
+                      {{/if}}
+                    </div>
+                    {{/if}}
+
+                  </div>
+                </div>
+              </div>
+
+              {{/each}}
+              {{else}}
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border text-warning" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              {{/if}}
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-1 col-1"></div>
+
     </div>
+  </div>
 
 </template>

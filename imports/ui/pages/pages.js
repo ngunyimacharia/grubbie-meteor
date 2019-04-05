@@ -21,8 +21,9 @@ import './meal/create.js';
 import './menu/view.js';
 import './menu/mobile.js';
 import './menu/create.js';
-import './menu/list';
-import './menu/voting';
+import './menu/list.js';
+import './menu/voting.js';
+import './menu/show.js';
 
 
 //Ratings page

@@ -6,21 +6,16 @@
       </div>
       <div class="col-lg-12 col-md-5 col-sm-5 col-7">
         <br />
-        <select class="date-select pull-right">
-          {{#each menus}}
-          {{#if default}}
-          <option selected>{{readableDate}}</option>
-          {{else}}
-          <option>{{readableDate}}</option>
-          {{/if}}
-          {{/each}}
-        </select>
       </div>
     </div>
     <hr />
     <div>
-      <button class="submit"><i class="fas fa-pen"></i> &nbsp;Submit</button>
-    </div>
+      {{#if voted}}
+      
+      {{else}}
+        <button class="submit"><i class="fas fa-pen"></i> &nbsp;Submit</button>
+      {{/if}}
+      </div>
     <div class="clearfix"></div>
     <div class="lg">
       <table>
@@ -37,21 +32,27 @@
             <td>
               <form>
                 {{#each breakfast date}}
-                <input type="radio" name="breakfastOption" id="breakfast" value={{meal}}><label for="breakfast">{{meal}}</label><br>
+                <input class="radioButton" type="radio" name="{{date}}-breakfastOption" id="breakfast" value={{_id}}>
+                <a class="meallink" href="/user/meal/view"><label for="breakfast">{{meal}}</label></a>
+                <br>
                 {{/each}}
               </form>
             </td>
             <td>
               <form>
                 {{#each lunch date}}
-                <input type="radio" name="lunchOption" id="lunch" value={{meal}}><label for="lunch">{{meal}}</label><br>
+                <input class="radioButton" type="radio" name="{{date}}-lunchOption" id="lunch" value={{_id}}>
+                <a class="meallink" href="/user/meal/view"><label for="lunch">{{meal}}</label></a>
+                <br>
                 {{/each}}
               </form>
             </td>
             <td>
               <form>
                 {{#each supper date}}
-                <input type="radio" name="supperOption" id="supper" value={{meal}}><label for="supper">{{meal}}</label><br>
+                <input class="radioButton" type="radio" name="{{date}}-supperOption" id="supper" value={{_id}}>
+                <a class="meallink" href="/user/meal/view"><label for="supper">{{meal}}</label></a>
+                <br>
                 {{/each}}
               </form>
             </td>

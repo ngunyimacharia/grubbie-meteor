@@ -12,3 +12,22 @@ if (Meteor.isServer) {
     });
   });
 }
+
+Meteor.methods({
+  'votes.vote'(userVotes,menuId) {
+    console.log("Vote method has been called correctly");
+    console.log(userVotes);
+
+    for (let i = 0; i < userVotes.length; i++) {
+      let option = userVotes[i];
+      console.log(i);
+      Votes.insert({
+        userId:Meteor.userId(),
+        optionId:option,
+        menuId,
+        createdAt: new Date()
+      })
+    }
+  }
+
+});

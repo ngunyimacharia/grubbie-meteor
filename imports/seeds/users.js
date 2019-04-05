@@ -23,7 +23,7 @@ export const createUsers = (num) => {
 
     //Create user
     const user = {
-      email: casual.email,
+      email: casual.username+"@meltwater.org",
       username: casual.username,
       firstName: casual.first_name,
       lastName: casual.last_name,

@@ -6,9 +6,11 @@ import { ReactiveVar } from "meteor/reactive-var";
 import "./voting_preview.html";
 import { Menus } from "../../api/menus.js";
 import { Options } from "../../api/options";
+import { Votes } from "../../api/votes";
 
 let weekStart = moment().startOf("isoWeek");
 const weekMenu = new ReactiveVar([]);
+let voteObj = {};
 
 const createDays = () => {
     let newMenu = [];
@@ -36,6 +38,7 @@ const createDays = () => {
 Template.Voting_preview.onCreated(function bodyOnCreated() {
     Meteor.subscribe("menus");
     Meteor.subscribe("options");
+    Meteor.subscribe("votes");
 });
 
 Template.Voting_preview.rendered = () => {
@@ -127,6 +130,19 @@ Template.Voting_preview.helpers({
             }
         });
         return menus;
+    },
+    voted(){
+
+        const menu = Menus.find({ startDate: weekStart.format("YYYY-MM-DD") }).fetch()[0];
+        console.log(Meteor.userId,menu);
+        if(typeof menu != 'undefined'){
+            const votes = Votes.find({
+                userId:Meteor.userId(),
+                menuId:menu._id,
+            }).fetch();
+            console.log(votes);
+            return votes.length
+        }
     }
 });
 
@@ -136,8 +152,21 @@ Template.Voting_preview.events({
         weekStart = moment(target.value, "MMM, Do YYYY");
         createDays();
     },
-    "click .submit": function() {
-        preventDefault();
-        console.log("You clicked submit")
+    
+    "click .radioButton"() {
+        // collect the id and name key value pairs from selcted radio buttons
+        const target = event.target;        
+        var id = target.value;
+        var name = target.name;
+        // save id and name key value pairs in the vote Object
+        voteObj[name] = id;
     },
+
+    'click .submit'() {
+        // collect the id's of all the meal options voted for on that day
+        const votes = Object.values(voteObj);
+        const menu = Menus.find({ startDate: weekStart.format("YYYY-MM-DD") }).fetch()[0];
+        console.log(menu);
+        Meteor.call('votes.vote', votes, menu._id);
+      }
 });
