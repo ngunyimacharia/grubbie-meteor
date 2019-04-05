@@ -37,7 +37,9 @@
             <td>
               <form>
                 {{#each breakfast date}}
-                <input class="radioButton" type="radio" name="{{date}}-breakfastOption" id="breakfast" value={{_id}}><label for="breakfast">{{meal}}</label><br>
+                <input class="radioButton" type="radio" name="{{date}}-breakfastOption" id="breakfast" value={{_id}}>
+                <label for="breakfast">{{meal}}</label>
+                <br>
                 {{/each}}
               </form>
             </td>

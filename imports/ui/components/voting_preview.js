@@ -151,7 +151,6 @@ Template.Voting_preview.events({
     'click .submit'() {
         // collect the id's of all the meal options voted for on that day
         const votes = Object.values(voteObj);
-        console.log(votes);
         Meteor.call('votes.vote', votes);
       }
 });
