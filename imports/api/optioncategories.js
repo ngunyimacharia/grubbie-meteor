@@ -7,7 +7,9 @@ export const OptionCategories = new Mongo.Collection('optioncategories');
 if (Meteor.isServer) {
 
   Meteor.publish('optioncategories', function () {
-    return OptionCategories.find({});
+    return OptionCategories.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

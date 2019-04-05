@@ -27,7 +27,12 @@ const adminLinks = [
         href: "/admin/user/view",
         icon: "fa fa-user",
         title: "Profile"
-    }
+  },
+  {
+    href: '/logout',
+    icon: 'fa fa-sign-out',
+    title: 'Log Out',
+  }
 ];
 
 // Staff navigation links
@@ -40,6 +45,11 @@ const staffLinks = [
   {
     href: "/staff/menu/create",
     icon: "fa fa-cutlery",
+    title: "Menu"
+  },
+  {
+    href: "/staff/meal/create",
+    icon: "fa fa-cutlery",
     title: "Meals"
   },
   {
@@ -48,6 +58,16 @@ const staffLinks = [
     title: "Messages",
     notifications: true
   },
+  {
+    href: '/staff/user/view',
+    icon: 'fa fa-user',
+    title: 'Profile',
+  },
+  {
+    href: '/logout',
+    icon: 'fa fa-sign-out',
+    title: 'Log Out',
+  }
 ];
 
 const userLinks = [
@@ -71,6 +91,16 @@ const userLinks = [
       icon:'fa fa-envelope-o',
       title:'Messages',
       notifications:true
+    },
+    {
+      href:'/user/view',
+      icon: 'fa fa-user',
+      title:'Profile',
+    },
+    {
+      href:'/logout',
+      icon: 'fa fa-sign-out',
+      title:'Log Out',
     }
 ];
 
@@ -86,7 +116,7 @@ const helpers = {
   links(){
     if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
       return adminLinks;
-    }else if(Roles.userIsInRole(Meter.userId, ['Staff'])){
+    } else if(Roles.userIsInRole(Meteor.userId(), ['Staff'])){
       return staffLinks;
     } else {
       return userLinks;

@@ -7,7 +7,9 @@ export const Notifications = new Mongo.Collection('notifications');
 if (Meteor.isServer) {
 
   Meteor.publish('notifications', function () {
-    return Notifications.find({});
+    return Notifications.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

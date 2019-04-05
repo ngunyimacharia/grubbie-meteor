@@ -7,7 +7,9 @@ export const Menus = new Mongo.Collection('menus');
 if (Meteor.isServer) {
 
   Meteor.publish('menus', function () {
-    return Menus.find({});
+    return Menus.find({}, {
+      pollingIntervalMs: 3000
+    });
   });
 
 }

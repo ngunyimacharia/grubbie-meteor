@@ -10119,6 +10119,24 @@ ul.navy-pagination li.active a {
 }
 @media only screen and (max-width: 767px) {
   header {
+    height: 77px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  #logo {
+    text-align: center;
+    padding-top: 25px;
+  }
+
+  #logo img {
+    height: 50px;
+  }
+
+  #logo-caption {
+    display: none;
+  }
+
+  nav {
     display: none;
   }
 
@@ -10127,6 +10145,10 @@ ul.navy-pagination li.active a {
     height: 86.7%;
     overflow-y: scroll;
     overflow-x: hidden;
+  }
+
+  body #content-container {
+    padding-top: 0vh;
   }
 
   footer {
@@ -10305,6 +10327,10 @@ blockquote {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 5px;
   width: 150px;
+  color: #fff;
+}
+.create-menu option {
+  color: #000;
 }
 .create-menu button {
   color: white;

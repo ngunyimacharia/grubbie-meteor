@@ -3,7 +3,7 @@ import './user/splash.js';
 import './user/signin.js';
 import './user/signup.js';
 import './user/view.js';
-import './user/view_edit.js';
+import './user/edit.js';
 import './user/manage.js';
 import './user/create.js';
 import './user/notifications.js';
