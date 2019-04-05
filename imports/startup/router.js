@@ -320,7 +320,7 @@ adminRoutes.route('/notification/create',{
 });
 
 
-adminRoutes.route('/inventory/view',{
+adminRoutes.route('/menu/view',{
   action: function(){
     BlazeLayout.render(
       'App_body',

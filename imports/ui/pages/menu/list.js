@@ -18,7 +18,12 @@ Template.Menu_list_page.helpers({
     console.log(menus);
     return menus;
   },
-
+  admin(){
+    return Roles.userIsInRole(Meteor.user(), ["Admin"]);
+  },
+  staff(){
+    return Roles.userIsInRole(Meteor.user(), ["Staff"]);
+  }
 });
 
 

@@ -18,6 +18,11 @@ const adminLinks = [
         title: "Feedback"
     },
     {
+      href: "/staff/menu/list",
+      icon: "fa fa-cutlery",
+      title: "Menu"
+    },
+    {
         href: "/admin/user/notifications",
         icon: "fa fa-envelope-o",
         title: "Messages",
@@ -46,11 +51,6 @@ const staffLinks = [
     href: "/staff/menu/list",
     icon: "fa fa-cutlery",
     title: "Menu"
-  },
-  {
-    href: "/staff/meal/create",
-    icon: "fa fa-cutlery",
-    title: "Meals"
   },
   {
       href: "/staff/user/notifications",
