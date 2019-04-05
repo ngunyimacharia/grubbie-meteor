@@ -118,9 +118,9 @@
       margin: 0;
     }
 
-    i{
-      // margin-left: 28px;
-    }
+    // i{
+    //   // margin-left: 28px;
+    // }
   }
 
   .order-options > .row{
@@ -147,6 +147,7 @@
     border-radius: 15px;
 
     table{
+      width:100%;
       .day{
         height:50px;
         text-transform: uppercase;
@@ -154,7 +155,7 @@
       }
     }
 
-    .edit{
+    .edit,.submit {
       width: auto;
       height: auto;
       float:right;
@@ -164,7 +165,4 @@
     }
   }
 
-  .submit{
-    // padding-right: 20px;
-  }
 }

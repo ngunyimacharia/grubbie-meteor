@@ -82,6 +82,11 @@ const userLinks = [
       title:'Meals',
     },
     {
+      href:'/user/menu/voting',
+      icon:'fa fa-cutlery',
+      title:'Voting',
+    },
+    {
       href:'/user/rating/rate',
       icon:'fa fa-thumbs-o-up',
       title:'Rate'
@@ -115,10 +120,12 @@ const helpers = {
   },
   links(){
     if (Roles.userIsInRole(Meteor.userId(), ['Admin'])) {
+      console.log("Admin");
       return adminLinks;
     } else if(Roles.userIsInRole(Meteor.userId(), ['Staff'])){
       return staffLinks;
     } else {
+      console.log("User");
       return userLinks;
     }
   }

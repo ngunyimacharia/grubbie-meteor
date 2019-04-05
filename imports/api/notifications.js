@@ -28,5 +28,20 @@ Meteor.methods({
       throw new Meteor.Error("Not authorized");
     }
 
-  }
+  },
+  'notifications.insert'(message) {
+    check(message, String);
+
+    const users = Meteor.users.find({});
+    users.forEach(user=>{
+      let notification = {
+        content:message,
+        userId:user._id,
+        url:"",
+        read:false,
+        createdAt: new Date()
+      }
+      Notifications.insert(notification);
+    });
+  },
 });

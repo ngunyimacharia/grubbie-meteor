@@ -15,7 +15,7 @@ const vote = (date,mealtimeId,userId) => {
   //vote
   Votes.insert({
     optionId: myChoice._id,
-    mealId: myChoice.menuId,
+    menuId: myChoice.menuId,
     userId: userId,
     createdAt: new Date(),
     updatedAt: new Date()
@@ -50,6 +50,5 @@ export const createVotes = () => {
     });
   });
 }
-
 
 const randFromArr = (arr) => arr[Math.floor(Math.random() * arr.length)];

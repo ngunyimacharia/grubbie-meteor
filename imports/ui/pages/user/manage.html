@@ -150,3 +150,157 @@
       </div>
     </div>
   </template>
+<template name="User_manage_page">
+  <div class = "row gmail-container">
+    <div class = "col-lg-2 col-md-2 col-sm-3 col-12 left-menu">
+      <ul class="lg" id="left-menu">
+        <a href="#" class="user-nav active" id="users"><li>Users</li></a>
+        <a href="#" class="user-nav" id="staff"><li>Kitchen Staff</li></a>
+        <a href="#" class="user-nav" id="admin"><li>Admin</li></a>
+        <a href="/admin/user/create" class="btn btn-success" id="create-user">Create User</a>
+      </ul>
+      <div class="xs">
+        <div>
+          <a href="/admin/user/create" class="btn-success col-5 pull-right">
+            <i class="fa fa-user-o fa-sm"></i>&nbsp;Add User</a>
+          </div>
+          <div class="clearfix"><br/></div>
+          <div class="clearfix"><br/></div>
+          <div class="dark row">
+            <div class='col-6 description'>
+              Select User Type:
+            </div>
+            <select class="col-6">
+              <option>Users</option>
+              <option>Kitchen Staff</option>
+              <option>Admin</option>
+            </select>
+          </div>
+          <div class="clearfix"><br/></div>
+        </div>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-9 col-12 right-main">
+        <div class="top-actions">
+          <!--<div class="col-lg-8 col-md-8 col-sm-8 col-8 pull-left no-gutters">
+            <input class="searchbox" type="text" name="search" placeholder="Enter to search ..."/>
+          </div>-->
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4 pull-right no-gutters">
+            <button class="btn-danger pull-right" id="bulk-deactivate">Deactivate</button>
+            <button class="btn-success pull-right" id="bulk-activate">Activate</button>
+            <a href="/admin/notification/create" class="btn-warning pull-right"><i class="fa fa-bell" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="clearfix"><br/></div>
+        <div class="clearfix"><br/></div>
+        <div class="main-section">
+          <div class="cont">
+            <div class="headers">
+              <div class="row">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                  <input type="checkbox" id="bulkselect"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                  Name
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-">
+                  Status
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-">
+                  Country
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-">
+                  Activate/Deativate
+                </div>
+              </div>
+            </div>
+            <div class="body">
+            {{#if Template.subscriptionsReady}}
+              {{#each users}}
+              <div class="list lg">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                  <input type="checkbox" id="checkbox"/>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                  {{ profile.firstName }} {{ profile.lastName }}
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                  {{#if profile.status }}
+                  Activated
+                  {{else}}
+                  Deactivated
+                  {{/if}}
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2 hv">
+                  {{ profile.country }}
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-12 hv">
+                  {{#if profile.status }}
+                  <a class="circ-warning" href="#" id="deactivate">
+                    <i class="fa fa-pause fa-xs"></i>
+                  </a>
+                  {{ else }}
+                  <a class="circ-success" href="#" id="activate">
+                    <i class="fa fa-play fa-xs"></i>
+                  </a>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="row xs">
+                <div class="col-1">
+                  <input type="checkbox" id="checkbox" />
+                </div>
+                <div class = "col-9">
+                  <div class="data">
+                    <div>
+                      <label>Name:</label> {{ profile.firstName }} {{profile.lastName}}
+                    </div>
+                    <div>
+                      <label>Status:</label>
+                      {{ status }}
+                    </div>
+                    <div>
+                      <label>Country:</label> {{ profile.country }}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="actions">
+                      {{#if profile.status }}
+                      <a class="circ-warning" href="#" id="deactivate">
+                        <i class="fa fa-pause fa-xs"></i>
+                      </a>
+                      {{else}}
+                      <a class="circ-success" href="#" id="activate">
+                        <i class="fa fa-play fa-xs"></i>
+                      </a>
+                      {{/if}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+              {{else}}
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <nav class="simple-pagination">
+        <ul class="pager">
+          <li class="{{prevPageClass}}">
+            <a id="prevPage" href="{{prevPage}}">
+              <span aria-hidden="true">&larr;</span> Previous
+            </a>
+          </li>
+          <li class="{{nextPageClass}}">
+            <a id="nextPage" href="{{nextPage}}">
+              Next <span aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      </div>
+    </div>
+  </template>

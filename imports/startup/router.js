@@ -183,6 +183,19 @@ userRoutes.route('/menu/view',{
   }
 });
 
+userRoutes.route('/menu/voting',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Voting_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
 userRoutes.route('/menu/mobile',{
   action: function(){
     BlazeLayout.render(
@@ -286,6 +299,20 @@ adminRoutes.route('/user/notifications',{
       {
         header: 'Header',
         main: 'Notifications_page',
+        footer: 'Footer'
+      }
+    );
+  }
+});
+
+
+adminRoutes.route('/notification/create',{
+  action: function(){
+    BlazeLayout.render(
+      'App_body',
+      {
+        header: 'Header',
+        main: 'Notification_create_page',
         footer: 'Footer'
       }
     );
